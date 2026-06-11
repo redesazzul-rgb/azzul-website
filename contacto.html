@@ -105,9 +105,7 @@
           <div class="contact-card-details">
             <h4>Distribución y Logística</h4>
             <p style="font-weight: 600; color: var(--slate-900);">Oficina Central y Planta de Distribución</p>
-            <p>Carretera CA-2, Lomas de San Blas, Lote 18 y Lote 19, El Salvador.</p>
-            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.5rem;">(Cerca de Playa San Blas / El Encuentro Surf City)</p>
-            <p>Suministramos ICF a gran escala con stock disponible, garantizando entregas a tiempo para un flujo continuo en sus obras.</p>
+            <p>Carretera CA-2, Lomas de San Blas, Lote 18 y Lote 19, El Salvador. Cerca de Playa San Blas / El Encuentro Surf City</p>
             <a href="https://maps.app.goo.gl/ymQ9gXiNa3A6KsGt8" target="_blank" style="font-size: 0.85rem; display: inline-block; margin-top: 0.5rem;" id="link-mapa">Ver en Google Maps &rarr;</a>
           </div>
         </div>
@@ -140,9 +138,8 @@
         <div style="padding-left: 1rem;">
           <h4 style="font-family: 'Outfit', sans-serif; font-size: 1.1rem; margin-bottom: 0.75rem;">Síganos en Redes</h4>
           <div class="social-links">
-            <a href="#" class="social-circle" aria-label="Facebook AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-            <a href="#" class="social-circle" aria-label="Instagram AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-            <a href="#" class="social-circle" aria-label="LinkedIn AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="https://www.facebook.com/people/AZZUL/61574367400517/" class="social-circle" aria-label="Facebook AZZUL" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/azzul.sv" class="social-circle" aria-label="Instagram AZZUL" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
           </div>
         </div>
 
@@ -155,31 +152,31 @@
           <p>Complete el formulario y le asignaremos un asesor técnico especialista en menos de 24 horas.</p>
         </div>
 
-        <form id="contact-form" novalidate>
+        <form id="contact-form" method="POST" action="https://formspree.io/f/xnjybedl" novalidate>
           
           <div class="form-group">
             <label for="contact-name" class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" id="contact-name" placeholder="Ej. Arq. Sofía Galván">
+            <input type="text" class="form-control" id="contact-name" name="nombre" placeholder="Ej. Arq. Sofía Galván">
             <div class="invalid-feedback">Este campo es obligatorio.</div>
           </div>
 
           <div class="form-row-2col">
             <div class="form-group">
               <label for="contact-email" class="form-label">Correo Electrónico</label>
-              <input type="email" class="form-control" id="contact-email" placeholder="sofia@estudio.com">
+              <input type="email" class="form-control" id="contact-email" name="email" placeholder="sofia@estudio.com">
               <div class="invalid-feedback">Este campo es obligatorio.</div>
             </div>
             
             <div class="form-group">
               <label for="contact-phone" class="form-label">Teléfono de Contacto</label>
-              <input type="tel" class="form-control" id="contact-phone" placeholder="55 8976 4321">
+              <input type="tel" class="form-control" id="contact-phone" name="telefono" placeholder="55 8976 4321">
               <div class="invalid-feedback">Este campo es obligatorio.</div>
             </div>
           </div>
 
           <div class="form-group">
             <label for="contact-interest" class="form-label">Área de Interés</label>
-            <select class="form-control" id="contact-interest">
+            <select class="form-control" id="contact-interest" name="area_interes">
               <option value="" selected disabled>Seleccione el motivo de su consulta</option>
               <option value="blocks">Comprar Bloques ICF (AZZUL Building Products)</option>
               <option value="project">Cotización de Proyecto de Obra (AZZUL Constructora)</option>
@@ -190,7 +187,7 @@
 
           <div class="form-group">
             <label for="contact-message" class="form-label">Mensaje o Detalles del Proyecto</label>
-            <textarea class="form-control" id="contact-message" rows="5" placeholder="Escriba los detalles de sus planos, metros cuadrados a cotizar o dudas técnicas..."></textarea>
+            <textarea class="form-control" id="contact-message" name="mensaje" rows="5" placeholder="Escriba los detalles de sus planos, metros cuadrados a cotizar o dudas técnicas..."></textarea>
             <div class="invalid-feedback">Este campo es obligatorio.</div>
           </div>
 
@@ -224,9 +221,8 @@
         </a>
         <p>Soluciones habitacionales e industriales basadas en innovación técnica, durabilidad indestructible y eficiencia energética extrema.</p>
         <div class="social-links">
-          <a href="#" class="social-circle" aria-label="Facebook AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-          <a href="#" class="social-circle" aria-label="Instagram AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
-          <a href="#" class="social-circle" aria-label="LinkedIn AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+          <a href="https://www.facebook.com/people/AZZUL/61574367400517/" class="social-circle" aria-label="Facebook AZZUL" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/azzul.sv" class="social-circle" aria-label="Instagram AZZUL" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
         </div>
       </div>
 
@@ -274,7 +270,7 @@
 
     <!-- Barra de derechos de autor -->
     <div class="container footer-bottom">
-      <span>&copy; 2026 AZZUL S.A. de C.V. Todos los derechos reservados.</span>
+      <span>&copy; 2026 AZZUL. Todos los derechos reservados.</span>
       <div class="footer-bottom-links">
         <a href="#">Política de Privacidad</a>
         <a href="#">Términos y Condiciones</a>

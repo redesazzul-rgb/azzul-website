@@ -2965,7 +2965,6 @@ select.form-control option {
 @media (max-width: 768px) {
     .comparison-wrapper::after,
     .video-container::after {
-        content: "🔍 Toca para expandir";
         position: absolute;
         bottom: 12px;
         right: 12px;
@@ -2981,5 +2980,11 @@ select.form-control option {
         pointer-events: none;
         z-index: 10;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    .comparison-wrapper::after {
+        content: "🔍 Toca para expandir";
+    }
+    .video-container::after {
+        content: "▶️ Toca para reproducir video";
     }
 }

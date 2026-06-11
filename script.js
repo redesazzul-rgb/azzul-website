@@ -192,9 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 let isValid = true;
                 const nameInput = form.querySelector('#name') || form.querySelector('#contact-name');
                 const emailInput = form.querySelector('#email') || form.querySelector('#contact-email');
+                const phoneInput = form.querySelector('#contact-phone');
+                const interestSelect = form.querySelector('#contact-interest');
                 const msgInput = form.querySelector('#message') || form.querySelector('#contact-message');
                 
-                [nameInput, emailInput, msgInput].forEach(input => {
+                const inputsToValidate = [nameInput, emailInput, msgInput];
+                if (phoneInput) inputsToValidate.push(phoneInput);
+                if (interestSelect) inputsToValidate.push(interestSelect);
+                
+                inputsToValidate.forEach(input => {
                     if (input) {
                         if (!input.value.trim()) {
                             input.classList.add('is-invalid');
@@ -223,23 +229,45 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 if (toast) toast.classList.remove('active');
                 
-                // Simular envío con delay de 1.5s
-                setTimeout(() => {
+                // Enviar datos reales a Formspree usando fetch
+                fetch(form.action || 'https://formspree.io/f/xnjybedl', {
+                    method: form.method || 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(response => {
                     if (indicator) indicator.classList.remove('active');
                     
+                    if (response.ok) {
+                        if (toast) {
+                            toast.innerHTML = `¡Mensaje enviado con éxito! Un asesor se contactará pronto.`;
+                            toast.classList.add('active');
+                            btnSubmit.disabled = false;
+                        } else {
+                            btnSubmit.innerHTML = `¡Enviado con éxito!`;
+                            btnSubmit.style.background = 'var(--eco-green)';
+                            btnSubmit.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.4)';
+                        }
+                        form.reset();
+                    } else {
+                        throw new Error('Error en la respuesta del servidor');
+                    }
+                })
+                .catch(error => {
+                    if (indicator) indicator.classList.remove('active');
                     if (toast) {
-                        toast.innerHTML = `¡Mensaje enviado con éxito! Un asesor se contactará pronto.`;
+                        toast.innerHTML = `Hubo un error al enviar el mensaje. Por favor intente de nuevo.`;
                         toast.classList.add('active');
                         btnSubmit.disabled = false;
                     } else {
-                        btnSubmit.innerHTML = `¡Enviado con éxito!`;
-                        btnSubmit.style.background = 'var(--eco-green)';
-                        btnSubmit.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.4)';
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerHTML = originalText;
                     }
-                    
-                    form.reset();
-                    
-                    // Restaurar botón/toast después de 3 segundos
+                })
+                .finally(() => {
+                    // Restaurar botón/toast después de 4 segundos
                     setTimeout(() => {
                         if (!toast) {
                             btnSubmit.disabled = false;
@@ -249,9 +277,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else {
                             toast.classList.remove('active');
                         }
-                    }, 3000);
-                    
-                }, 1500);
+                    }, 4000);
+                });
             }
         });
         
