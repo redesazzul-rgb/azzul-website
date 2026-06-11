@@ -2644,3 +2644,53 @@ select.form-control option {
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     color: var(--slate-400);
 }
+
+
+/* ==========================================================================
+   NUEVAS CORRECCIONES DE RESPONSIVIDAD (JUNIO 2026)
+   ========================================================================== */
+
+/* Colapso de la cuadrícula de 3 columnas en pantallas móviles y tablets <= 768px */
+@media (max-width: 768px) {
+    .grid-3 {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Margen inferior para el video del Hero en móviles para evitar que choque con Retos */
+@media (max-width: 992px) {
+    .hero-visual {
+        margin-bottom: 3rem !important;
+    }
+}
+
+/* Ciencia Constructiva Tech Info Block - Adaptabilidad Responsiva */
+.tech-info-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.tech-info-block {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 3rem;
+}
+
+@media (max-width: 992px) {
+    .tech-info-grid {
+        grid-template-columns: 1fr !important;
+        gap: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-info-block {
+        padding: 1.5rem 1rem !important;
+    }
+    .tech-text-content {
+        text-align: left !important;
+    }
+}
