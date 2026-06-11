@@ -1237,7 +1237,7 @@ button {
     position: relative;
     overflow: hidden;
     border-radius: 8px;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+    transition: flex 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .comparison-wrapper img {
@@ -1245,17 +1245,23 @@ button {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .vector-house-layout:hover .comparison-wrapper {
-    opacity: 0.4;
+    flex: 0.001;
+    opacity: 0;
+    pointer-events: none;
 }
 
 .vector-house-layout .comparison-wrapper:hover {
+    flex: 9;
     opacity: 1;
-    transform: scale(1.05);
-    z-index: 2;
+    pointer-events: auto;
+}
+
+.vector-house-layout .comparison-wrapper:hover img {
+    object-fit: contain;
 }
 
 .badge-floating {
