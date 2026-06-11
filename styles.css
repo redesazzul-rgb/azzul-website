@@ -1248,20 +1248,22 @@ button {
     transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.vector-house-layout:hover .comparison-wrapper {
-    flex: 0.001;
-    opacity: 0;
-    pointer-events: none;
-}
+@media (hover: hover) and (pointer: fine) {
+    .vector-house-layout:hover .comparison-wrapper {
+        flex: 0.001;
+        opacity: 0;
+        pointer-events: none;
+    }
 
-.vector-house-layout .comparison-wrapper:hover {
-    flex: 9;
-    opacity: 1;
-    pointer-events: auto;
-}
+    .vector-house-layout .comparison-wrapper:hover {
+        flex: 9;
+        opacity: 1;
+        pointer-events: auto;
+    }
 
-.vector-house-layout .comparison-wrapper:hover img {
-    object-fit: contain;
+    .vector-house-layout .comparison-wrapper:hover img {
+        object-fit: contain;
+    }
 }
 
 .badge-floating {
@@ -2812,14 +2814,142 @@ select.form-control option {
     margin: 0;
 }
 
-/* Opacidad cruzada e interactividad cinemática en la galería de videos */
-#video-gallery-section .grid-3:hover .video-card {
-    opacity: 0.5;
+/* Opacidad cruzada e interactividad cinemática en la galería de videos - Solo Escritorio */
+@media (hover: hover) and (pointer: fine) {
+    #video-gallery-section .grid-3:hover .video-card {
+        opacity: 0.5;
+    }
+
+    #video-gallery-section .grid-3 .video-card:hover {
+        opacity: 1;
+        transform: translateY(-10px) scale(1.04);
+        box-shadow: 0 25px 50px rgba(0, 210, 255, 0.25);
+        z-index: 5;
+    }
 }
 
-#video-gallery-section .grid-3 .video-card:hover {
-    opacity: 1;
-    transform: translateY(-10px) scale(1.04);
-    box-shadow: 0 25px 50px rgba(0, 210, 255, 0.25);
-    z-index: 5;
+/* Estilos de soporte para sección de sub-negocios en fondo oscuro */
+.section-bg-dark .training-step-card,
+.section-bg-dark .training-form-box {
+    background: rgba(30, 41, 59, 0.4) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+.section-bg-dark .training-step-card h4,
+.section-bg-dark .training-form-box h4 {
+    color: #ffffff !important;
+}
+
+.section-bg-dark .training-step-card p {
+    color: #cbd5e1 !important; /* light grey readable description */
+}
+
+/* Reestructuración responsiva de tabla comparativa en móvil */
+@media (max-width: 768px) {
+    #comparativa-tecnica .specs-table-wrapper {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        overflow-x: visible !important;
+    }
+    
+    #comparativa-tecnica .specs-table-wrapper > div {
+        overflow-x: visible !important;
+    }
+
+    #comparativa-tecnica .specs-table {
+        display: block !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        background: transparent !important;
+    }
+
+    #comparativa-tecnica .specs-table thead {
+        display: none !important;
+    }
+
+    #comparativa-tecnica .specs-table tbody {
+        display: block !important;
+        width: 100% !important;
+    }
+
+    #comparativa-tecnica .specs-table tr {
+        display: flex !important;
+        flex-direction: column !important;
+        width: 100% !important;
+        margin-bottom: 1.5rem !important;
+        background: #ffffff !important;
+        border: 1px solid rgba(15, 23, 42, 0.08) !important;
+        border-radius: 16px !important;
+        padding: 1.5rem !important;
+        box-shadow: var(--shadow-sm) !important;
+        box-sizing: border-box !important;
+    }
+
+    #comparativa-tecnica .specs-table tr:hover td {
+        background: transparent !important;
+    }
+
+    #comparativa-tecnica .specs-table td {
+        display: block !important;
+        width: 100% !important;
+        padding: 0.5rem 0 !important;
+        border: none !important;
+        background: transparent !important;
+        color: #333333 !important;
+        box-shadow: none !important;
+        box-sizing: border-box !important;
+    }
+
+    /* 1. Título del Parámetro */
+    #comparativa-tecnica .specs-table td:nth-child(1) {
+        font-family: var(--font-heading);
+        font-size: 1.15rem !important;
+        font-weight: 700 !important;
+        color: #0E1E38 !important;
+        border-bottom: 1px solid var(--slate-200) !important;
+        padding-bottom: 0.75rem !important;
+        margin-bottom: 0.75rem !important;
+    }
+
+    /* 2. Construcción Tradicional */
+    #comparativa-tecnica .specs-table td:nth-child(2) {
+        font-size: 0.95rem !important;
+        color: #4b5563 !important;
+        padding-left: 0 !important;
+    }
+    #comparativa-tecnica .specs-table td:nth-child(2)::before {
+        content: "Construcción Tradicional (Ladrillo): ";
+        display: block;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        color: #9ca3af;
+        margin-bottom: 0.25rem;
+    }
+
+    /* 3. Sistema Avanzado AZZUL ICF (resaltado en caja azul claro) */
+    #comparativa-tecnica .specs-table td:nth-child(3).highlight {
+        font-size: 1rem !important;
+        font-weight: 700 !important;
+        background: #f0f9ff !important;
+        border: 1px solid rgba(78, 168, 222, 0.3) !important;
+        border-radius: 8px !important;
+        padding: 0.75rem 1rem !important;
+        margin-top: 0.75rem !important;
+        color: #0284c7 !important;
+        box-shadow: none !important;
+    }
+    #comparativa-tecnica .specs-table td:nth-child(3).highlight::before {
+        content: "Sistema Avanzado AZZUL ICF:";
+        display: block;
+        font-weight: 800;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 0.25rem;
+        color: #0284c7;
+    }
 }

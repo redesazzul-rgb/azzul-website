@@ -370,24 +370,193 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 12. Control de reproducción de video en Hover (Galería de Avances en Video)
+    // 12. Control de reproducción de video en Hover (Galería de Avances en Video) - Solo Escritorio
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
     const videoCards = document.querySelectorAll('.video-card');
-    videoCards.forEach(card => {
-        const video = card.querySelector('video');
-        if (video) {
-            card.addEventListener('mouseenter', () => {
-                const playPromise = video.play();
-                if (playPromise !== undefined) {
-                    playPromise.catch(error => {
-                        // Evitar errores de play interrumpidos por pause rápidos
-                        console.log("Interacción de reproducción gestionada:", error);
-                    });
-                }
+    
+    if (!isTouchDevice) {
+        videoCards.forEach(card => {
+            const video = card.querySelector('video');
+            if (video) {
+                card.addEventListener('mouseenter', () => {
+                    const playPromise = video.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(error => {
+                            console.log("Interacción de reproducción gestionada:", error);
+                        });
+                    }
+                });
+                
+                card.addEventListener('mouseleave', () => {
+                    video.pause();
+                });
+            }
+        });
+    } else {
+        // En Móvil (Dispositivos Táctiles): Lógica Lightbox Interactivo
+        // 1. Tocar un video de la galería de avances en video
+        videoCards.forEach(card => {
+            const video = card.querySelector('video');
+            if (video) {
+                // Prevenir comportamiento por defecto de hover y abrir Lightbox
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const src = video.getAttribute('src');
+                    if (src) {
+                        openLightbox(src, true);
+                    }
+                });
+            }
+        });
+
+        // 2. Tocar una foto de la comparativa de San Blas
+        const comparisonWrappers = document.querySelectorAll('.comparison-wrapper');
+        comparisonWrappers.forEach(wrapper => {
+            const img = wrapper.querySelector('img');
+            if (img) {
+                wrapper.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const src = img.getAttribute('src');
+                    if (src) {
+                        openLightbox(src, false);
+                    }
+                });
+            }
+        });
+
+        // Función Helper para abrir el Lightbox Modal
+        function openLightbox(src, isVideo) {
+            // Eliminar lightbox previo si existe
+            const existing = document.querySelector('.azzul-lightbox-modal');
+            if (existing) existing.remove();
+
+            // Crear Modal
+            const modal = document.createElement('div');
+            modal.className = 'azzul-lightbox-modal';
+            Object.assign(modal.style, {
+                position: 'fixed',
+                inset: '0',
+                backgroundColor: 'rgba(11, 19, 41, 0.95)',
+                backdropFilter: 'blur(10px)',
+                webkitBackdropFilter: 'blur(10px)',
+                zIndex: '99999',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                opacity: '0',
+                transition: 'opacity 0.3s ease'
             });
-            
-            card.addEventListener('mouseleave', () => {
-                video.pause();
+
+            // Botón de Cierre "X"
+            const closeBtn = document.createElement('button');
+            closeBtn.innerHTML = '&times;';
+            Object.assign(closeBtn.style, {
+                position: 'absolute',
+                top: '20px',
+                right: '20px',
+                background: 'none',
+                border: 'none',
+                color: '#ffffff',
+                fontSize: '3rem',
+                cursor: 'pointer',
+                zIndex: '100000',
+                padding: '0.5rem',
+                lineHeight: '1'
             });
+
+            // Contenedor de Contenido
+            const container = document.createElement('div');
+            Object.assign(container.style, {
+                maxWidth: '90%',
+                maxHeight: '80%',
+                position: 'relative',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center'
+            });
+
+            if (isVideo) {
+                const videoEl = document.createElement('video');
+                videoEl.src = src;
+                videoEl.playsInline = true;
+                videoEl.loop = true;
+                videoEl.autoplay = true;
+                videoEl.muted = false; // Queremos sonido si es a pantalla completa
+                Object.assign(videoEl.style, {
+                    width: '100%',
+                    height: 'auto',
+                    maxHeight: '70vh',
+                    borderRadius: '12px',
+                    boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                    border: '1px solid rgba(255,255,255,0.1)'
+                });
+
+                // Reproducir / Pausar al tocar el video
+                videoEl.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (videoEl.paused) {
+                        videoEl.play();
+                    } else {
+                        videoEl.pause();
+                    }
+                });
+
+                container.appendChild(videoEl);
+
+                // Agregar indicador de toque/reproducción
+                const hint = document.createElement('div');
+                hint.innerText = "Toque el video para reproducir / pausar";
+                Object.assign(hint.style, {
+                    color: 'rgba(255,255,255,0.6)',
+                    fontSize: '0.85rem',
+                    marginTop: '10px',
+                    fontFamily: 'sans-serif'
+                });
+                container.appendChild(hint);
+            } else {
+                const imgEl = document.createElement('img');
+                imgEl.src = src;
+                Object.assign(imgEl.style, {
+                    maxWidth: '100%',
+                    maxHeight: '70vh',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
+                    border: '1px solid rgba(255,255,255,0.1)'
+                });
+
+                imgEl.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                });
+
+                container.appendChild(imgEl);
+            }
+
+            modal.appendChild(closeBtn);
+            modal.appendChild(container);
+            document.body.appendChild(modal);
+
+            // Prevenir scroll de la página de fondo
+            document.body.style.overflow = 'hidden';
+
+            // Animación Fade In
+            setTimeout(() => {
+                modal.style.opacity = '1';
+            }, 50);
+
+            // Función de Cierre
+            const close = () => {
+                modal.style.opacity = '0';
+                document.body.style.overflow = '';
+                setTimeout(() => {
+                    modal.remove();
+                }, 300);
+            };
+
+            closeBtn.addEventListener('click', close);
+            modal.addEventListener('click', close);
         }
-    });
+    }
 });
