@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema ICF & Productos | AZZUL - Innovación Técnica</title>
+  <meta name="description" content="Explore la ciencia detrás de los sistemas ICF de AZZUL. Acceda a nuestro catálogo en AZZUL Building Products y regístrese en el AZZUL Training Program para capacitarse y certificarse.">
+  
+  <!-- Estilos Globales -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR (Cabecera)
+       ========================================== -->
+  <header class="header" id="header">
+    <div class="container navbar">
+      <!-- Logotipo Oficial AZZUL -->
+      <a href="index.html#hero-section" class="logo" id="main-logo">
+        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 38px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Menú de Navegación -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html#hero-section" class="nav-link" id="link-inicio">Inicio</a>
+        <a href="nosotros.html" class="nav-link" id="link-about">Nosotros</a>
+        <a href="index.html#team" class="nav-link" id="link-team">Equipo</a>
+        <a href="index.html#how-we-work" class="nav-link" id="link-how-we-work">Cómo Trabajamos</a>
+        <a href="sistema.html" class="nav-link active" id="link-ciencia">Ciencia Constructiva</a>
+        <div class="nav-item-dropdown">
+            <a href="index.html#what-we-do" class="nav-link" id="link-what-we-do">Qué Hacemos</a>
+            <div class="mega-menu">
+                <div class="mega-menu-container">
+                    <div class="mega-card" id="mega-card-products">
+                        <img src="assets/logo/logo building products.png" alt="Building Products Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge">AZZUL Building Products</span>
+                        <h4>Venta y Distribución ICF</h4>
+                        <p>Importación directa y stock disponible de tecnología ICF en El Salvador. Unificamos estructura y aislamiento en un solo paso.</p>
+                        <a href="sistema.html?tab=products" class="mega-link">Explorar Productos &rarr;</a>
+                    </div>
+                    <div class="mega-card" id="mega-card-constructora">
+                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge badge-blue">AZZUL Constructora</span>
+                        <h4>Diseño y Construcción</h4>
+                        <p>Desarrollo, diseño arquitectónico y ejecución de obras residenciales y comerciales con la máxima eficiencia del sistema ICF.</p>
+                        <a href="proyectos.html" class="mega-link">Ver Proyectos &rarr;</a>
+                    </div>
+                    <div class="mega-card" id="mega-card-academy">
+                        <img src="assets/logo/logo training program.png" alt="Training Program Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge badge-green">AZZUL Academy</span>
+                        <h4>Entrenamiento y Certificación</h4>
+                        <p>Única entidad calificada en El Salvador para certificar profesionales del sector en el sistema constructivo moderno.</p>
+                        <a href="sistema.html?tab=training" class="mega-link">Ver Programa de Academia &rarr;</a>
+                    </div>
+                    <div class="mega-card" id="mega-card-management">
+                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge badge-blue">AZZUL Management</span>
+                        <h4>Gestión y Mantenimiento</h4>
+                        <p>Servicios de cuidado integral and preservación para optimizar la gestión operativa de residencias enfocadas en rentas vacacionales.</p>
+                        <a href="contacto.html?interest=management" class="mega-link">Ver Servicios de Gestión &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-btn">
+          <a href="contacto.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="link-contacto">Contáctanos</a>
+        </div>
+      </nav>
+
+      <!-- Botón de Hamburguesa para Móvil -->
+      <div class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO DE LA PÁGINA
+       ========================================== -->
+  <section class="hero-page" id="ciencia-constructiva">
+    <div class="container">
+      <span class="badge badge-cyan">Ingeniería Avanzada</span>
+      <h1>Ciencia Constructiva</h1>
+      <p>Entienda el funcionamiento detallado del encofrado termoacústico y explore nuestras divisiones de insumos y capacitación profesional.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       VISOR INTERACTIVO DE CAPAS ICF
+       ========================================== -->
+  <section class="section" id="visor-tecnico">
+    <div class="container">
+      <div class="section-header">
+        <span class="badge">Anatomía ICF</span>
+        <h2>¿Cómo Funciona el Sistema AZZUL?</h2>
+        <p>Haga click en cada capa para inspeccionar su composición técnica y entender por qué supera cualquier método constructivo tradicional.</p>
+      </div>
+
+      <div class="sistema-visor-container">
+        <!-- Controladores Izquierdos -->
+        <div class="layers-interactive-viewer" id="layer-selector">
+          
+          <button class="layer-btn active" data-layer="1" id="layer-btn-1">
+            <span class="layer-number">01</span>
+            <div>
+              <div class="layer-btn-title">EPS Neopor Exterior</div>
+              <div class="layer-btn-desc">Polímero denso de grafito absorbente.</div>
+            </div>
+          </button>
+
+          <button class="layer-btn" data-layer="2" id="layer-btn-2">
+            <span class="layer-number">02</span>
+            <div>
+              <div class="layer-btn-title">Núcleo de Hormigón</div>
+              <div class="layer-btn-desc">Monolito de piedra continuo estructural.</div>
+            </div>
+          </button>
+
+          <button class="layer-btn" data-layer="3" id="layer-btn-3">
+            <span class="layer-number">03</span>
+            <div>
+              <div class="layer-btn-title">EPS Neopor Interior</div>
+              <div class="layer-btn-desc">Terminación y espacio técnico interno.</div>
+            </div>
+          </button>
+
+        </div>
+
+        <!-- Pantalla de Despliegue -->
+        <div class="viewer-display" id="viewer-display-pane">
+          
+          <!-- Capa 1 -->
+          <div class="viewer-content-pane active" id="layer-pane-1">
+            <span class="viewer-layer-badge">Capa Exterior - Aislamiento Primario</span>
+            <h3>Poliestireno EPS Exterior</h3>
+            <p>Formado por planchas de 6.35 cm de espesor enriquecidas con grafito (Neopor) para reflejar la radiación infrarroja. Detiene por completo la entrada de calor solar en verano y evita la pérdida térmica en invierno.</p>
+            <div class="viewer-feature-list">
+              <div class="viewer-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Resistencia Térmica Superior: R-22</span>
+              </div>
+              <div class="viewer-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Ignífugo: Autoextinguible, cumple normativas FM Global</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capa 2 -->
+          <div class="viewer-content-pane" id="layer-pane-2">
+            <span class="viewer-layer-badge">Núcleo Central - Resistencia Monolítica</span>
+            <h3>Hormigón Armado Continuo</h3>
+            <p>Un espacio central de 15 cm de espesor que se rellena con concreto de alta resistencia estructural y acero corrugado de refuerzo vertical y horizontal. Elimina juntas frías y muros débiles.</p>
+            <div class="viewer-feature-list">
+              <div class="viewer-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Resiste vientos de más de 300 km/h (Categoría Huracán)</span>
+              </div>
+              <div class="viewer-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Curado óptimo: El EPS mantiene la humedad e impide grietas</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capa 3 -->
+          <div class="viewer-content-pane" id="layer-pane-3">
+            <span class="viewer-layer-badge">Capa Interior - Confort e Instalación</span>
+            <h3>Poliestireno EPS Interior</h3>
+            <p>Plancha interna de 6.35 cm que detiene el rebote de ondas de sonido, aislando las habitaciones acústicamente. Incluye canales empotrados verticales cada 20 cm para tender tuberías y cableado sin picar el muro.</p>
+            <div class="viewer-feature-list">
+              <div class="viewer-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Reducción de ruido ambiental de hasta 50 dB</span>
+              </div>
+              <div class="viewer-feature-item">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Facilidad de acabado: Compatible con tablaroca o yeso directo</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </section>
+
+  <!-- ==========================================
+       PESTAÑAS DE SUB-NEGOCIOS (Products & Training)
+       ========================================== -->
+  <section class="section" id="sub-business-sections" style="border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="container sub-tabs-container">
+      
+      <!-- Navegación de Pestañas -->
+      <div class="sub-tabs-nav">
+        <button class="tab-trigger active" data-tab="products" id="tab-trigger-products" style="color: #fff;">AZZUL Building Products</button>
+        <button class="tab-trigger" data-tab="training" id="tab-trigger-training" style="color: #fff;">AZZUL Training Program</button>
+      </div>
+
+      <!-- Pestaña 1: AZZUL Building Products -->
+      <div class="tab-pane active" id="products">
+        <div class="section-header" style="margin-bottom: 3rem; text-align: center;">
+          <img src="assets/logo/logo building products.png" alt="Building Products Logo" style="height: 45px; width: auto; object-fit: contain; margin-bottom: 1rem; display: inline-block;">
+          <br>
+          <span class="badge badge-cyan">Innovación de Insumos</span>
+          <h2 style="color: #0E1E38;">Línea de Productos ICF</h2>
+          <p style="color: #333333; max-width: 800px; margin: 1rem auto 0 auto; font-size: 1.15rem; line-height: 1.8;">
+            Seleccione y cotice los lotes de encofrados modulares y accesorios especializados AZZUL para su próximo proyecto.
+          </p>
+        </div>
+
+        <!-- Fila de llamados a la acción para cotización -->
+        <div class="bento-grid" style="grid-template-columns: repeat(3, 1fr); gap: 1.5rem;">
+          <!-- Opción 1: Bloques Rectos -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 16px; min-height: 250px;">
+            <div>
+              <h4 style="color: #0E1E38; font-size: 1.25rem; margin-bottom: 0.75rem;">Bloque Recto Estándar</h4>
+              <p style="color: #333333; font-size: 0.9rem; line-height: 1.6;">Lotes modulares del bloque principal ICF para levantamiento de muros rectos portantes y contención estructural.</p>
+            </div>
+            <a href="contacto.html?interest=straight" class="btn btn-quote-celeste" style="margin-top: 1.5rem; text-align: center; width: 100%;" id="btn-quote-straight">Cotizar Lote</a>
+          </div>
+
+          <!-- Opción 2: Bloques de Esquina -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 16px; min-height: 250px;">
+            <div>
+              <h4 style="color: #0E1E38; font-size: 1.25rem; margin-bottom: 0.75rem;">Bloque de Esquina a 90°</h4>
+              <p style="color: #333333; font-size: 0.9rem; line-height: 1.6;">Lotes para esquinas monolíticas perfectas y amarres de intersección sin necesidad de refuerzos provisionales.</p>
+            </div>
+            <a href="contacto.html?interest=corner" class="btn btn-quote-celeste" style="margin-top: 1.5rem; text-align: center; width: 100%;" id="btn-quote-corner">Cotizar Lote</a>
+          </div>
+
+          <!-- Opción 3: Alineadores y Accesorios -->
+          <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 16px; min-height: 250px;">
+            <div>
+              <h4 style="color: #0E1E38; font-size: 1.25rem; margin-bottom: 0.75rem;">Alineadores y Accesorios</h4>
+              <p style="color: #333333; font-size: 0.9rem; line-height: 1.6;">Andamios de alineación profesional vertical y conectores plásticos regulables de alta resistencia a la tracción.</p>
+            </div>
+            <a href="contacto.html?interest=accessories" class="btn btn-quote-celeste" style="margin-top: 1.5rem; text-align: center; width: 100%;" id="btn-quote-accessories">Cotizar Lote</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="tab-pane" id="training">
+        <div class="section-header" style="margin-bottom: 3rem;">
+          <img src="assets/logo/logo training program.png" alt="Training Program Logo" style="height: 45px; width: auto; object-fit: contain; margin-bottom: 1rem;">
+          <br>
+          <span class="badge badge-green">Academia de Certificación</span>
+          <h2>Certifique su talento constructivo</h2>
+          <p>Valide sus habilidades y reciba el respaldo de la marca AZZUL para ejecutar proyectos residenciales y comerciales de alto estándar.</p>
+        </div>
+
+        <div class="training-layout">
+          <!-- Información y Pasos -->
+          <div class="training-info" id="training-steps-box">
+            <h3>Ruta del Certificador Autorizado</h3>
+            <p>Nuestro programa ofrece teoría digital avanzada y laboratorios presenciales en obras reales para garantizar un dominio técnico completo.</p>
+            
+            <div class="training-steps">
+              <!-- Nivel 1 -->
+              <div class="training-step-card" id="training-step-1">
+                <span class="step-num">1</span>
+                <div class="step-details">
+                  <h4>Nivel 1: Teoría e Ingeniería ICF (Online)</h4>
+                  <p style="color: var(--text-muted);">Aprenda sobre física del edificio, cálculos estructurales de acero, cubicación de concreto y modulación de planos.</p>
+                </div>
+              </div>
+
+              <!-- Nivel 2 -->
+              <div class="training-step-card" id="training-step-2">
+                <span class="step-num">2</span>
+                <div class="step-details">
+                  <h4>Nivel 2: Ensamble y Alineación (Práctico)</h4>
+                  <p style="color: var(--text-muted);">Talleres presenciales de armado de muros, colocación de aberturas de puertas y ventanas y anclaje de andamios técnicos.</p>
+                </div>
+              </div>
+
+              <!-- Nivel 3 -->
+              <div class="training-step-card" id="training-step-3">
+                <span class="step-num">3</span>
+                <div class="step-details">
+                  <h4>Nivel 3: Vertido y Acabados (En Obra)</h4>
+                  <p style="color: var(--text-muted);">Práctica real supervisada del flujo de vaciado de concreto y la aplicación directa de enlucidos e instalaciones.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Formulario de Registro Integrado -->
+          <div class="training-form-box" id="training-reg-box">
+            <h4 style="color: var(--dark);">Solicitud de Ingreso</h4>
+            <p>Regístrese para recibir las fechas del próximo ciclo académico presencial y accesos al manual técnico digital inicial.</p>
+            
+            <form id="academy-form" novalidate>
+              <div class="form-group">
+                <label for="academy-name" class="form-label">Nombre Completo</label>
+                <input type="text" class="form-control" id="academy-name" placeholder="Ej. Ing. Carlos Mendoza">
+                <div class="invalid-feedback">Ingrese un nombre válido.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="academy-email" class="form-label">Correo Electrónico</label>
+                <input type="email" class="form-control" id="academy-email" placeholder="carlos@empresa.com">
+                <div class="invalid-feedback">Ingrese un correo válido.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="academy-phone" class="form-label">Teléfono Móvil</label>
+                <input type="tel" class="form-control" id="academy-phone" placeholder="55 1234 5678">
+                <div class="invalid-feedback">Ingrese un teléfono válido.</div>
+              </div>
+
+              <div class="form-group">
+                <label for="academy-profession" class="form-label">Perfil Profesional</label>
+                <select class="form-control" id="academy-profession">
+                  <option value="" selected disabled>Seleccione su perfil</option>
+                  <option value="architect">Arquitecto(a)</option>
+                  <option value="engineer">Ingeniero(a) Civil</option>
+                  <option value="builder">Constructor / Maestro de Obra</option>
+                  <option value="student">Estudiante / Aficionado</option>
+                </select>
+                <div class="invalid-feedback">Seleccione un perfil profesional.</div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;" id="btn-submit-academy">Registrarme en el Programa</button>
+              
+              <!-- Indicador de Carga -->
+              <div class="academy-submit-indicator submit-indicator">
+                <div class="spinner"></div>
+                <span>Procesando su registro académico...</span>
+              </div>
+
+              <!-- Toast de éxito -->
+              <div class="academy-success-toast success-message-toast"></div>
+            </form>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER (Pie de Página Corporativo)
+       ========================================== -->
+  <footer class="footer" id="site-footer">
+    <div class="container footer-grid">
+      
+      <!-- Columna Marca -->
+      <div class="footer-brand" id="footer-col-brand">
+        <a href="index.html#hero-section" class="logo" style="margin-bottom: 1rem;">
+          <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 40px; width: auto; object-fit: contain;">
+        </a>
+        <p>Soluciones habitacionales e industriales basadas en innovación técnica, durabilidad indestructible y eficiencia energética extrema.</p>
+        <div class="social-links">
+          <a href="#" class="social-circle" aria-label="Facebook AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="#" class="social-circle" aria-label="Instagram AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" class="social-circle" aria-label="LinkedIn AZZUL"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Columna Navegación -->
+      <div id="footer-col-nav">
+        <h4 class="footer-title">Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" id="footer-link-inicio">Inicio</a></li>
+          <li><a href="nosotros.html" id="footer-link-nosotros">Nosotros</a></li>
+          <li><a href="sistema.html" id="footer-link-sistema">Sistema ICF</a></li>
+          <li><a href="proyectos.html" id="footer-link-proyectos">Proyectos</a></li>
+          <li><a href="contacto.html" id="footer-link-contacto">Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna Ecosistema -->
+      <div id="footer-col-ecosystem">
+        <h4 class="footer-title">Universo AZZUL</h4>
+        <ul class="footer-links">
+          <li><a href="sistema.html?tab=products" id="footer-link-products">AZZUL Building Products</a></li>
+          <li><a href="sistema.html?tab=training" id="footer-link-training">AZZUL Training Program</a></li>
+          <li><a href="sistema.html#visor-tecnico" id="footer-link-visor">Capas del Sistema ICF</a></li>
+          <li><a href="proyectos.html#san-blas-card" id="footer-link-san-blas">AZZUL San Blas</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna Contacto -->
+      <div id="footer-col-contact">
+        <h4 class="footer-title">Oficina Central</h4>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Av. Innovación Tecnológica 1400, Corporativo AZZUL, Piso 5.</span>
+        </div>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+52 (55) 8956-3245</span>
+        </div>
+        <div class="footer-info-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span>proyectos@azzul-icf.com</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra de derechos de autor -->
+    <div class="container footer-bottom">
+      <span>&copy; 2026 AZZUL S.A. de C.V. Todos los derechos reservados.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Términos y Condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica de Interactividad -->
+  <script src="script.js"></script>
+  <script>
+    // Pequeño script para manejar enlaces de pestaña procedentes de otras páginas
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const tabParam = urlParams.get('tab');
+      if (tabParam === 'products' || tabParam === 'training') {
+        const trigger = document.getElementById(`tab-trigger-${tabParam}`);
+        if (trigger) trigger.click();
+      }
+    });
+  </script>
+</body>
+</html>
