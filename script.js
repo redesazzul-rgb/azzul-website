@@ -369,4 +369,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 300);
         }
     }
+
+    // 12. Control de reproducción de video en Hover (Galería de Avances en Video)
+    const videoCards = document.querySelectorAll('.video-card');
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+        if (video) {
+            card.addEventListener('mouseenter', () => {
+                const playPromise = video.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        // Evitar errores de play interrumpidos por pause rápidos
+                        console.log("Interacción de reproducción gestionada:", error);
+                    });
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                video.pause();
+            });
+        }
+    });
 });

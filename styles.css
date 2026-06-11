@@ -1228,6 +1228,34 @@ button {
     gap: 0.5rem;
     padding: 0.5rem;
     box-sizing: border-box;
+    overflow: hidden; /* Encierre limpio */
+}
+
+.comparison-wrapper {
+    flex: 1;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), opacity 0.4s ease;
+}
+
+.comparison-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.vector-house-layout:hover .comparison-wrapper {
+    opacity: 0.4;
+}
+
+.vector-house-layout .comparison-wrapper:hover {
+    opacity: 1;
+    transform: scale(1.05);
+    z-index: 2;
 }
 
 .badge-floating {
@@ -1300,7 +1328,7 @@ button {
 }
 
 .featured-project-info p {
-    color: var(--slate-300);
+    color: #f1f5f9;
     font-size: 1rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
@@ -2738,7 +2766,7 @@ select.form-control option {
     flex-direction: column;
     height: 100%;
     box-shadow: var(--shadow-md);
-    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
 }
 
 .video-card:hover {
@@ -2772,8 +2800,20 @@ select.form-control option {
 }
 
 .video-card-info p {
-    color: var(--slate-300);
+    color: #f1f5f9;
     font-size: 0.95rem;
-    line-height: 1.6;
+    line-height: 1.7;
     margin: 0;
+}
+
+/* Opacidad cruzada e interactividad cinemática en la galería de videos */
+#video-gallery-section .grid-3:hover .video-card {
+    opacity: 0.5;
+}
+
+#video-gallery-section .grid-3 .video-card:hover {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.04);
+    box-shadow: 0 25px 50px rgba(0, 210, 255, 0.25);
+    z-index: 5;
 }
