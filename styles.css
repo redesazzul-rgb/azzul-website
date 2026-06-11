@@ -2670,11 +2670,14 @@ select.form-control option {
 /* Overrides for text color in dark sections and card elements */
 .section-bg-dark p,
 .section-bg-dark li,
-.section-bg-dark span:not(.badge):not(.mega-badge):not([style*="color"]),
+.section-bg-dark span:not(.badge):not(.mega-badge):not([style*="color"]) {
+    color: #F8F9FA !important;
+}
+
 .section-dark p,
 .section-dark li,
 .section-dark span:not(.badge):not(.mega-badge):not([style*="color"]) {
-    color: #F8F9FA !important;
+    color: #1e293b !important;
 }
 
 .section-bg-dark .card p,
@@ -2955,5 +2958,28 @@ select.form-control option {
         letter-spacing: 0.05em;
         margin-bottom: 0.25rem;
         color: #0284c7;
+    }
+}
+
+/* Indicador táctil flotante en móviles para comparativa y videos */
+@media (max-width: 768px) {
+    .comparison-wrapper::after,
+    .video-container::after {
+        content: "🔍 Toca para expandir";
+        position: absolute;
+        bottom: 12px;
+        right: 12px;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        color: #ffffff;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.35rem 0.75rem;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+        z-index: 10;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
 }

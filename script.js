@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Mapear IDs a sus correspondientes links
             const linkMap = {
                 'hero-section': 'link-inicio',
-                'about': 'link-about',
+                'sobre-azzul': 'link-about',
                 'team': 'link-team',
                 'how-we-work': 'link-how-we-work',
                 'what-we-do': 'link-what-we-do'
