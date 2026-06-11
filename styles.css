@@ -2918,7 +2918,11 @@ select.form-control option {
     #comparativa-tecnica .specs-table td:nth-child(2) {
         font-size: 0.95rem !important;
         color: #4b5563 !important;
-        padding-left: 0 !important;
+        background: #f8fafc !important;
+        border: 1px solid rgba(15, 23, 42, 0.05) !important;
+        border-radius: 8px !important;
+        padding: 0.75rem 1rem !important;
+        margin-top: 0.5rem !important;
     }
     #comparativa-tecnica .specs-table td:nth-child(2)::before {
         content: "Construcción Tradicional (Ladrillo): ";
@@ -2926,21 +2930,21 @@ select.form-control option {
         font-weight: 700;
         font-size: 0.8rem;
         text-transform: uppercase;
-        color: #9ca3af;
+        color: #64748b;
         margin-bottom: 0.25rem;
     }
 
     /* 3. Sistema Avanzado AZZUL ICF (resaltado en caja azul claro) */
     #comparativa-tecnica .specs-table td:nth-child(3).highlight {
         font-size: 1rem !important;
-        font-weight: 700 !important;
+        font-weight: 800 !important;
         background: #f0f9ff !important;
-        border: 1px solid rgba(78, 168, 222, 0.3) !important;
+        border: 2px solid #00d2ff !important;
         border-radius: 8px !important;
-        padding: 0.75rem 1rem !important;
+        padding: 0.85rem 1.1rem !important;
         margin-top: 0.75rem !important;
         color: #0284c7 !important;
-        box-shadow: none !important;
+        box-shadow: 0 10px 20px -10px rgba(0, 210, 255, 0.25) !important;
     }
     #comparativa-tecnica .specs-table td:nth-child(3).highlight::before {
         content: "Sistema Avanzado AZZUL ICF:";
