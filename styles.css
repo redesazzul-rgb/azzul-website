@@ -487,7 +487,7 @@ button {
 }
 
 .header-scrolled .nav-link {
-    color: var(--slate-300);
+    color: #ffffff;
 }
 
 .header-scrolled .nav-link:hover,
@@ -558,7 +558,7 @@ button {
     font-family: var(--font-heading);
     font-weight: 500;
     font-size: 0.95rem;
-    color: var(--slate-700);
+    color: #ffffff;
     position: relative;
     padding: 0.5rem 0;
 }
@@ -757,12 +757,13 @@ button {
         height: 100vh;
         background-color: var(--slate-950);
         flex-direction: column;
-        justify-content: center;
-        gap: 2.5rem;
-        padding: 3rem;
+        justify-content: flex-start;
+        gap: 2rem;
+        padding: 5rem 2rem 2rem 2rem;
         transition: var(--transition-smooth);
         box-shadow: -10px 0 30px rgba(0, 0, 0, 0.4);
         z-index: 999;
+        overflow-y: auto;
     }
     
     .nav-menu.active {
@@ -1250,15 +1251,13 @@ button {
 
 @media (hover: hover) and (pointer: fine) {
     .vector-house-layout:hover .comparison-wrapper {
-        flex: 0.001;
-        opacity: 0;
-        pointer-events: none;
+        flex: 1;
+        opacity: 0.4;
     }
 
     .vector-house-layout .comparison-wrapper:hover {
         flex: 9;
         opacity: 1;
-        pointer-events: auto;
     }
 
     .vector-house-layout .comparison-wrapper:hover img {
@@ -2987,4 +2986,67 @@ select.form-control option {
     .video-container::after {
         content: "▶️ Toca para reproducir video";
     }
+    
+    html[lang="en"] .comparison-wrapper::after {
+        content: "🔍 Tap to expand";
+    }
+    html[lang="en"] .video-container::after {
+        content: "▶️ Tap to play video";
+    }
 }
+
+/* Selector de Idioma Premium */
+.lang-selector {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    padding: 0.2rem 0.4rem;
+    gap: 0.15rem;
+    vertical-align: middle;
+}
+
+.lang-btn {
+    background: none;
+    border: none;
+    font-family: var(--font-heading);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-full);
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.lang-btn:hover {
+    color: #ffffff;
+}
+
+.lang-btn.active {
+    color: #ffffff;
+    background: var(--primary);
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.4);
+}
+
+.header-scrolled .lang-btn.active {
+    background: var(--accent);
+    box-shadow: 0 2px 8px rgba(0, 210, 255, 0.4);
+}
+
+.lang-divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 992px) {
+    .lang-selector {
+        margin-top: 1rem;
+        align-self: center;
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+}
+

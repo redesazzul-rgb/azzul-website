@@ -138,6 +138,14 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
             
+            const currentLang = localStorage.getItem('preferredLang') || 'es';
+            const getTranslation = (key, defaultText) => {
+                if (typeof translations !== 'undefined' && translations[currentLang] && translations[currentLang][key]) {
+                    return translations[currentLang][key];
+                }
+                return defaultText;
+            };
+            
             // Si es el formulario de la academia (sistema.html)
             if (form.id === 'academy-form') {
                 const btnSubmit = document.getElementById('btn-submit-academy');
@@ -166,7 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     btnSubmit.disabled = false;
                     
                     if (toast) {
-                        toast.innerHTML = `¡Registro Exitoso! Bienvenido al AZZUL Training Program.`;
+                        toast.setAttribute('data-i18n', 'toast_academy_success');
+                        toast.setAttribute('data-i18n', 'toast_academy_success');
+                        toast.innerHTML = getTranslation('toast_academy_success', '¡Registro Exitoso! Bienvenido a AZZUL Certification.');
                         toast.classList.add('active');
                     }
                     
@@ -218,8 +228,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (indicator) {
                     indicator.classList.add('active');
                 } else {
+                    btnSubmit.setAttribute('data-i18n', 'btn_sending');
                     btnSubmit.innerHTML = `
-                        Enviando...
+                        ${getTranslation('btn_sending', 'Enviando...')}
                         <svg class="spinner" width="20" height="20" viewBox="0 0 50 50" style="animation: spin 1s linear infinite; margin-left: 0.5rem; stroke: currentColor; fill: none; stroke-width: 4; stroke-linecap: round; display: inline-block; vertical-align: middle;">
                             <circle cx="25" cy="25" r="20" stroke="rgba(255,255,255,0.2)"></circle>
                             <path d="M25 5 A 20 20 0 0 1 45 25"></path>
@@ -242,11 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (response.ok) {
                         if (toast) {
-                            toast.innerHTML = `¡Mensaje enviado con éxito! Un asesor se contactará pronto.`;
+                            toast.setAttribute('data-i18n', 'toast_contact_success');
+                            toast.innerHTML = getTranslation('toast_contact_success', '¡Mensaje enviado con éxito! Un asesor se contactará pronto.');
                             toast.classList.add('active');
                             btnSubmit.disabled = false;
                         } else {
-                            btnSubmit.innerHTML = `¡Enviado con éxito!`;
+                            btnSubmit.setAttribute('data-i18n', 'btn_sent');
+                            btnSubmit.innerHTML = getTranslation('btn_sent', '¡Enviado con éxito!');
                             btnSubmit.style.background = 'var(--eco-green)';
                             btnSubmit.style.boxShadow = '0 0 15px rgba(16, 185, 129, 0.4)';
                         }
@@ -258,7 +271,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 .catch(error => {
                     if (indicator) indicator.classList.remove('active');
                     if (toast) {
-                        toast.innerHTML = `Hubo un error al enviar el mensaje. Por favor intente de nuevo.`;
+                        toast.setAttribute('data-i18n', 'toast_contact_error');
+                        toast.innerHTML = getTranslation('toast_contact_error', 'Hubo un error al enviar el mensaje. Por favor intente de nuevo.');
                         toast.classList.add('active');
                         btnSubmit.disabled = false;
                     } else {
@@ -270,10 +284,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Restaurar botón/toast después de 4 segundos
                     setTimeout(() => {
                         if (!toast) {
+                            btnSubmit.removeAttribute('data-i18n');
                             btnSubmit.disabled = false;
-                            btnSubmit.innerHTML = originalText;
+                            btnSubmit.innerHTML = `
+                                <span data-i18n="contact_quick_btn"></span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                            `;
                             btnSubmit.style.background = '';
                             btnSubmit.style.boxShadow = '';
+                            if (typeof setLanguage === 'function') {
+                                setLanguage(localStorage.getItem('preferredLang') || 'es');
+                            }
                         } else {
                             toast.classList.remove('active');
                         }
