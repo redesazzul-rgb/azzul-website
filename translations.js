@@ -351,7 +351,19 @@ const translations = {
     about_float_desc: "El aislamiento continuo de EPS de doble cara bloquea todos los puentes térmicos. Ideal para climas costeros y tropicales.",
     form_validation_name: "Ingrese un nombre válido.",
     form_validation_email: "Ingrese un correo electrónico válido.",
-    form_validation_message: "El mensaje no puede estar vacío."
+    form_validation_message: "El mensaje no puede estar vacío.",
+    // Centro de Documentación Técnica
+    doc_tag: "Documentación",
+    doc_title: "Centro de Documentación Técnica",
+    doc_subtitle: "Acceda y descargue las certificaciones oficiales, memorias estructurales y manuales de producto del sistema AZZUL ICF.",
+    doc_card_1_title: "Certificación Intertek",
+    doc_card_1_desc: "Reporte CCRR-1060 de cumplimiento de código estructural norteamericano.",
+    doc_card_2_title: "Memoria Estructural San Blas",
+    doc_card_2_desc: "Análisis técnico estructural del Condominio San Blas usando encofrado Quad-Lock.",
+    doc_card_3_title: "Layouts del Sistema",
+    doc_card_3_desc: "Planos técnicos y layouts de modulación modular Quad-Lock ICF.",
+    doc_card_4_title: "Manual de Producto Quad-Lock",
+    doc_card_4_desc: "Guía completa de instalación, ensamble y especificaciones técnicas de bloques."
   },
   en: {
     // Navbar Global
@@ -704,7 +716,19 @@ const translations = {
     about_float_desc: "Continuous double-sided EPS insulation blocks all thermal bridges. Ideal for coastal and tropical climates.",
     form_validation_name: "Please enter your full name.",
     form_validation_email: "Please enter a valid email.",
-    form_validation_message: "Message cannot be empty."
+    form_validation_message: "Message cannot be empty.",
+    // Technical Documentation Center
+    doc_tag: "Documentation",
+    doc_title: "Technical Documentation Center",
+    doc_subtitle: "Access and download official certifications, structural calculations, and product manuals of the AZZUL ICF system.",
+    doc_card_1_title: "Intertek Certification",
+    doc_card_1_desc: "CCRR-1060 compliance report for the North American structural code.",
+    doc_card_2_title: "San Blas Structural Report",
+    doc_card_2_desc: "Technical structural analysis of the San Blas Condominium using Quad-Lock formwork.",
+    doc_card_3_title: "System Layouts",
+    doc_card_3_desc: "Technical modular layouts and assembly blueprints for Quad-Lock ICF.",
+    doc_card_4_title: "Quad-Lock Product Manual",
+    doc_card_4_desc: "Complete guide on installation, assembly, and technical specifications for blocks."
   }
 };
 

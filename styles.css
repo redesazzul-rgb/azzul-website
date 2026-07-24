@@ -3050,3 +3050,92 @@ select.form-control option {
     }
 }
 
+/* ==========================================================================
+   SECCIÓN: CENTRO DE DOCUMENTACIÓN TÉCNICA
+   ========================================================================== */
+.bento-grid-docs {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.doc-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(30, 41, 59, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    text-decoration: none;
+    color: #ffffff;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    height: 100%;
+}
+
+.doc-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 4px 20px rgba(0, 210, 255, 0.15);
+}
+
+.doc-icon-wrapper {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.doc-pdf-svg {
+    width: 44px;
+    height: 44px;
+    max-width: 48px;
+    fill: #ef4444; /* PDF Red/Crimson */
+    transition: transform 0.3s ease;
+}
+
+.doc-card:hover .doc-pdf-svg {
+    transform: scale(1.05);
+}
+
+.doc-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.doc-card-title {
+    font-family: var(--font-heading);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+}
+
+.doc-card-desc {
+    font-size: 0.875rem;
+    color: var(--slate-400);
+    line-height: 1.6;
+}
+
+/* Responsividad para la documentación */
+@media (max-width: 992px) {
+    .bento-grid-docs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .bento-grid-docs {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+    .doc-card {
+        padding: 1.5rem;
+    }
+}
+
+
