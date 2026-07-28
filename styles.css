@@ -3138,4 +3138,103 @@ select.form-control option {
     }
 }
 
+/* ==========================================
+   ESTILOS DE CARGA (DRAG & DROP) EN DOCS.HTML
+   ========================================== */
+.upload-zone {
+    background: rgba(30, 41, 59, 0.25);
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 3rem 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 3rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.upload-zone:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(30, 41, 59, 0.35);
+}
+
+.upload-zone.dragover {
+    border-color: var(--accent);
+    background: rgba(0, 210, 255, 0.05);
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.15);
+}
+
+.upload-zone-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--accent);
+    transition: transform 0.3s ease;
+}
+
+.upload-zone.dragover .upload-icon {
+    transform: scale(1.2) translateY(-4px);
+}
+
+.upload-zone-text {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.upload-zone-sub {
+    font-size: 0.85rem;
+    color: var(--slate-400);
+}
+
+/* Tarjeta Personalizada de Usuario */
+.custom-doc-card {
+    cursor: pointer;
+}
+
+.delete-doc-btn {
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    color: #f87171;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.delete-doc-btn:hover {
+    background: #ef4444;
+    border-color: #ef4444;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.user-badge {
+    background: rgba(0, 210, 255, 0.1);
+    color: var(--accent);
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+
 
