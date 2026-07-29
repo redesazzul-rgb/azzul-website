@@ -513,8 +513,8 @@
           continue;
         }
 
-        // Validación de tamaño (máximo 50MB)
-        const MAX_SIZE = 50 * 1024 * 1024; // 50MB
+        // Validación de tamaño (máximo 150MB)
+        const MAX_SIZE = 150 * 1024 * 1024; // 150MB
         if (file.size > MAX_SIZE) {
           const errorMsg = activeLang === 'en' ? translations.en.error_file_size : translations.es.error_file_size;
           showToast(errorMsg, 'error');
