@@ -1,25 +1,18 @@
 import { handleUpload } from '@vercel/blob/client';
 
-export const config = {
-  runtime: 'edge',
-};
+export default async function handler(request, response) {
+  // Configurar CORS
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-export default async function handler(request) {
   if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
+    return response.status(200).end();
   }
 
   try {
-    const body = await request.json();
     const jsonResponse = await handleUpload({
-      body,
+      body: request.body,
       request,
       onBeforeGenerateToken: async (pathname) => {
         return {
@@ -47,20 +40,8 @@ export default async function handler(request) {
       },
     });
 
-    return new Response(JSON.stringify(jsonResponse), {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    return response.status(200).json(jsonResponse);
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 400,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    return response.status(400).json({ error: error.message });
   }
 }
