@@ -363,14 +363,7 @@ const translations = {
     doc_card_3_title: "Layouts del Sistema",
     doc_card_3_desc: "Planos técnicos y layouts de modulación modular Quad-Lock ICF.",
     doc_card_4_title: "Manual de Producto Quad-Lock",
-    doc_card_4_desc: "Guía completa de instalación, ensamble y especificaciones técnicas de bloques.",
-    // Drag & Drop
-    drag_drop_zone_text: "Arrastre y suelte archivos (PDF, imágenes, videos, audios) aquí o haga clic para buscar",
-    drag_drop_zone_sub: "Soporta archivos multimedia de hasta 150MB",
-    uploaded_badge: "Subido por usuario",
-    delete_btn: "Eliminar",
-    error_pdf_only: "Solo se permiten archivos PDF, imágenes, videos y audios.",
-    error_file_size: "El archivo excede el límite de 150MB."
+    doc_card_4_desc: "Guía completa de instalación, ensamble y especificaciones técnicas de bloques."
   },
   en: {
     // Navbar Global
@@ -735,14 +728,7 @@ const translations = {
     doc_card_3_title: "System Layouts",
     doc_card_3_desc: "Technical modular layouts and assembly blueprints for Quad-Lock ICF.",
     doc_card_4_title: "Quad-Lock Product Manual",
-    doc_card_4_desc: "Complete guide on installation, assembly, and technical specifications for blocks.",
-    // Drag & Drop
-    drag_drop_zone_text: "Drag & drop files (PDF, images, videos, audio) here or click to browse",
-    drag_drop_zone_sub: "Supports media files up to 150MB",
-    uploaded_badge: "User Uploaded",
-    delete_btn: "Delete",
-    error_pdf_only: "Only PDF, image, video, and audio files are allowed.",
-    error_file_size: "File exceeds the 150MB limit."
+    doc_card_4_desc: "Complete guide on installation, assembly, and technical specifications for blocks."
   }
 };
 
