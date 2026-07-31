@@ -1,57 +1,27 @@
 import { del } from '@vercel/blob';
 
-export const config = {
-  runtime: 'edge',
-};
+export default async function handler(request, response) {
+  // Configurar CORS
+  response.setHeader('Access-Control-Allow-Origin', '*');
+  response.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  response.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-export default async function handler(request) {
   if (request.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
-      },
-    });
+    return response.status(200).end();
   }
 
   if (request.method !== 'POST') {
-    return new Response(JSON.stringify({ error: 'Method not allowed' }), {
-      status: 405,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    return response.status(405).json({ error: 'Method not allowed' });
   }
 
   try {
-    const { url } = await request.json();
+    const { url } = request.body;
     if (!url) {
-      return new Response(JSON.stringify({ error: 'URL is required' }), {
-        status: 400,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json',
-        },
-      });
+      return response.status(400).json({ error: 'URL is required' });
     }
     await del(url);
-    return new Response(JSON.stringify({ success: true }), {
-      status: 200,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    return response.status(200).json({ success: true });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
-      status: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json',
-      },
-    });
+    return response.status(500).json({ error: error.message });
   }
 }
