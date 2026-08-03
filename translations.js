@@ -363,7 +363,11 @@ const translations = {
     doc_card_3_title: "Layouts del Sistema",
     doc_card_3_desc: "Planos técnicos y layouts de modulación modular Quad-Lock ICF.",
     doc_card_4_title: "Manual de Producto Quad-Lock",
-    doc_card_4_desc: "Guía completa de instalación, ensamble y especificaciones técnicas de bloques."
+    doc_card_4_desc: "Guía completa de instalación, ensamble y especificaciones técnicas de bloques.",
+    doc_card_5_title: "Estudios de Suelos",
+    doc_card_5_desc: "Análisis geotécnico e informe técnico de la capacidad soportante del suelo para cimentación.",
+    doc_card_6_title: "Planos Aprobados OPAMSS",
+    doc_card_6_desc: "Planos constructivos oficiales y aprobación del proyecto San Blas por parte de la OPAMSS."
   },
   en: {
     // Navbar Global
@@ -728,7 +732,11 @@ const translations = {
     doc_card_3_title: "System Layouts",
     doc_card_3_desc: "Technical modular layouts and assembly blueprints for Quad-Lock ICF.",
     doc_card_4_title: "Quad-Lock Product Manual",
-    doc_card_4_desc: "Complete guide on installation, assembly, and technical specifications for blocks."
+    doc_card_4_desc: "Complete guide on installation, assembly, and technical specifications for blocks.",
+    doc_card_5_title: "Soil Studies",
+    doc_card_5_desc: "Geotechnical analysis and technical report on soil bearing capacity for foundations.",
+    doc_card_6_title: "OPAMSS Approved Blueprints",
+    doc_card_6_desc: "Official construction blueprints and approval of the San Blas project by OPAMSS."
   }
 };
 
