@@ -367,7 +367,13 @@ const translations = {
     doc_card_5_title: "Estudios de Suelos",
     doc_card_5_desc: "Análisis geotécnico e informe técnico de la capacidad soportante del suelo para cimentación.",
     doc_card_6_title: "Planos Aprobados OPAMSS",
-    doc_card_6_desc: "Planos constructivos oficiales y aprobación del proyecto San Blas por parte de la OPAMSS."
+    doc_card_6_desc: "Planos constructivos oficiales y aprobación del proyecto San Blas por parte de la OPAMSS.",
+    // Galería Matriz
+    matriz_tag: "Fotos de Matriz",
+    matriz_title: "Galería de Matriz",
+    matriz_subtitle: "Visualice y descargue las imágenes de control de matriz en alta resolución.",
+    download_btn: "Descargar",
+    raw_badge: "Archivo RAW"
   },
   en: {
     // Navbar Global
@@ -736,7 +742,13 @@ const translations = {
     doc_card_5_title: "Soil Studies",
     doc_card_5_desc: "Geotechnical analysis and technical report on soil bearing capacity for foundations.",
     doc_card_6_title: "OPAMSS Approved Blueprints",
-    doc_card_6_desc: "Official construction blueprints and approval of the San Blas project by OPAMSS."
+    doc_card_6_desc: "Official construction blueprints and approval of the San Blas project by OPAMSS.",
+    // Matrix Gallery
+    matriz_tag: "Matrix Photos",
+    matriz_title: "Matrix Gallery",
+    matriz_subtitle: "View and download high-resolution matrix control images.",
+    download_btn: "Download",
+    raw_badge: "RAW File"
   }
 };
 

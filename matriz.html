@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería de Matriz | AZZUL</title>
+  <meta name="description" content="Galería de imágenes de control de matriz del sistema constructivo moderno AZZUL ICF.">
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    /* Estilos Premium Autocontenidos para la Galería */
+    .photo-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+
+    @media (max-width: 1024px) {
+        .photo-grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .photo-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    @media (max-width: 480px) {
+        .photo-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    .photo-card {
+        background: rgba(30, 41, 59, 0.25);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 16px;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        position: relative;
+    }
+
+    .photo-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 210, 255, 0.3);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        background: rgba(30, 41, 59, 0.45);
+    }
+
+    .photo-thumb-wrapper {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4/3;
+        border-radius: 8px;
+        overflow: hidden;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .photo-thumb {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .photo-card:hover .photo-thumb {
+        transform: scale(1.08);
+    }
+
+    .photo-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(15, 23, 42, 0.6);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .photo-thumb-wrapper:hover .photo-overlay {
+        opacity: 1;
+    }
+
+    .zoom-icon {
+        width: 40px;
+        height: 40px;
+        background: var(--accent);
+        color: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(0, 210, 255, 0.3);
+        transform: scale(0.8);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .zoom-icon svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        stroke-width: 2.5;
+        fill: none;
+    }
+
+    .photo-thumb-wrapper:hover .zoom-icon {
+        transform: scale(1);
+    }
+
+    .photo-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        margin-top: auto;
+    }
+
+    .photo-name-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .photo-name {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+
+    .photo-badge {
+        font-size: 0.7rem;
+        font-weight: 700;
+        padding: 0.15rem 0.4rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        width: fit-content;
+    }
+    
+    .badge-raw {
+        background: rgba(239, 68, 68, 0.1);
+        color: #f87171;
+        border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .photo-download-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        color: var(--slate-300);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+    }
+
+    .photo-download-btn:hover {
+        background: var(--accent);
+        border-color: var(--accent);
+        color: #ffffff;
+        box-shadow: 0 0 12px rgba(0, 210, 255, 0.4);
+        transform: scale(1.05);
+    }
+
+    .photo-download-btn svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        stroke-width: 2.5;
+        fill: none;
+    }
+
+    /* Estilo del RAW File */
+    .raw-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        background: rgba(15, 23, 42, 0.8);
+        color: var(--slate-400);
+        padding: 1.5rem 1rem;
+        border-radius: 8px;
+    }
+
+    .raw-icon {
+        width: 48px;
+        height: 48px;
+        color: #ef4444;
+        opacity: 0.8;
+    }
+
+    .raw-text {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--slate-400);
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(8, 12, 24, 0.95);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        z-index: 10000;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .lightbox.active {
+        display: flex;
+        opacity: 1;
+    }
+
+    .lightbox-close {
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        background: none;
+        border: none;
+        color: #ffffff;
+        font-size: 2.5rem;
+        cursor: pointer;
+        transition: transform 0.2s ease, color 0.2s ease;
+        z-index: 10002;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .lightbox-close:hover {
+        transform: scale(1.1) rotate(90deg);
+        color: var(--accent);
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .lightbox-content {
+        max-width: 90vw;
+        max-height: 85vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1.5rem;
+        position: relative;
+        transform: scale(0.95);
+        transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .lightbox.active .lightbox-content {
+        transform: scale(1);
+    }
+
+    .lightbox-content img {
+        max-width: 100%;
+        max-height: 72vh;
+        border-radius: 12px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        object-fit: contain;
+    }
+
+    .lightbox-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        background: rgba(30, 41, 59, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0.8rem 1.5rem;
+        border-radius: 30px;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        gap: 2rem;
+    }
+
+    #lightbox-title {
+        font-family: var(--font-heading);
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       NAVBAR (Cabecera Global)
+       ========================================== -->
+  <header class="header" id="header">
+    <div class="container navbar">
+      <a href="index.html#hero-section" class="logo" id="main-logo">
+        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 38px; width: auto; object-fit: contain;">
+      </a>
+
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html#hero-section" class="nav-link" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
+        <a href="index.html#sobre-azzul" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
+        <a href="index.html#team" class="nav-link" id="link-team" data-i18n="nav_equipo">Equipo</a>
+        <a href="index.html#how-we-work" class="nav-link" id="link-how-we-work" data-i18n="nav_como_trabajamos">Cómo Trabajamos</a>
+        <a href="sistema.html#ciencia-constructiva" class="nav-link" id="link-ciencia" data-i18n="nav_ciencia">Ciencia Constructiva</a>
+        <div class="nav-item-dropdown">
+            <a href="index.html#what-we-do" class="nav-link" id="link-what-we-do" data-i18n="nav_que_hacemos">Qué Hacemos</a>
+            <div class="mega-menu">
+                <div class="mega-menu-container">
+                    <div class="mega-card" id="mega-card-products">
+                        <img src="assets/logo/logo building products.png" alt="Building Products Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge" data-i18n="nav_products">AZZUL Building Products</span>
+                        <h4 data-i18n="nav_products_title">Venta y Distribución ICF</h4>
+                        <p data-i18n="nav_products_desc">Importación directa y stock disponible de tecnología ICF en El Salvador. Unificamos estructura y aislamiento en un solo paso.</p>
+                        <a href="sistema.html?tab=products" class="mega-link" data-i18n="nav_products_link">Explorar Productos &rarr;</a>
+                    </div>
+                    <div class="mega-card" id="mega-card-constructora">
+                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge badge-blue" data-i18n="nav_construction">AZZUL Construcción</span>
+                        <h4 data-i18n="nav_construction_title">Diseño y Construcción</h4>
+                        <p data-i18n="nav_construction_desc">Desarrollo, diseño arquitectónico y ejecución de obras residenciales y comerciales con la máxima eficiencia del sistema ICF.</p>
+                        <a href="proyectos.html" class="mega-link" data-i18n="nav_construction_link">Ver Proyectos &rarr;</a>
+                    </div>
+                    <div class="mega-card" id="mega-card-academy">
+                        <img src="assets/logo/logo training program.png" alt="AZZUL Certification Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge badge-green" data-i18n="nav_certification">AZZUL Certification</span>
+                        <h4 data-i18n="nav_certification_title">Entrenamiento y Certificación</h4>
+                        <p data-i18n="nav_certification_desc">Única entidad calificada en El Salvador para certificar profesionales del sector en el sistema constructivo moderno.</p>
+                        <a href="sistema.html?tab=training" class="mega-link" data-i18n="nav_certification_link">Ver Certificación &rarr;</a>
+                    </div>
+                    <div class="mega-card" id="mega-card-management">
+                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                        <span class="mega-badge badge-blue" data-i18n="nav_management">AZZUL Management</span>
+                        <h4 data-i18n="nav_management_title">Gestión y Mantenimiento</h4>
+                        <p data-i18n="nav_management_desc">Servicios especializados en el cuidado integral, preservación y mantenimiento de propiedades de alto rendimiento. Diseñado para optimizar la gestión operativa de residencias destinadas al mercado de rentas vacacionales y estancias de corta duración, garantizando un estado impecable sin que tengas que preocuparte por nada.</p>
+                        <a href="contacto.html?interest=management" class="mega-link" data-i18n="nav_management_link">Ver Servicios de Gestión &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-btn">
+            <a href="index.html#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="link-contacto" data-i18n="nav_contact_btn">Contáctanos</a>
+        </div>
+        <div class="lang-selector">
+            <button class="lang-btn active" data-lang="es">ES</button>
+            <span class="lang-divider">/</span>
+            <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </nav>
+
+      <div class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       HERO DE LA PÁGINA DE GALERÍA
+       ========================================== -->
+  <section class="hero-page" id="matriz-hero" style="padding-top: 8rem; padding-bottom: 3rem; background: linear-gradient(180deg, var(--slate-950) 0%, rgba(15, 23, 42, 0.6) 100%);">
+    <div class="container" style="text-align: center;">
+      <span class="badge badge-cyan" data-i18n="matriz_tag">Fotos de Matriz</span>
+      <h1 data-i18n="matriz_title" style="margin-top: 1rem; font-size: 3rem;">Galería de Matriz</h1>
+      <p data-i18n="matriz_subtitle" style="max-width: 800px; margin: 1.5rem auto 0 auto; color: var(--slate-400); font-size: 1.15rem; line-height: 1.8;">Visualice y descargue las imágenes de control de matriz en alta resolución.</p>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       GRID DE FOTOS
+       ========================================== -->
+  <section class="section section-bg-dark" style="padding-top: 2rem; padding-bottom: 6rem;">
+    <div class="container">
+      <div class="photo-grid" id="matriz-grid">
+        <!-- Tarjetas dinámicas -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightbox-close">&times;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" id="lightbox-img">
+      <div class="lightbox-info">
+        <h4 id="lightbox-title"></h4>
+        <a href="" download class="btn btn-primary" id="lightbox-download">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" style="margin-right: 0.5rem;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          <span data-i18n="download_btn">Descargar</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer" id="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand" id="footer-col-brand">
+        <a href="index.html#hero-section" class="logo" style="margin-bottom: 1rem;">
+          <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 40px; width: auto; object-fit: contain;">
+        </a>
+        <p data-i18n="footer_desc">Soluciones habitacionales e industriales basadas en innovación técnica, durabilidad indestructible y eficiencia energética extrema.</p>
+        <div class="social-links">
+          <a href="https://www.facebook.com/people/AZZUL/61574367400517/" class="social-circle" aria-label="Facebook AZZUL" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0 -5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/azzul.sv" class="social-circle" aria-label="Instagram AZZUL" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+        </div>
+      </div>
+
+      <div id="footer-col-nav">
+        <h4 class="footer-title" data-i18n="footer_comp">Empresa</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" id="footer-link-inicio" data-i18n="nav_inicio">Inicio</a></li>
+          <li><a href="index.html#sobre-azzul" id="footer-link-about" data-i18n="nav_nosotros">Nosotros</a></li>
+          <li><a href="index.html#team" id="footer-link-team" data-i18n="nav_equipo">Equipo</a></li>
+          <li><a href="index.html#how-we-work" id="footer-link-how-we-work" data-i18n="nav_como_trabajamos">Cómo Trabajamos</a></li>
+        </ul>
+      </div>
+
+      <div id="footer-col-services">
+        <h4 class="footer-title" data-i18n="footer_serv">Servicios</h4>
+        <ul class="footer-links">
+          <li><a href="sistema.html?tab=products" id="footer-link-products" data-i18n="nav_products">AZZUL Building Products</a></li>
+          <li><a href="proyectos.html" id="footer-link-constructora" data-i18n="nav_construction">AZZUL Construcción</a></li>
+          <li><a href="sistema.html?tab=training" id="footer-link-academy" data-i18n="nav_certification">AZZUL Certification</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="container footer-bottom">
+      <span data-i18n="footer_rights">&copy; 2026 AZZUL. Todos los derechos reservados.</span>
+      <div class="footer-bottom-links">
+        <a href="#" data-i18n="footer_privacy">Política de Privacidad</a>
+        <a href="#" data-i18n="footer_terms">Términos y Condiciones</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Lógica de Interactividad -->
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+  
+  <script>
+    // Matriz de fotos ordenada alfanuméricamente
+    const photos = [
+      { name: '1A', file: '1A.jpg', type: 'image' },
+      { name: '1B', file: '1B.png', type: 'image' },
+      { name: '1C', file: '1C.jpg', type: 'image' },
+      { name: '1D', file: '1D.jpg', type: 'image' },
+      { name: '1E', file: '1E.JPG', type: 'image' },
+      { name: '1F', file: '1F.jpeg', type: 'image' },
+      { name: '1G', file: '1G.jpg', type: 'image' },
+      { name: '1H', file: '1H.png', type: 'image' },
+      { name: '1I', file: '1I.PNG', type: 'image' },
+      { name: '1J', file: '1J.jpg', type: 'image' },
+      { name: '1K', file: '1K.jpg', type: 'image' },
+      { name: '1L', file: '1L.jpg', type: 'image' },
+      { name: '1M', file: '1M.CR2', type: 'raw' }, // Archivo RAW
+      { name: '1N', file: '1N.jpeg', type: 'image' },
+      { name: '1O', file: '1O.jpg', type: 'image' },
+      { name: '1P', file: '1P.jpg', type: 'image' },
+      { name: '1Q', file: '1Q.jpeg', type: 'image' },
+      { name: '1R', file: '1R.PNG', type: 'image' },
+      { name: '1S', file: '1S.jpg', type: 'image' },
+      { name: '1T', file: '1T.PNG', type: 'image' },
+      { name: '1U', file: '1U.jpeg', type: 'image' },
+      { name: '1v', file: '1v.jpeg', type: 'image' },
+      { name: '1W', file: '1W.jpeg', type: 'image' },
+      { name: '1X', file: '1X.jpeg', type: 'image' },
+      { name: '1Y', file: '1Y.jpg', type: 'image' },
+      { name: '1Y2', file: '1Y2.jpg', type: 'image' },
+      { name: '1Z', file: '1Z.PNG', type: 'image' },
+      { name: '2A', file: '2A.jpg', type: 'image' },
+      { name: '2B', file: '2B.jpg', type: 'image' },
+      { name: '2C', file: '2C.jpeg', type: 'image' },
+      { name: '2D', file: '2D.jpg', type: 'image' },
+      { name: '2E', file: '2E.jpeg', type: 'image' }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('matriz-grid');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxTitle = document.getElementById('lightbox-title');
+      const lightboxDownload = document.getElementById('lightbox-download');
+      const lightboxClose = document.getElementById('lightbox-close');
+
+      // Renderizar imágenes
+      photos.forEach(photo => {
+        const card = document.createElement('div');
+        card.className = 'photo-card';
+
+        const thumbWrapper = document.createElement('div');
+        thumbWrapper.className = 'photo-thumb-wrapper';
+
+        if (photo.type === 'raw') {
+          // Vista para archivo RAW (no renderizable por navegador)
+          thumbWrapper.innerHTML = `
+            <div class="raw-placeholder">
+              <svg viewBox="0 0 24 24" class="raw-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="9" y1="15" x2="15" y2="15"></line>
+                <line x1="9" y1="11" x2="15" y2="11"></line>
+              </svg>
+              <span class="raw-text">RAW CR2</span>
+            </div>
+          `;
+          // Al hacer clic en el wrapper de RAW se descarga
+          thumbWrapper.addEventListener('click', () => {
+            const link = document.createElement('a');
+            link.href = `assets/Matriz-photos/${photo.file}`;
+            link.download = photo.file;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+          });
+        } else {
+          // Imagen normal
+          const img = document.createElement('img');
+          img.src = `assets/Matriz-photos/${photo.file}`;
+          img.alt = `Foto ${photo.name}`;
+          img.className = 'photo-thumb';
+          img.loading = 'lazy';
+
+          const overlay = document.createElement('div');
+          overlay.className = 'photo-overlay';
+          overlay.innerHTML = `
+            <div class="zoom-icon">
+              <svg viewBox="0 0 24 24"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
+            </div>
+          `;
+
+          thumbWrapper.appendChild(img);
+          thumbWrapper.appendChild(overlay);
+
+          // Clic para abrir Lightbox
+          thumbWrapper.addEventListener('click', () => {
+            openLightbox(photo);
+          });
+        }
+
+        const info = document.createElement('div');
+        info.className = 'photo-info';
+
+        const nameWrapper = document.createElement('div');
+        nameWrapper.className = 'photo-name-wrapper';
+        
+        const nameEl = document.createElement('span');
+        nameEl.className = 'photo-name';
+        nameEl.textContent = `Foto ${photo.name}`;
+        nameWrapper.appendChild(nameEl);
+
+        if (photo.type === 'raw') {
+          const badge = document.createElement('span');
+          badge.className = 'photo-badge badge-raw';
+          badge.setAttribute('data-i18n', 'raw_badge');
+          badge.textContent = 'Archivo RAW';
+          nameWrapper.appendChild(badge);
+        }
+
+        const downloadBtn = document.createElement('a');
+        downloadBtn.href = `assets/Matriz-photos/${photo.file}`;
+        downloadBtn.download = photo.file;
+        downloadBtn.className = 'photo-download-btn';
+        downloadBtn.setAttribute('title', 'Descargar');
+        downloadBtn.innerHTML = `
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+        `;
+
+        info.appendChild(nameWrapper);
+        info.appendChild(downloadBtn);
+
+        card.appendChild(thumbWrapper);
+        card.appendChild(info);
+        grid.appendChild(card);
+      });
+
+      // Abrir Lightbox
+      function openLightbox(photo) {
+        lightboxImg.src = `assets/Matriz-photos/${photo.file}`;
+        lightboxImg.alt = `Foto ${photo.name}`;
+        lightboxTitle.textContent = `Foto ${photo.name}`;
+        lightboxDownload.href = `assets/Matriz-photos/${photo.file}`;
+        lightboxDownload.download = photo.file;
+        
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      // Cerrar Lightbox
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => {
+          lightboxImg.src = '';
+        }, 300);
+      }
+
+      lightboxClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+          closeLightbox();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
