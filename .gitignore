@@ -4,3 +4,5 @@ node_modules/
 *.log
 
 .vercel
+.env*
+assets/docs/GEOMAT_141-142-24_Lote18y19.pdf
