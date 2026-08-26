@@ -416,7 +416,16 @@ const translations = {
     success_total: "Total Pagado",
     success_btn: "Volver al Catálogo",
     rentals_discount_code: "Código de Descuento",
-    rentals_map_title: "Ubicación de la Propiedad"
+    rentals_map_title: "Ubicación de la Propiedad",
+    rentals_hero_title: "Tu escape de lujo frente al mar",
+    rentals_hero_subtitle: "Descubre una colección exclusiva de propiedades diseñadas para la tranquilidad absoluta y el confort sin concesiones.",
+    search_type_all: "Todas",
+    search_type_level1: "Primer Nivel (Piscina)",
+    search_type_level2: "Segundo Nivel (Terraza)",
+    search_dates_label: "Seleccionar Fechas (Rango)",
+    search_dates_placeholder: "Seleccione fechas...",
+    search_guests_label: "Huéspedes",
+    search_btn: "Buscar"
   },
   en: {
     // Navbar Global
@@ -834,7 +843,16 @@ const translations = {
     success_total: "Total Paid",
     success_btn: "Back to Catalog",
     rentals_discount_code: "Discount Code",
-    rentals_map_title: "Property Location"
+    rentals_map_title: "Property Location",
+    rentals_hero_title: "Your luxury beach escape",
+    rentals_hero_subtitle: "Discover an exclusive collection of properties designed for absolute peace and uncompromising comfort.",
+    search_type_all: "All Properties",
+    search_type_level1: "First Level (Pool)",
+    search_type_level2: "Second Level (Terrace)",
+    search_dates_label: "Select Dates (Range)",
+    search_dates_placeholder: "Select dates...",
+    search_guests_label: "Guests",
+    search_btn: "Search"
   }
 };
 

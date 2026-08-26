@@ -54,29 +54,76 @@ def transferencia_page():
 # RUTAS DE CLIENTE (FRONTEND API)
 # ==========================================
 
-# 1. Obtener todas las propiedades
+# 1. Obtener todas las propiedades (con filtros opcionales de búsqueda)
 @app.route('/api/properties', methods=['GET'])
 def get_properties():
     conn = get_db_connection()
     cursor = conn.cursor()
-    properties = cursor.execute('SELECT * FROM properties').fetchall()
-    conn.close()
+    
+    level_filter = request.args.get('level')
+    guests_filter = request.args.get('guests', type=int)
+    check_in = request.args.get('check_in')
+    check_out = request.args.get('check_out')
+    
+    query = 'SELECT * FROM properties WHERE 1=1'
+    params = []
+    
+    if level_filter and level_filter != 'Todas':
+        if 'Primer Nivel' in level_filter or '1st' in level_filter:
+            query += ' AND (level LIKE ? OR level LIKE ?)'
+            params.extend(['%1st%', '%Basement%'])
+        elif 'Segundo Nivel' in level_filter or '2nd' in level_filter:
+            query += ' AND level LIKE ?'
+            params.append('%2nd%')
+            
+    if guests_filter:
+        query += ' AND capacity >= ?'
+        params.append(guests_filter)
+        
+    properties = cursor.execute(query, params).fetchall()
     
     result = []
     for prop in properties:
-        result.append({
-            'id': prop['id'],
-            'title': prop['title'],
-            'slug': prop['slug'],
-            'description': prop['description'],
-            'capacity': prop['capacity'],
-            'price_per_night': prop['price_per_night'],
-            'level': prop['level'],
-            'amenities': prop['amenities'].split(',') if prop['amenities'] else [],
-            'cover_image': prop['cover_image'],
-            'gallery_images': prop['gallery_images'].split(',') if prop['gallery_images'] else [],
-            'rules': prop['rules'].split('\n') if prop['rules'] else []
-        })
+        prop_id = prop['id']
+        is_available = True
+        
+        if check_in and check_out:
+            # Overlap check on reservations (status != 'Rechazada')
+            overlapping_res = cursor.execute('''
+                SELECT COUNT(*) as count FROM reservations 
+                WHERE property_id = ? AND status != 'Rechazada'
+                AND (check_in < ? AND check_out > ?)
+            ''', (prop_id, check_out, check_in)).fetchone()
+            
+            if overlapping_res['count'] > 0:
+                is_available = False
+                
+            # Overlap check on manual blocked dates
+            if is_available:
+                overlapping_blocks = cursor.execute('''
+                    SELECT COUNT(*) as count FROM blocked_dates
+                    WHERE property_id = ? AND (date >= ? AND date < ?)
+                ''', (prop_id, check_in, check_out)).fetchone()
+                
+                if overlapping_blocks['count'] > 0:
+                    is_available = False
+                    
+        if is_available:
+            result.append({
+                'id': prop['id'],
+                'title': prop['title'],
+                'slug': prop['slug'],
+                'description': prop['description'],
+                'capacity': prop['capacity'],
+                'price_per_night': prop['price_per_night'],
+                'level': prop['level'],
+                'amenities': prop['amenities'].split(',') if prop['amenities'] else [],
+                'cover_image': prop['cover_image'],
+                'gallery_images': prop['gallery_images'].split(',') if prop['gallery_images'] else [],
+                'rules': prop['rules'].split('\n') if prop['rules'] else []
+            })
+            
+    conn.close()
     return jsonify(result)
 
 # 2. Obtener una propiedad específica

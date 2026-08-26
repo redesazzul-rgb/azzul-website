@@ -313,7 +313,14 @@
       border: 1px solid rgba(255, 255, 255, 0.6) !important;
       box-shadow: 0 4px 16px 0 rgba(0, 45, 114, 0.03) !important;
     }
+
+    .hero-gradient {
+      background: linear-gradient(to bottom, rgba(240, 244, 248, 0) 0%, rgba(240, 244, 248, 1) 100%);
+    }
   </style>
+  <!-- Flatpickr CSS (Calendario Interactivo) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
 </head>
 <body>
   <!-- Dynamic Gradient Background -->
@@ -356,14 +363,78 @@
   </header>
 
   <!-- ==========================================
-       HERO DE LA PÁGINA
+       HERO DE LA PÁGINA (Con Buscador Flotante de Stitch)
        ========================================== -->
-  <section class="hero-page" style="background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.95)), url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;">
-    <div class="container">
-      <span class="badge badge-cyan" data-i18n="rentals_tag">Rentas San Blas</span>
-      <h1 data-i18n="rentals_title">Rentas Vacacionales Azzul San Blas</h1>
-      <p data-i18n="rentals_subtitle">Disfrute de una estadía de lujo en el condominio San Blas, construidas con la eficiencia energética y confort absoluto de la tecnología AZZUL ICF.</p>
+  <section class="relative w-full min-h-[80vh] flex items-center justify-center pt-24 pb-32">
+    <div class="absolute inset-0 w-full h-full z-0">
+      <div class="absolute inset-0 bg-black/40 z-10"></div>
+      <img class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0sq6s3uEvgru8svTBa8k6_7aXiTwFbPKms8HNP0HuJ7IswfmcFkCoMb4m-EDYxmnockrBBKDXVQLWOQJVJzTfTyLo_nJaL3URthZjR4ZA2LM9H2kQwIBMiVZ9FU1jKLyCwOzbeO9SeCcb8A1D7u2h0MQISWBb7QyoAJ4TxaWQ2PHJrb6F-7dvKjSiIJrqjizo8g-CQUI9kTugePVCu74IW8u8XmMeNo2ZFlIkDWQOZfWrrBsRqsao" alt="Azzul San Blas Luxury Villa">
     </div>
+    <div class="relative z-20 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center mt-12">
+      <h1 class="font-headline-xl text-headline-xl md:text-[64px] md:leading-[72px] text-white font-bold mb-6 drop-shadow-lg max-w-4xl mx-auto" style="text-shadow: 0 4px 10px rgba(0,0,0,0.5);" data-i18n="rentals_hero_title">
+        Tu escape de lujo frente al mar
+      </h1>
+      <p class="font-body-lg text-body-lg text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md" data-i18n="rentals_hero_subtitle">
+        Descubre una colección exclusiva de propiedades diseñadas para la tranquilidad absoluta y el confort sin concesiones.
+      </p>
+      
+      <!-- Search Widget -->
+      <form id="rental-search-form" class="bg-surface/95 backdrop-blur-xl rounded-xl p-4 md:p-2 shadow-lg max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-4 border border-white/20">
+        <!-- Selector 1 (Tipo de Casa) -->
+        <div class="flex-1 w-full md:w-auto relative group">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+            <span class="material-symbols-outlined">home</span>
+          </div>
+          <select id="search-type" class="w-full pl-12 pr-8 py-3 bg-transparent border-0 text-on-surface focus:ring-0 font-body-md text-body-md appearance-none outline-none cursor-pointer">
+            <option value="Todas" data-i18n="search_type_all">Todas</option>
+            <option value="Primer Nivel (Piscina)" data-i18n="search_type_level1">Primer Nivel (Piscina)</option>
+            <option value="Segundo Nivel (Terraza)" data-i18n="search_type_level2">Segundo Nivel (Terraza)</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-on-surface-variant/70">
+            <span class="material-symbols-outlined text-sm">expand_more</span>
+          </div>
+        </div>
+        
+        <div class="w-full md:w-[1px] h-[1px] md:h-10 bg-outline-variant/30"></div>
+        
+        <!-- Selector 2 (Fechas) -->
+        <div class="flex-1 w-full md:w-auto relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+            <span class="material-symbols-outlined">calendar_month</span>
+          </div>
+          <input id="search-dates" class="w-full pl-12 pr-4 py-3 bg-transparent border-0 text-on-surface focus:ring-0 font-body-md text-body-md placeholder-outline cursor-pointer" placeholder="Seleccione fechas..." data-i18n="search_dates_placeholder" type="text" readonly/>
+        </div>
+        
+        <div class="w-full md:w-[1px] h-[1px] md:h-10 bg-outline-variant/30"></div>
+        
+        <!-- Selector 3 (Huéspedes) -->
+        <div class="flex-1 w-full md:w-auto relative">
+          <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+            <span class="material-symbols-outlined">group</span>
+          </div>
+          <select id="search-guests" class="w-full pl-12 pr-8 py-3 bg-transparent border-0 text-on-surface focus:ring-0 font-body-md text-body-md appearance-none outline-none cursor-pointer">
+            <option value="1">1 Huésped</option>
+            <option value="2">2 Huéspedes</option>
+            <option value="3">3 Huéspedes</option>
+            <option value="4" selected>4 Huéspedes</option>
+            <option value="5">5 Huéspedes</option>
+            <option value="6">6 Huéspedes</option>
+            <option value="7">7 Huéspedes</option>
+            <option value="8">8 Huéspedes</option>
+          </select>
+          <div class="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none text-on-surface-variant/70">
+            <span class="material-symbols-outlined text-sm">expand_more</span>
+          </div>
+        </div>
+        
+        <!-- Botón de Búsqueda -->
+        <button type="submit" id="search-submit-btn" class="w-full md:w-auto bg-primary text-on-primary font-label-md text-label-md px-8 py-3.5 rounded-lg hover:bg-primary-container transition-colors shadow-md flex items-center justify-center gap-2">
+          <span class="material-symbols-outlined text-lg">search</span>
+          <span data-i18n="search_btn">Buscar</span>
+        </button>
+      </form>
+    </div>
+    <div class="absolute bottom-0 left-0 w-full h-32 hero-gradient z-10"></div>
   </section>
 
   <!-- ==========================================
@@ -427,6 +498,10 @@
     </div>
   </footer>
 
+  <!-- Flatpickr JS (Calendario) -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
   <!-- Lógica de Interactividad y API -->
   <script src="translations.js"></script>
   <script src="script.js"></script>
@@ -471,24 +546,95 @@
       }
     ];
 
+    let searchFlatpickrInstance = null;
+
     document.addEventListener('DOMContentLoaded', () => {
+      // Inicializar Flatpickr en español para el buscador de fechas (rango)
+      searchFlatpickrInstance = flatpickr("#search-dates", {
+        mode: "range",
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        locale: "es"
+      });
+
       loadProperties();
+
+      const searchForm = document.getElementById('rental-search-form');
+      if (searchForm) {
+        searchForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          performSearch();
+        });
+      }
     });
 
-    async function loadProperties() {
+    async function loadProperties(queryParams = '') {
       const container = document.getElementById('properties-container');
       const offlineAlert = document.getElementById('offline-alert');
       
       try {
-        const response = await fetch('http://localhost:3000/api/properties');
+        const response = await fetch(`http://localhost:3000/api/properties${queryParams}`);
         if (!response.ok) throw new Error('API Response Error');
         const data = await response.json();
+        offlineAlert.style.display = 'none';
         renderProperties(data);
       } catch (error) {
         console.warn("Flask API offline. Usando datos de respaldo locales.", error);
         offlineAlert.style.display = 'flex';
-        renderProperties(MOCK_PROPERTIES);
+        filterMockProperties();
       }
+    }
+
+    function performSearch() {
+      const level = document.getElementById('search-type').value;
+      const guests = document.getElementById('search-guests').value;
+      
+      let checkIn = '';
+      let checkOut = '';
+      
+      if (searchFlatpickrInstance && searchFlatpickrInstance.selectedDates.length === 2) {
+        const formatDate = (d) => {
+          const year = d.getFullYear();
+          const month = String(d.getMonth() + 1).padStart(2, '0');
+          const day = String(d.getDate()).padStart(2, '0');
+          return `${year}-${month}-${day}`;
+        };
+        checkIn = formatDate(searchFlatpickrInstance.selectedDates[0]);
+        checkOut = formatDate(searchFlatpickrInstance.selectedDates[1]);
+      }
+      
+      const params = new URLSearchParams();
+      if (level && level !== 'Todas') params.append('level', level);
+      if (guests) params.append('guests', guests);
+      if (checkIn) params.append('check_in', checkIn);
+      if (checkOut) params.append('check_out', checkOut);
+      
+      const queryStr = params.toString() ? `?${params.toString()}` : '';
+      loadProperties(queryStr);
+    }
+
+    function filterMockProperties() {
+      const level = document.getElementById('search-type').value;
+      const guests = parseInt(document.getElementById('search-guests').value) || 1;
+      
+      let filtered = MOCK_PROPERTIES.filter(prop => {
+        // Filtrar nivel
+        if (level !== 'Todas') {
+          if (level.includes('Primer Nivel') && !prop.level.includes('Basement') && !prop.level.includes('1st')) {
+            return false;
+          }
+          if (level.includes('Segundo Nivel') && !prop.level.includes('2nd')) {
+            return false;
+          }
+        }
+        // Filtrar capacidad
+        if (prop.capacity < guests) {
+          return false;
+        }
+        return true;
+      });
+      
+      renderProperties(filtered);
     }
 
     function renderProperties(properties) {
