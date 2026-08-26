@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración | Rentas AZZUL</title>
+  
+  <!-- Tailwind CSS CDN para una UI administrativa moderna, limpia y rápida -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Flatpickr CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  
+  <style>
+    body {
+      background-color: #f3f4f6; /* Gray 100 */
+      color: #1f2937; /* Gray 800 */
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       PANTALLA DE LOGIN (ADMIN)
+       ========================================== -->
+  <div id="login-screen" class="min-h-screen flex items-center justify-center bg-gray-100 px-4">
+    <div class="max-w-md w-full bg-white rounded-xl shadow-md border border-gray-200 p-8">
+      <div class="text-center mb-6">
+        <img src="assets/logo/logo.png" alt="AZZUL Logo" class="h-10 mx-auto mb-2 object-contain bg-slate-900 p-2 rounded">
+        <h2 class="text-2xl font-bold text-gray-900">Panel de Administración</h2>
+        <p class="text-sm text-gray-500 mt-1">Módulo de Rentas Vacacionales San Blas</p>
+      </div>
+      
+      <form id="login-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase text-gray-600 mb-1">Contraseña Administrador</label>
+          <input type="password" id="admin-password" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-3 outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600" placeholder="Ingrese contraseña..." required>
+          <p class="text-xs text-gray-400 mt-1">Sugerencia para desarrollo: <code class="font-bold">admin123</code></p>
+        </div>
+        <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-3 rounded-lg transition-colors">Iniciar Sesión</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       DASHBOARD PRINCIPAL (PROTEGIDO)
+       ========================================== -->
+  <div id="admin-dashboard" class="hidden min-h-screen flex flex-col">
+    
+    <!-- Navbar Admin -->
+    <header class="bg-slate-900 text-white shadow-md">
+      <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+          <img src="assets/logo/logo.png" alt="AZZUL Logo" class="h-8 object-contain">
+          <span class="text-xs font-semibold bg-blue-600 px-2 py-1 rounded text-white uppercase tracking-wider">ADMIN PANEL</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <span id="server-status-badge" class="text-xs px-2.5 py-1 rounded-full font-bold bg-green-500/10 text-green-500 border border-green-500/20">Flask Online</span>
+          <button id="logout-btn" class="text-sm bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold px-4 py-2 rounded-lg transition-colors">Cerrar Sesión</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+      
+      <!-- Grid de Configuración General -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        
+        <!-- COLUMNA IZQUIERDA: GESTIÓN DE PROPIEDADES (CRUD) -->
+        <section class="lg:col-span-2 bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
+          <div class="flex justify-between items-center border-b border-gray-100 pb-4">
+            <h2 class="text-xl font-bold text-gray-900">Editar Propiedades (CRUD)</h2>
+            <select id="property-selector" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg p-2.5 focus:border-blue-500 focus:ring-blue-500">
+              <option value="1">Villa Aqua (1er Nivel)</option>
+              <option value="2">Villa Coral (1er Nivel)</option>
+              <option value="3">Terraza Brisa (2do Nivel)</option>
+              <option value="4">Terraza Cielo (2do Nivel)</option>
+            </select>
+          </div>
+
+          <form id="property-edit-form" class="space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Nombre de la Propiedad</label>
+                <input type="text" id="prop-edit-title" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Precio por Noche ($)</label>
+                <input type="number" step="0.01" id="prop-edit-price" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" required>
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Descripción Detallada</label>
+              <textarea id="prop-edit-desc" rows="4" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" required></textarea>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Capacidad Máxima (Personas)</label>
+                <input type="number" id="prop-edit-capacity" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Nivel / Tipo</label>
+                <input type="text" id="prop-edit-level" class="w-full bg-gray-100 border border-gray-300 text-gray-500 rounded-lg p-2.5 cursor-not-allowed" readonly>
+              </div>
+            </div>
+
+            <!-- Amenidades -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">Amenidades</label>
+              <div id="amenities-checkboxes-container" class="grid grid-cols-2 md:grid-cols-3 gap-2 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <!-- Generados por script -->
+              </div>
+            </div>
+
+            <!-- Imágenes -->
+            <div class="space-y-3">
+              <h3 class="text-sm font-medium text-gray-700 border-b pb-1">Gestión de Imágenes (URLs de Stock)</h3>
+              <div>
+                <label class="block text-xs font-semibold text-gray-500 mb-1">Imagen de Portada (Principal)</label>
+                <input type="text" id="prop-edit-cover" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-500 mb-1">Galería de Imágenes (Separadas por coma)</label>
+                <textarea id="prop-edit-gallery" rows="2" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5"></textarea>
+              </div>
+            </div>
+
+            <!-- Reglas de la casa -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Reglas de la Casa (Una regla por línea)</label>
+              <textarea id="prop-edit-rules" rows="3" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold p-3 rounded-lg transition-colors">Guardar Cambios</button>
+          </form>
+        </section>
+
+        <!-- COLUMNA DERECHA: GESTIÓN DE CALENDARIO Y BLOQUEOS -->
+        <section class="bg-white rounded-xl shadow-sm border border-gray-200 p-6 space-y-6">
+          <div>
+            <h2 class="text-xl font-bold text-gray-900 border-b border-gray-100 pb-4">Calendario Maestro</h2>
+            <p class="text-xs text-gray-500 mt-1">Bloqueo manual de fechas por mantenimiento, uso familiar o remodelación.</p>
+          </div>
+
+          <!-- Bloquear Fechas -->
+          <div class="space-y-4">
+            <h3 class="text-sm font-semibold text-gray-700">Bloquear Fechas (Múltiple Selección)</h3>
+            <input type="text" id="admin-calendar-picker" class="w-full bg-gray-50 border border-gray-300 text-gray-900 rounded-lg p-2.5 outline-none cursor-pointer" placeholder="Seleccione fechas..." readonly>
+            <button id="block-dates-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold p-2.5 rounded-lg transition-colors">Bloquear Fechas</button>
+          </div>
+
+          <!-- Fechas actualmente bloqueadas -->
+          <div class="space-y-3 pt-4 border-t border-gray-100">
+            <h3 class="text-sm font-semibold text-gray-700">Ver y Desbloquear Fechas</h3>
+            <div id="blocked-dates-list" class="max-h-40 overflow-y-auto space-y-1 bg-gray-50 p-3 rounded-lg border border-gray-200">
+              <!-- Cargado dinámicamente -->
+              <p class="text-xs text-gray-500 text-center">No hay fechas bloqueadas actualmente.</p>
+            </div>
+            <button id="unblock-dates-btn" class="w-full bg-red-600 hover:bg-red-700 text-white font-semibold p-2.5 rounded-lg transition-colors" disabled>Desbloquear Fechas Seleccionadas</button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- TABLA DE RESERVACIONES ENTRANTES -->
+      <section class="mt-8 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <h2 class="text-xl font-bold text-gray-900 border-b border-gray-100 pb-4 mb-6">Lista de Solicitudes de Reservación</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Cliente</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Propiedad</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Check-in / Check-out</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Total</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Método de Pago</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Estado Reserva</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Estado Pago</th>
+                <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="reservations-table-body" class="bg-white divide-y divide-gray-200">
+              <!-- Renderizado dinámico -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TABLA DE OPERACIONES DE LIMPIEZA DEL DÍA -->
+      <section class="mt-8 bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+        <div class="flex items-center justify-between border-b border-gray-100 pb-4 mb-6">
+          <h2 class="text-xl font-bold text-gray-900">Operaciones de Limpieza del Día (Check-outs)</h2>
+          <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded-full" id="cleaning-date-badge">Hoy</span>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">ID Reserva</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Propiedad</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Salida de Cliente (Check-out)</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Cliente Anterior</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Estado de Limpieza</th>
+                <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="cleaning-table-body" class="bg-white divide-y divide-gray-200">
+              <!-- Renderizado dinámico -->
+              <tr>
+                <td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Cargando operaciones de limpieza...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Flatpickr JS -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  
+  <script>
+    // Configuración de Local Storage Fallback en caso de que Flask esté offline
+    const MOCK_PROPERTIES_DB = {
+      1: {
+        id: 1,
+        title: "Villa Aqua",
+        description: "Exclusiva casa de primer nivel (Basement) que redefine el confort. Cuenta con acceso directo a una piscina privada rodeada de un jardín tropical, amplios espacios de descanso y un diseño termoacústico avanzado que garantiza frescura y tranquilidad absoluta.",
+        capacity: 6,
+        price_per_night: 200.0,
+        level: "1st Level (Basement)",
+        amenities: ["Piscina Privada", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Equipada", "Barbacoa", "TV por Cable", "Seguridad 24/7"],
+        cover_image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la villa",
+          "No se permiten fiestas o eventos ruidosos después de las 10:00 PM",
+          "Capacidad máxima de 6 huéspedes"
+        ]
+      },
+      2: {
+        id: 2,
+        title: "Villa Coral",
+        description: "Disfruta del lujo moderno en nuestra Villa Coral de primer nivel. Perfecta para familias o grupos que buscan relajación con piscina privada, acabados de alta gama y la tecnología constructiva AZZUL ICF que mantiene una climatización interior ideal.",
+        capacity: 6,
+        price_per_night: 200.0,
+        level: "1st Level (Basement)",
+        amenities: ["Piscina Privada", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Equipada", "Comedor Exterior", "Barbacoa", "TV Smart"],
+        cover_image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la villa",
+          "Se permiten mascotas pequeñas bajo aviso previo",
+          "Capacidad máxima de 6 huéspedes"
+        ]
+      },
+      3: {
+        id: 3,
+        title: "Terraza Brisa",
+        description: "Elegante residencia de segundo nivel que destaca por su espectacular terraza privada. Perfecta para contemplar el atardecer, disfrutar de la brisa marina y relajarse en un ambiente amplio y con total privacidad.",
+        capacity: 4,
+        price_per_night: 150.0,
+        level: "2nd Level",
+        amenities: ["Terraza Panorámica", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Equipada", "Hamaca", "Smart TV"],
+        cover_image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la casa",
+          "No se permiten mascotas",
+          "Capacidad máxima de 4 huéspedes"
+        ]
+      },
+      4: {
+        id: 4,
+        title: "Terraza Cielo",
+        description: "Villa de segundo nivel con una gran terraza abierta al cielo de San Blas. Combina interiores modernos con techos altos y aislamiento térmico acústico avanzado de AZZUL para asegurar un descanso ininterrumpido y fresco.",
+        capacity: 4,
+        price_per_night: 150.0,
+        level: "2nd Level",
+        amenities: ["Terraza de Lujo", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Completa", "Área de Estar Exterior", "Smart TV"],
+        cover_image: "https://images.unsplash.com/photo-1502672011247-a6fd0f6e5a7a?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1502672011247-a6fd0f6e5a7a?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la casa",
+          "No se permiten fiestas o eventos",
+          "Capacidad máxima de 4 huéspedes"
+        ]
+      }
+    };
+
+    const ALL_AMENITIES = [
+      "Piscina Privada",
+      "Wi-Fi de Alta Velocidad",
+      "Aire Acondicionado",
+      "Parqueo Privado",
+      "Cocina Equipada",
+      "Cocina Completa",
+      "Barbacoa",
+      "TV por Cable",
+      "TV Smart",
+      "Smart TV",
+      "Seguridad 24/7",
+      "Comedor Exterior",
+      "Terraza Panorámica",
+      "Terraza de Lujo",
+      "Hamaca",
+      "Área de Estar Exterior"
+    ];
+
+    let isServerOffline = false;
+    let currentPropId = 1;
+    let loadedPropertyData = null;
+    let calendarInstance = null;
+    let selectedBlockedDates = [];
+
+    // Cargar inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+      // Verificar estado de sesión guardado
+      if (localStorage.getItem('adminToken') === 'secure-admin-token-azzul-2026') {
+        showDashboard();
+      }
+      
+      setupLogin();
+      setupLogout();
+      setupPropertySelector();
+      setupPropertyEditForm();
+      setupCalendarBlocking();
+    });
+
+    // 1. Manejo de Inicio de Sesión
+    function setupLogin() {
+      document.getElementById('login-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const pwd = document.getElementById('admin-password').value;
+        
+        try {
+          const response = await fetch('http://localhost:3000/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ password: pwd })
+          });
+          const result = await response.json();
+          
+          if (response.ok) {
+            localStorage.setItem('adminToken', result.token);
+            showDashboard();
+          } else {
+            alert(`Error: ${result.error}`);
+          }
+        } catch (err) {
+          console.warn("Flask API offline. Usando login de simulación local.");
+          if (pwd === 'admin123') {
+            localStorage.setItem('adminToken', 'secure-admin-token-azzul-2026');
+            showDashboard();
+          } else {
+            alert('Contraseña incorrecta.');
+          }
+        }
+      });
+    }
+
+    function setupLogout() {
+      document.getElementById('logout-btn').addEventListener('click', () => {
+        localStorage.removeItem('adminToken');
+        document.getElementById('admin-dashboard').classList.add('hidden');
+        document.getElementById('login-screen').classList.remove('hidden');
+      });
+    }
+
+    function showDashboard() {
+      document.getElementById('login-screen').classList.add('hidden');
+      document.getElementById('admin-dashboard').classList.remove('hidden');
+      checkServerStatus();
+    }
+
+    async function checkServerStatus() {
+      const badge = document.getElementById('server-status-badge');
+      try {
+        const response = await fetch('http://localhost:3000/api/properties');
+        if (response.ok) {
+          isServerOffline = false;
+          badge.innerText = 'Flask Online';
+          badge.className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-green-100 text-green-700 border border-green-300';
+        } else {
+          throw new Error();
+        }
+      } catch (err) {
+        isServerOffline = true;
+        badge.innerText = 'Modo Local (Offline)';
+        badge.className = 'text-xs px-2.5 py-1 rounded-full font-bold bg-amber-100 text-amber-700 border border-amber-300';
+        initializeMockStorage();
+      }
+      
+      loadPropertyToForm(currentPropId);
+      loadReservations();
+      loadCleaningOperations();
+    }
+
+    function initializeMockStorage() {
+      if (!localStorage.getItem('mock_properties')) {
+        localStorage.setItem('mock_properties', JSON.stringify(MOCK_PROPERTIES_DB));
+      }
+      if (!localStorage.getItem('mock_blocked_dates')) {
+        localStorage.setItem('mock_blocked_dates', JSON.stringify({}));
+      }
+      if (!localStorage.getItem('mock_reservations')) {
+        localStorage.setItem('mock_reservations', JSON.stringify([]));
+      }
+    }
+
+    // 2. Cargar Propiedad Seleccionada en Formulario CRUD
+    function setupPropertySelector() {
+      const select = document.getElementById('property-selector');
+      select.addEventListener('change', (e) => {
+        currentPropId = parseInt(e.target.value);
+        loadPropertyToForm(currentPropId);
+      });
+    }
+
+    async function loadPropertyToForm(id) {
+      if (isServerOffline) {
+        const db = JSON.parse(localStorage.getItem('mock_properties'));
+        loadedPropertyData = db[id];
+        fillForm(loadedPropertyData);
+        loadBlockedDatesUI(id);
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3000/api/properties/${id}`);
+        if (response.ok) {
+          loadedPropertyData = await response.json();
+          fillForm(loadedPropertyData);
+          loadBlockedDatesUI(id);
+        }
+      } catch (err) {
+        alert('Error al conectar con la base de datos Flask.');
+      }
+    }
+
+    function fillForm(prop) {
+      document.getElementById('prop-edit-title').value = prop.title;
+      document.getElementById('prop-edit-price').value = prop.price_per_night;
+      document.getElementById('prop-edit-desc').value = prop.description;
+      document.getElementById('prop-edit-capacity').value = prop.capacity;
+      document.getElementById('prop-edit-level').value = prop.level;
+      document.getElementById('prop-edit-cover').value = prop.cover_image;
+      document.getElementById('prop-edit-gallery').value = prop.gallery_images.join(',');
+      document.getElementById('prop-edit-rules').value = prop.rules.join('\n');
+
+      // Generar Checkboxes de Amenidades
+      const amContainer = document.getElementById('amenities-checkboxes-container');
+      amContainer.innerHTML = '';
+      
+      ALL_AMENITIES.forEach(am => {
+        const label = document.createElement('label');
+        label.className = 'flex items-center gap-2 text-xs font-semibold text-gray-700 cursor-pointer';
+        
+        const isChecked = prop.amenities.includes(am) ? 'checked' : '';
+        label.innerHTML = `
+          <input type="checkbox" name="amenities" value="${am}" ${isChecked} class="rounded text-blue-600 focus:ring-blue-500 h-4 w-4">
+          <span>${am}</span>
+        `;
+        amContainer.appendChild(label);
+      });
+    }
+
+    // 3. Modificar Propiedad (CRUD Submit)
+    function setupPropertyEditForm() {
+      document.getElementById('property-edit-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        // Obtener amenidades seleccionadas
+        const selectedAmenities = [];
+        document.querySelectorAll('input[name="amenities"]:checked').forEach(cb => {
+          selectedAmenities.push(cb.value);
+        });
+
+        const payload = {
+          title: document.getElementById('prop-edit-title').value,
+          price_per_night: parseFloat(document.getElementById('prop-edit-price').value),
+          description: document.getElementById('prop-edit-desc').value,
+          capacity: parseInt(document.getElementById('prop-edit-capacity').value),
+          amenities: selectedAmenities,
+          cover_image: document.getElementById('prop-edit-cover').value,
+          gallery_images: document.getElementById('prop-edit-gallery').value.split(',').map(s => s.trim()).filter(Boolean),
+          rules: document.getElementById('prop-edit-rules').value.split('\n').map(s => s.trim()).filter(Boolean)
+        };
+
+        if (isServerOffline) {
+          const db = JSON.parse(localStorage.getItem('mock_properties'));
+          // Mantener level intacto
+          db[currentPropId] = { ...db[currentPropId], ...payload };
+          localStorage.setItem('mock_properties', JSON.stringify(db));
+          alert('¡Propiedad guardada con éxito en almacenamiento local!');
+          loadPropertyToForm(currentPropId);
+          return;
+        }
+
+        try {
+          const response = await fetch(`http://localhost:3000/api/properties/${currentPropId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          if (response.ok) {
+            alert('¡Propiedad actualizada con éxito en la base de datos Flask!');
+            loadPropertyToForm(currentPropId);
+          } else {
+            const err = await response.json();
+            alert(`Error: ${err.error}`);
+          }
+        } catch (err) {
+          alert('Error de conexión con el servidor Flask.');
+        }
+      });
+    }
+
+    // 4. Gestión de Fechas Bloqueadas (Calendario Maestro)
+    function setupCalendarBlocking() {
+      calendarInstance = flatpickr("#admin-calendar-picker", {
+        mode: "multiple",
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        onChange: function(selectedDates, dateStr, instance) {
+          selectedBlockedDates = selectedDates.map(d => d.toISOString().split('T')[0]);
+        }
+      });
+
+      // Botón Bloquear
+      document.getElementById('block-dates-btn').addEventListener('click', async () => {
+        if (selectedBlockedDates.length === 0) {
+          alert('Seleccione al menos una fecha.');
+          return;
+        }
+
+        if (isServerOffline) {
+          const db = JSON.parse(localStorage.getItem('mock_blocked_dates'));
+          if (!db[currentPropId]) db[currentPropId] = [];
+          
+          selectedBlockedDates.forEach(d => {
+            if (!db[currentPropId].includes(d)) db[currentPropId].push(d);
+          });
+          
+          localStorage.setItem('mock_blocked_dates', JSON.stringify(db));
+          alert('Fechas bloqueadas en local.');
+          calendarInstance.clear();
+          loadBlockedDatesUI(currentPropId);
+          return;
+        }
+
+        try {
+          const response = await fetch(`http://localhost:3000/api/admin/properties/${currentPropId}/block-dates`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ dates: selectedBlockedDates, reason: 'Mantenimiento' })
+          });
+          
+          if (response.ok) {
+            alert('Fechas bloqueadas en Flask.');
+            calendarInstance.clear();
+            loadBlockedDatesUI(currentPropId);
+          }
+        } catch (e) {
+          alert('Error de conexión.');
+        }
+      });
+
+      // Botón Desbloquear
+      document.getElementById('unblock-dates-btn').addEventListener('click', async () => {
+        const checkedBoxes = document.querySelectorAll('input[name="blocked-dates-chk"]:checked');
+        if (checkedBoxes.length === 0) return;
+        
+        const datesToUnblock = Array.from(checkedBoxes).map(cb => cb.value);
+
+        if (isServerOffline) {
+          const db = JSON.parse(localStorage.getItem('mock_blocked_dates'));
+          if (db[currentPropId]) {
+            db[currentPropId] = db[currentPropId].filter(d => !datesToUnblock.includes(d));
+            localStorage.setItem('mock_blocked_dates', JSON.stringify(db));
+          }
+          alert('Fechas desbloqueadas en local.');
+          loadBlockedDatesUI(currentPropId);
+          return;
+        }
+
+        try {
+          const response = await fetch(`http://localhost:3000/api/admin/properties/${currentPropId}/unblock-dates`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ dates: datesToUnblock })
+          });
+          if (response.ok) {
+            alert('Fechas desbloqueadas en Flask.');
+            loadBlockedDatesUI(currentPropId);
+          }
+        } catch (e) {
+          alert('Error de conexión.');
+        }
+      });
+    }
+
+    async function loadBlockedDatesUI(propId) {
+      const container = document.getElementById('blocked-dates-list');
+      const unblockBtn = document.getElementById('unblock-dates-btn');
+      
+      let blockedDates = [];
+
+      if (isServerOffline) {
+        const db = JSON.parse(localStorage.getItem('mock_blocked_dates'));
+        blockedDates = db[propId] || [];
+      } else {
+        try {
+          // Obtener fechas deshabilitadas (las bloqueadas)
+          const response = await fetch(`http://localhost:3000/api/properties/${propId}/disabled-dates`);
+          if (response.ok) {
+            blockedDates = await response.json();
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      if (blockedDates.length === 0) {
+        container.innerHTML = `<p class="text-xs text-gray-500 text-center py-2">No hay fechas bloqueadas actualmente.</p>`;
+        unblockBtn.disabled = true;
+        return;
+      }
+
+      container.innerHTML = '';
+      blockedDates.sort().forEach(date => {
+        const div = document.createElement('label');
+        div.className = 'flex items-center gap-2 text-xs text-gray-700 bg-white p-2 rounded border border-gray-200 cursor-pointer hover:bg-gray-50';
+        div.innerHTML = `
+          <input type="checkbox" name="blocked-dates-chk" value="${date}" class="rounded text-red-600 focus:ring-red-500 h-4 w-4">
+          <span class="font-mono">${date}</span>
+          <span class="text-gray-400 text-[10px] ml-auto">Bloqueado</span>
+        `;
+        div.querySelector('input').addEventListener('change', () => {
+          const anyChecked = document.querySelectorAll('input[name="blocked-dates-chk"]:checked').length > 0;
+          unblockBtn.disabled = !anyChecked;
+        });
+        container.appendChild(div);
+      });
+      unblockBtn.disabled = true;
+    }
+
+    // 5. Cargar y Confirmar Reservaciones
+    async function loadReservations() {
+      const tbody = document.getElementById('reservations-table-body');
+      tbody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Cargando reservaciones...</td></tr>`;
+
+      let reservations = [];
+
+      if (isServerOffline) {
+        reservations = JSON.parse(localStorage.getItem('mock_reservations')) || [];
+      } else {
+        try {
+          const response = await fetch('http://localhost:3000/api/admin/reservations');
+          if (response.ok) {
+            reservations = await response.json();
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      if (reservations.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="8" class="px-6 py-4 text-center text-sm text-gray-500">No hay solicitudes de reservación registradas.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = '';
+      reservations.forEach(res => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-50 transition-colors';
+        
+        let statusBadge = '';
+        if (res.status === 'Pendiente') {
+          statusBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800">Pendiente</span>`;
+        } else if (res.status === 'Confirmada') {
+          statusBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Confirmada</span>`;
+        } else {
+          statusBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">Rechazada</span>`;
+        }
+
+        let paymentBadge = '';
+        const estadoPago = res.estado_pago || 'Pendiente';
+        if (estadoPago === 'Pagado') {
+          paymentBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">✓ Pagado</span>`;
+        } else if (estadoPago === 'Verificando') {
+          paymentBadge = `
+            <div class="flex flex-col gap-1 items-start">
+              <span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800 animate-pulse">⌛ Verificando</span>
+              <button onclick="updatePaymentStatus(${res.id}, 'Pagado')" class="text-[10px] bg-blue-600 hover:bg-blue-700 text-white font-bold px-1.5 py-0.5 rounded transition-colors mt-1">
+                Confirmar Pago
+              </button>
+            </div>
+          `;
+        } else {
+          paymentBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-gray-100 text-gray-800">Pendiente</span>`;
+        }
+
+        const actionsHtml = res.status === 'Pendiente' ? `
+          <button onclick="updateStatus(${res.id}, 'Confirmada')" class="text-xs bg-green-600 hover:bg-green-700 text-white font-semibold px-2 py-1 rounded transition-colors mr-1">Confirmar</button>
+          <button onclick="updateStatus(${res.id}, 'Rechazada')" class="text-xs bg-red-600 hover:bg-red-700 text-white font-semibold px-2 py-1 rounded transition-colors">Rechazar</button>
+        ` : `<span class="text-xs text-gray-400 font-medium">Procesada</span>`;
+
+        tr.innerHTML = `
+          <td class="px-6 py-4 whitespace-nowrap text-sm">
+            <div class="font-bold text-gray-900">${res.client_name}</div>
+            <div class="text-gray-500 text-xs">${res.client_email} | ${res.client_phone}</div>
+          </td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">${res.property_title || ('Propiedad #' + res.property_id)}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-600">${res.check_in} al ${res.check_out}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-900">$${res.total_price.toFixed(2)}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-600 font-semibold">${res.metodo_pago || 'Tarjeta'}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm">${statusBadge}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm">${paymentBadge}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">${actionsHtml}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function updatePaymentStatus(resId, newPaymentStatus) {
+      if (isServerOffline) {
+        const reservations = JSON.parse(localStorage.getItem('mock_reservations')) || [];
+        const index = reservations.findIndex(r => r.id === resId);
+        if (index !== -1) {
+          reservations[index].estado_pago = newPaymentStatus;
+          localStorage.setItem('mock_reservations', JSON.stringify(reservations));
+          alert(`Estado de pago de reservación #${resId} actualizado a ${newPaymentStatus} en almacenamiento local.`);
+          loadReservations();
+        }
+        return;
+      }
+      
+      try {
+        const response = await fetch(`http://localhost:3000/api/admin/reservations/${resId}/status`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ estado_pago: newPaymentStatus })
+        });
+        
+        if (response.ok) {
+          alert('Estado de pago actualizado con éxito.');
+          loadReservations();
+        }
+      } catch (e) {
+        alert('Error al conectar con el servidor.');
+      }
+    }
+
+    async function updateStatus(resId, newStatus) {
+      if (isServerOffline) {
+        const reservations = JSON.parse(localStorage.getItem('mock_reservations'));
+        const index = reservations.findIndex(r => r.id === resId);
+        if (index !== -1) {
+          reservations[index].status = newStatus;
+          localStorage.setItem('mock_reservations', JSON.stringify(reservations));
+          
+          // Si se confirma, bloquear estas fechas automáticamente en mock
+          if (newStatus === 'Confirmada') {
+            const res = reservations[index];
+            const blocked = JSON.parse(localStorage.getItem('mock_blocked_dates')) || {};
+            if (!blocked[res.property_id]) blocked[res.property_id] = [];
+            
+            // Generar rango de fechas
+            const start = new Date(res.check_in);
+            const end = new Date(res.check_out);
+            let current = new Date(start);
+            while (current < end) {
+              const dStr = current.toISOString().split('T')[0];
+              if (!blocked[res.property_id].includes(dStr)) {
+                blocked[res.property_id].push(dStr);
+              }
+              current.setDate(current.getDate() + 1);
+            }
+            localStorage.setItem('mock_blocked_dates', JSON.stringify(blocked));
+          }
+          
+          alert(`Reservación #${resId} actualizada a ${newStatus} en almacenamiento local.`);
+          loadReservations();
+          loadBlockedDatesUI(currentPropId);
+          loadCleaningOperations();
+        }
+        return;
+      }
+
+      try {
+        const response = await fetch(`http://localhost:3000/api/admin/reservations/${resId}/status`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus })
+        });
+        
+        if (response.ok) {
+          alert(`Reservación actualizada a ${newStatus}.`);
+          loadReservations();
+          loadBlockedDatesUI(currentPropId);
+          loadCleaningOperations();
+        }
+      } catch (e) {
+        alert('Error al conectar con la base de datos Flask.');
+      }
+    }
+
+    // 6. Operaciones de Limpieza del Día (Check-outs)
+    async function loadCleaningOperations() {
+      const tbody = document.getElementById('cleaning-table-body');
+      tbody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">Cargando operaciones de limpieza...</td></tr>`;
+
+      let cleanings = [];
+      
+      if (isServerOffline) {
+        // En local offline, filtramos reservas confirmadas para simular check-outs
+        const reservations = JSON.parse(localStorage.getItem('mock_reservations')) || [];
+        const confirmed = reservations.filter(r => r.status === 'Confirmada');
+        
+        const storedCleaningStates = JSON.parse(localStorage.getItem('mock_cleaning_states')) || {};
+        
+        cleanings = confirmed.map(r => {
+          const status = storedCleaningStates[r.id] || 'Pendiente de Limpieza';
+          return {
+            id: r.id,
+            property_title: MOCK_PROPERTIES_DB[r.property_id] ? MOCK_PROPERTIES_DB[r.property_id].title : ('Propiedad #' + r.property_id),
+            client_name: r.client_name,
+            check_out: r.check_out,
+            status: status
+          };
+        });
+      } else {
+        try {
+          const response = await fetch('http://localhost:3000/api/admin/cleaning-operations');
+          if (response.ok) {
+            cleanings = await response.json();
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      }
+
+      if (cleanings.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="6" class="px-6 py-4 text-center text-sm text-gray-500">No hay salidas programadas para el día de hoy.</td></tr>`;
+        return;
+      }
+
+      tbody.innerHTML = '';
+      cleanings.forEach(op => {
+        const tr = document.createElement('tr');
+        tr.className = 'hover:bg-gray-50 transition-colors';
+        
+        let statusBadge = '';
+        if (op.status === 'Pendiente de Limpieza') {
+          statusBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-amber-100 text-amber-800">Pendiente</span>`;
+        } else if (op.status === 'En Proceso') {
+          statusBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">En Proceso</span>`;
+        } else {
+          statusBadge = `<span class="px-2 py-1 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">Completada</span>`;
+        }
+
+        let actionButtons = '';
+        if (op.status === 'Pendiente de Limpieza') {
+          actionButtons = `<button onclick="updateCleaningStatus(${op.id}, 'En Proceso')" class="text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold px-2 py-1 rounded transition-colors mr-1">Iniciar Limpieza</button>`;
+        } else if (op.status === 'En Proceso') {
+          actionButtons = `<button onclick="updateCleaningStatus(${op.id}, 'Completada')" class="text-xs bg-green-600 hover:bg-green-700 text-white font-semibold px-2 py-1 rounded transition-colors mr-1">Completar</button>`;
+        } else {
+          actionButtons = `<span class="text-xs text-green-600 font-bold">✓ Lista para Huéspedes</span>`;
+        }
+
+        tr.innerHTML = `
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-600">#${op.id}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-bold">${op.property_title}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm font-mono text-gray-600">${op.check_out}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">${op.client_name}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-sm">${statusBadge}</td>
+          <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">${actionButtons}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function updateCleaningStatus(resId, newStatus) {
+      const stored = JSON.parse(localStorage.getItem('mock_cleaning_states')) || {};
+      stored[resId] = newStatus;
+      localStorage.setItem('mock_cleaning_states', JSON.stringify(stored));
+      alert(`Estado de limpieza actualizado a: ${newStatus}`);
+      loadCleaningOperations();
+    }
+  </script>
+</body>
+</html>

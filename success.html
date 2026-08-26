@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva Exitosa - AZZUL San Blas</title>
+  
+  <!-- Font and Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <style>
+    .success-section {
+      padding: 6rem 0;
+      background-color: #F0F4F8; /* Tema Claro */
+      color: var(--slate-800);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .success-card {
+      background-color: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 20px;
+      padding: 3rem;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+    }
+    
+    .success-icon-wrapper {
+      width: 80px;
+      height: 80px;
+      background-color: rgba(16, 185, 129, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 2rem;
+      color: #10b981;
+    }
+    
+    .success-icon {
+      width: 40px;
+      height: 40px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    
+    .success-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--slate-900);
+      margin-bottom: 0.5rem;
+    }
+    
+    .success-subtitle {
+      font-size: 1.1rem;
+      color: var(--slate-500);
+      margin-bottom: 2.5rem;
+    }
+    
+    .wompi-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: #f1f5f9;
+      border: 1px solid var(--slate-200);
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--slate-600);
+      margin-bottom: 2rem;
+    }
+    
+    .wompi-logo-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #3b82f6;
+    }
+    
+    .receipt-details {
+      background-color: #f8fafc;
+      border: 1px solid var(--slate-200);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    
+    .receipt-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid var(--slate-100);
+      font-size: 0.95rem;
+    }
+    
+    .receipt-row:last-child {
+      border-bottom: none;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--slate-900);
+    }
+    
+    .receipt-label {
+      color: var(--slate-500);
+    }
+    
+    .receipt-value {
+      color: var(--slate-800);
+    }
+    
+    .receipt-row:last-child .receipt-value {
+      color: #0891b2; /* Cyan acentuado para el total pagado */
+    }
+    
+    .btn-return {
+      background-color: var(--accent); /* Cyan vibrante */
+      color: var(--slate-900); /* Contraste oscuro */
+      font-weight: 700;
+      padding: 1rem 2.5rem;
+      border-radius: 10px;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.2s ease;
+      font-family: var(--font-heading);
+      border: none;
+      cursor: pointer;
+    }
+    
+    .btn-return:hover {
+      background-color: hsl(188, 100%, 40%);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(0, 210, 255, 0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==========================================
+       PÁGINA DE CONFIRMACIÓN DE COMPRA
+       ========================================== -->
+  <section class="success-section">
+    <div class="success-card">
+      
+      <div class="success-icon-wrapper">
+        <svg class="success-icon" viewBox="0 0 24 24">
+          <polyline points="20 6 9 17 4 12"></polyline>
+        </svg>
+      </div>
+      
+      <h1 class="success-title" data-i18n="success_title">¡Reserva Confirmada!</h1>
+      <p class="success-subtitle" data-i18n="success_desc">Tu pago a través de Wompi (Banco Agrícola) ha sido procesado correctamente.</p>
+      
+      <div class="wompi-badge">
+        <span class="wompi-logo-dot"></span>
+        <span>Pasarela Wompi - Conexión Segura</span>
+      </div>
+      
+      <div class="receipt-details">
+        <div class="receipt-row">
+          <span class="receipt-label" data-i18n="success_id">ID de Reserva</span>
+          <span class="receipt-value" id="receipt-id">#--</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label" data-i18n="success_client">Cliente</span>
+          <span class="receipt-value" id="receipt-client">--</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label" data-i18n="success_prop">Propiedad</span>
+          <span class="receipt-value" id="receipt-prop">--</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label" data-i18n="success_nights">Noches</span>
+          <span class="receipt-value" id="receipt-nights">--</span>
+        </div>
+        <div class="receipt-row">
+          <span class="receipt-label" data-i18n="success_total">Total Pagado</span>
+          <span class="receipt-value" id="receipt-total">$--</span>
+        </div>
+      </div>
+      
+      <a href="rentas.html" class="btn-return" data-i18n="success_btn">Volver al Catálogo</a>
+      
+    </div>
+  </section>
+
+  <!-- Scripts de Traducción e Interactividad -->
+  <script src="translations.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Parsear parámetros de la URL
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      const client = urlParams.get('client');
+      const prop = urlParams.get('prop');
+      const nights = urlParams.get('nights');
+      const total = urlParams.get('total');
+      
+      if (id) document.getElementById('receipt-id').textContent = `#${id}`;
+      if (client) document.getElementById('receipt-client').textContent = decodeURIComponent(client);
+      if (prop) document.getElementById('receipt-prop').textContent = decodeURIComponent(prop);
+      if (nights) document.getElementById('receipt-nights').textContent = `${nights}`;
+      if (total) document.getElementById('receipt-total').textContent = `$${parseFloat(total).toFixed(2)} USD`;
+    });
+  </script>
+</body>
+</html>

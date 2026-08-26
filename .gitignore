@@ -5,3 +5,15 @@ node_modules/
 
 .vercel
 .env*
+
+# Python/Flask environment
+__pycache__/
+*.pyc
+instance/
+venv/
+.env
+
+# SQLite local database
+*.db
+*.db-journal
+*.sqlite

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AZZUL - Rentas Vacacionales</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-secondary-fixed": "#001f28",
+                        "on-surface-variant": "#444651",
+                        "tertiary-container": "#203537",
+                        "outline": "#747782",
+                        "secondary-fixed": "#b7eaff",
+                        "primary-fixed-dim": "#b1c5ff",
+                        "on-tertiary": "#ffffff",
+                        "tertiary": "#0a2022",
+                        "surface-container-high": "#e6e8ea",
+                        "inverse-primary": "#b1c5ff",
+                        "on-secondary-fixed-variant": "#004e60",
+                        "on-secondary-container": "#005266",
+                        "secondary": "#00677f",
+                        "surface-container-highest": "#e0e3e5",
+                        "secondary-container": "#00ccf9",
+                        "secondary-fixed-dim": "#4cd6ff",
+                        "on-tertiary-fixed": "#091f21",
+                        "on-primary-fixed": "#001946",
+                        "tertiary-fixed": "#d0e7ea",
+                        "on-tertiary-container": "#889ea0",
+                        "surface": "#f7f9fb",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#224489",
+                        "on-surface": "#191c1e",
+                        "surface-dim": "#d8dadc",
+                        "surface-variant": "#e0e3e5",
+                        "background": "#f7f9fb",
+                        "on-primary": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-container": "#7a97e2",
+                        "error-container": "#ffdad6",
+                        "primary-fixed": "#dae2ff",
+                        "on-background": "#191c1e",
+                        "on-error": "#ffffff",
+                        "tertiary-fixed-dim": "#b4cbce",
+                        "surface-container": "#eceef0",
+                        "primary-container": "#002d72",
+                        "surface-container-low": "#f2f4f6",
+                        "outline-variant": "#c4c6d2",
+                        "surface-bright": "#f7f9fb",
+                        "on-tertiary-fixed-variant": "#364a4d",
+                        "inverse-surface": "#2d3133",
+                        "primary": "#001a48",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#3d5ca2",
+                        "error": "#ba1a1a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "80px",
+                        "gutter": "24px",
+                        "section-gap": "64px",
+                        "base": "4px",
+                        "container-max": "1280px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "price-display": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "body-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                        "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                        "price-display": ["28px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 1;
+        }
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(247, 249, 251, 0) 0%, rgba(247, 249, 251, 1) 100%);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="bg-surface/80 dark:bg-inverse-surface/80 backdrop-blur-md full-width top-0 sticky z-50 border-b border-outline-variant/30 shadow-sm transition-all duration-300">
+<div class="flex justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-4 max-w-container-max mx-auto">
+<a class="font-headline-lg text-headline-lg font-black text-primary-container tracking-tighter" href="#">AZZUL</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-high/50 px-3 py-2 rounded-md" href="#">Inicio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-high/50 px-3 py-2 rounded-md" href="#">Nosotros</a>
+<a class="text-secondary-container font-bold border-b-2 border-secondary-container pb-1 font-label-md text-label-md scale-95 duration-150" href="#">Rentas Vacacionales</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors font-label-md text-label-md hover:bg-surface-container-high/50 px-3 py-2 rounded-md" href="#">Ciencia Constructiva</a>
+</div>
+<div class="flex items-center gap-4">
+<button aria-label="Language" class="hidden md:flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-2xl">language</span>
+</button>
+<a class="bg-primary text-on-primary font-label-md text-label-md px-6 py-2.5 rounded-lg hover:bg-primary/90 transition-colors shadow-sm" href="#">
+                    Contáctanos
+                </a>
+</div>
+</div>
+</nav>
+<main>
+<!-- Hero Section -->
+<section class="relative w-full min-h-[80vh] flex items-center justify-center pt-24 pb-32">
+<div class="absolute inset-0 w-full h-full z-0">
+<div class="absolute inset-0 bg-black/30 z-10"></div>
+<img class="w-full h-full object-cover" data-alt="A breathtaking, wide-angle photograph of a modern luxury villa perched on a cliff overlooking a serene, azure ocean at golden hour. The architecture is sleek and minimalist with large glass windows reflecting the warm sunset light. The surrounding landscape features lush, tropical greenery. The overall mood is aspirational, tranquil, and high-end, utilizing a pristine, crisp lighting style typical of luxury real estate photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0sq6s3uEvgru8svTBa8k6_7aXiTwFbPKms8HNP0HuJ7IswfmcFkCoMb4m-EDYxmnockrBBKDXVQLWOQJVJzTfTyLo_nJaL3URthZjR4ZA2LM9H2kQwIBMiVZ9FU1jKLyCwOzbeO9SeCcb8A1D7u2h0MQISWBb7QyoAJ4TxaWQ2PHJrb6F-7dvKjSiIJrqjizo8g-CQUI9kTugePVCu74IW8u8XmMeNo2ZFlIkDWQOZfWrrBsRqsao"/>
+</div>
+<div class="relative z-20 w-full max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop text-center mt-12">
+<h1 class="font-headline-xl text-headline-xl md:text-[64px] md:leading-[72px] text-white font-bold mb-6 drop-shadow-lg max-w-4xl mx-auto">
+                    Tu escape de lujo frente al mar
+                </h1>
+<p class="font-body-lg text-body-lg text-white/90 mb-10 max-w-2xl mx-auto drop-shadow-md">
+                    Descubre una colección exclusiva de propiedades diseñadas para la tranquilidad absoluta y el confort sin concesiones.
+                </p>
+<!-- Search Widget -->
+<div class="bg-surface/95 backdrop-blur-xl rounded-xl p-4 md:p-2 shadow-lg max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-4 border border-white/20">
+<div class="flex-1 w-full md:w-auto relative group">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<input class="w-full pl-12 pr-4 py-3 bg-transparent border-0 text-on-surface focus:ring-0 font-body-md text-body-md placeholder-outline" placeholder="Destino (ej. Tulum, Cancún)" type="text"/>
+</div>
+<div class="w-full md:w-[1px] h-[1px] md:h-10 bg-outline-variant/30"></div>
+<div class="flex-1 w-full md:w-auto relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<input class="w-full pl-12 pr-4 py-3 bg-transparent border-0 text-on-surface focus:ring-0 font-body-md text-body-md placeholder-outline" placeholder="Fechas" type="text"/>
+</div>
+<div class="w-full md:w-[1px] h-[1px] md:h-10 bg-outline-variant/30"></div>
+<div class="flex-1 w-full md:w-auto relative">
+<div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none text-primary">
+<span class="material-symbols-outlined">group</span>
+</div>
+<input class="w-full pl-12 pr-4 py-3 bg-transparent border-0 text-on-surface focus:ring-0 font-body-md text-body-md placeholder-outline" placeholder="Huéspedes" type="text"/>
+</div>
+<button class="w-full md:w-auto bg-primary text-on-primary font-label-md text-label-md px-8 py-3.5 rounded-lg hover:bg-primary-container transition-colors shadow-md flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-lg">search</span>
+                        Buscar
+                    </button>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 w-full h-32 hero-gradient z-10"></div>
+</section>
+<!-- Propiedades Destacadas -->
+<section class="py-section-gap px-margin-mobile md:px-margin-desktop max-w-container-max mx-auto">
+<div class="flex justify-between items-end mb-12">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-primary mb-2">Propiedades Destacadas</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Experiencias únicas seleccionadas cuidadosamente para tu descanso.</p>
+</div>
+<a class="hidden md:flex items-center gap-2 font-label-md text-label-md text-secondary hover:text-primary transition-colors" href="#">
+                    Ver todas <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-surface-container-lowest rounded-[16px] overflow-hidden border border-outline-variant/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" data-alt="A bright, airy living room in a modern coastal villa, featuring large sliding glass doors that open to a sun-drenched patio with a private pool. The interior design is minimal, using crisp whites, light oak wood, and accents of deep azure blue. Soft, natural daylight floods the space, highlighting the high-quality textures of the furniture and the serene, premium aesthetic of the Azzul brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkHws6XSZspxR53xnvGlKboaDWANWhetk1v2xBRDaIqNGsP9mB1-jjV9BdPRmDRTA2xtg8w_x_PYrKm_JQEeK4dckY0VBCZiSMtR3E5JqEAjgm9djSHTvWSiAmekCr4su_w6_-eg5ZHVnyIPSkx8xLDjzR1bBM6Ev3M8iyAFzV11et00fQb10guJX06T6KZ8rtrwy6CC9NU7_7nYAwbfK1LL09u6uv3t6nD8HM4tDSdLAU_FJzmjq5"/>
+<div class="absolute top-4 right-4 bg-surface-container-lowest/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-sm text-yellow-500" data-weight="fill">star</span>
+<span class="font-label-md text-label-md text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Villa Aqua</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Refugio contemporáneo con vistas panorámicas al océano y acceso directo a la playa.</p>
+<div class="flex gap-4 mb-6 mt-auto">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">person</span>
+<span class="font-body-sm text-body-sm">8 Huéspedes</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">bed</span>
+<span class="font-body-sm text-body-sm">4 Hab.</span>
+</div>
+</div>
+<div class="flex justify-between items-end mt-auto pt-4 border-t border-outline-variant/30">
+<div>
+<span class="font-price-display text-price-display text-on-surface block leading-none">$1,200</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ noche</span>
+</div>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-sm">
+                                Ver disponibilidad
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-surface-container-lowest rounded-[16px] overflow-hidden border border-outline-variant/50 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col h-full">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-in-out" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWsun_mPKgrdm5wHTPGhlm3aguHpytJWWjlrGAqe_mQZvDjS6E7YQGhvuEUhA5Zoh138_IB9u8nw-Y2azzKKbgUfOShIkENmHVTrLbXURkFMRerIA-EwLZKsbm9gEg6uG-euhRUl7mAAi6YIp9MYlMV90r6v2LF8Wx0ApyhoIFPCgMPhT28jwjkvmvWoXae5sWRFSAj6PlZFv_Afoo4x9e61NB34NzghYugMmCfqFBejETY5GhYVnTHy2pSX5F8cIrA"/>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-2">
+<h3 class="font-headline-md text-headline-md text-primary">Terraza Cielo</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-4 line-clamp-2">Elegante espacio enfocado en la armonía visual y el diseño minimalista de alta gama.</p>
+<div class="flex gap-4 mb-6 mt-auto">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">person</span>
+<span class="font-body-sm text-body-sm">6 Huéspedes</span>
+</div>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-[20px]">bed</span>
+<span class="font-body-sm text-body-sm">3 Hab.</span>
+</div>
+</div>
+<div class="flex justify-between items-end mt-auto pt-4 border-t border-outline-variant/30">
+<div>
+<span class="font-price-display text-price-display text-on-surface block leading-none">$950</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ noche</span>
+</div>
+<button class="bg-secondary text-on-secondary font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-secondary-container hover:text-on-secondary-container transition-colors shadow-sm">
+                                Ver disponibilidad
+                            </button>
+</div>
+</div>
+</div>
+<!-- Card 3 & 4 Omitted for brevity in this limited effort slice, but in a real scenario would continue here following the same structure -->
+</div>
+<div class="mt-8 text-center md:hidden">
+<a class="inline-flex items-center justify-center gap-2 font-label-md text-label-md text-secondary border border-secondary px-6 py-3 rounded-lg w-full" href="#">
+                    Ver todas las propiedades
+                </a>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest dark:bg-tertiary-container full-width bottom border-t border-outline-variant flat no shadows">
+<div class="flex flex-col md:flex-row justify-between items-center w-full px-margin-mobile md:px-margin-desktop py-gutter max-w-container-max mx-auto gap-6 md:gap-0">
+<div class="font-headline-md text-headline-md font-bold text-primary dark:text-on-primary-container">AZZUL</div>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Política de Privacidad</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Términos de Servicio</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Contacto</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-secondary transition-colors opacity-80 hover:opacity-100" href="#">Preguntas Frecuentes</a>
+</div>
+<div class="font-body-sm text-body-sm text-primary dark:text-on-primary-container">
+                © 2024 Azzul. Todos los derechos reservados.
+            </div>
+</div>
+</footer>
+</body></html>

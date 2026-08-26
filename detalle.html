@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle de Propiedad | AZZUL San Blas</title>
+  
+  <!-- Tailwind CSS and fonts from Stitch -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+        darkMode: "class",
+        theme: {
+            extend: {
+                "colors": {
+                    "on-secondary-fixed": "#001f28",
+                    "on-surface-variant": "#444651",
+                    "tertiary-container": "#203537",
+                    "outline": "#747782",
+                    "secondary-fixed": "#b7eaff",
+                    "primary-fixed-dim": "#b1c5ff",
+                    "on-tertiary": "#ffffff",
+                    "tertiary": "#0a2022",
+                    "surface-container-high": "#e6e8ea",
+                    "inverse-primary": "#b1c5ff",
+                    "on-secondary-fixed-variant": "#004e60",
+                    "on-secondary-container": "#005266",
+                    "secondary": "#00677f",
+                    "surface-container-highest": "#e0e3e5",
+                    "secondary-container": "#00ccf9",
+                    "secondary-fixed-dim": "#4cd6ff",
+                    "on-tertiary-fixed": "#091f21",
+                    "on-primary-fixed": "#001946",
+                    "tertiary-fixed": "#d0e7ea",
+                    "on-tertiary-container": "#889ea0",
+                    "surface": "#f7f9fb",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#224489",
+                    "on-surface": "#191c1e",
+                    "surface-dim": "#d8dadc",
+                    "surface-variant": "#e0e3e5",
+                    "background": "#f7f9fb",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#eff1f3",
+                    "on-primary-container": "#7a97e2",
+                    "error-container": "#ffdad6",
+                    "primary-fixed": "#dae2ff",
+                    "on-background": "#191c1e",
+                    "on-error": "#ffffff",
+                    "tertiary-fixed-dim": "#b4cbce",
+                    "surface-container": "#eceef0",
+                    "primary-container": "#002d72",
+                    "surface-container-low": "#f2f4f6",
+                    "outline-variant": "#c4c6d2",
+                    "surface-bright": "#f7f9fb",
+                    "on-tertiary-fixed-variant": "#364a4d",
+                    "inverse-surface": "#2d3133",
+                    "primary": "#001a48",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#3d5ca2",
+                    "error": "#ba1a1a"
+                },
+                "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1.0rem",
+                    "3xl": "1.5rem",
+                    "full": "9999px"
+                },
+                "spacing": {
+                    "margin-desktop": "80px",
+                    "gutter": "24px",
+                    "section-gap": "64px",
+                    "base": "4px",
+                    "container-max": "1280px",
+                    "margin-mobile": "20px"
+                },
+                "fontFamily": {
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "price-display": ["Hanken Grotesk"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"]
+                },
+                "fontSize": {
+                    "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                    "label-md": ["14px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600" }],
+                    "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "headline-md": ["20px", { "lineHeight": "28px", "fontWeight": "600" }],
+                    "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+                    "price-display": ["28px", { "lineHeight": "32px", "fontWeight": "700" }],
+                    "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                    "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                    "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }]
+                }
+            }
+        }
+    }
+  </script>
+  
+  <!-- Estilos Globales -->
+  <link rel="stylesheet" href="styles.css">
+  
+  <!-- Flatpickr CSS (Calendario Interactivo) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
+
+  <style>
+    /* Corrección de Contrastes: Navbar e Inversión de Logotipo */
+    .header {
+      background-color: rgba(240, 244, 248, 0.95) !important;
+      border-bottom: 1px solid var(--slate-200) !important;
+      backdrop-filter: blur(10px) !important;
+    }
+    
+    .logo img, #main-logo img {
+      filter: brightness(0) saturate(100%) invert(11%) sepia(30%) saturate(6441%) hue-rotate(218deg) brightness(97%) contrast(97%) !important;
+    }
+    
+    .nav-link {
+      color: var(--slate-800) !important;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: #0891b2 !important; /* Cyan acentuado */
+    }
+    
+    .burger span {
+      background-color: var(--slate-800) !important;
+    }
+
+    .details-section {
+      padding: 7rem 0 5rem 0; /* Padding superior extra por el header flotante claro */
+      background-color: #F0F4F8; /* Gris tenue con subtonos fríos */
+      color: var(--slate-800);
+    }
+    
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #0891b2; /* Cyan oscuro legible */
+      text-decoration: none;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+    }
+    
+    .back-link:hover {
+      color: var(--cyan-hover);
+    }
+    
+    .details-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    
+    @media (min-width: 992px) {
+      .details-grid {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+    
+    /* Galería */
+    .gallery-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .main-image-wrapper {
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 */
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+    
+    .main-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .thumbnails-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    
+    .thumbnail-item {
+      aspect-ratio: 4/3;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.05);
+    }
+    
+    .thumbnail-item:hover, .thumbnail-item.active {
+      border-color: var(--accent); /* Cyan acento */
+      transform: scale(1.02);
+    }
+    
+    .thumbnail-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    /* Contenido */
+    .prop-header {
+      margin-top: 1rem;
+      border-bottom: 1px solid var(--slate-200);
+      padding-bottom: 1.5rem;
+    }
+    
+    .prop-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--slate-900); /* Azul oscuro corporativo */
+      margin-bottom: 0.5rem;
+    }
+    
+    .prop-meta-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    
+    .meta-badge {
+      background-color: #ffffff;
+      border: 1px solid var(--slate-200);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--slate-700);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    }
+    
+    .prop-description {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--slate-700); /* Máxima legibilidad */
+      margin: 2rem 0;
+    }
+    
+    /* Amenidades */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      border-bottom: 1px solid var(--slate-200);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1.5rem;
+      color: var(--slate-900); /* Azul oscuro */
+    }
+    
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    
+    .amenity-card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background-color: #ffffff;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 2px 6px rgba(15, 23, 42, 0.02);
+    }
+    
+    .amenity-icon {
+      width: 24px;
+      height: 24px;
+      color: #0891b2; /* Cyan acentuado */
+      flex-shrink: 0;
+    }
+    
+    .amenity-text {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--slate-700);
+    }
+    
+    /* Reglas */
+    .rules-list {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 3rem;
+    }
+    
+    .rules-list li {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+      color: var(--slate-700);
+    }
+    
+    .rules-list li::before {
+      content: "•";
+      color: #0891b2; /* Cyan acentuado */
+      font-size: 1.8rem;
+      position: absolute;
+      left: 0.5rem;
+      top: -0.2rem;
+    }
+    
+    /* Booking Box */
+    .booking-sticky-box {
+      background-color: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      padding: 2rem;
+      position: sticky;
+      top: 100px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+      color: var(--slate-800);
+    }
+    
+    .booking-price-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+    
+    .booking-price-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #0891b2; /* Cyan/celeste acentuado */
+    }
+    
+    .booking-field {
+      margin-bottom: 1.25rem;
+    }
+    
+    .booking-label {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--slate-500);
+      margin-bottom: 0.5rem;
+    }
+    
+    .calendar-input {
+      width: 100%;
+      background-color: #F8FAFC;
+      border: 1px solid var(--slate-300);
+      color: var(--slate-900);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    
+    .calendar-input:focus {
+      border-color: var(--primary);
+    }
+    
+    .calculator-breakdown {
+      margin-top: 1.5rem;
+      border-top: 1px dashed var(--slate-200);
+      padding-top: 1.25rem;
+      display: none;
+    }
+    
+    .breakdown-row {
+      display: flex;
+      justify-content: space-between;
+      color: var(--slate-600);
+      font-size: 0.95rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .breakdown-total {
+      display: flex;
+      justify-content: space-between;
+      color: var(--slate-900);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      border-top: 1px solid var(--slate-200);
+      padding-top: 0.75rem;
+    }
+    
+    .book-submit-btn {
+      width: 100%;
+      background-color: var(--accent); /* Cyan vibrante original */
+      color: var(--slate-900); /* Texto oscuro para contraste */
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 1.5rem;
+    }
+    
+    .book-submit-btn:hover {
+      background-color: hsl(188, 100%, 40%);
+      color: #000000;
+    }
+    
+    .book-submit-btn:disabled {
+      background-color: var(--slate-200);
+      color: var(--slate-400);
+      cursor: not-allowed;
+    }
+
+    /* Recorrido 3D */
+    .tour-section {
+      margin-bottom: 3rem;
+    }
+    
+    .tour-iframe-wrapper {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--slate-200);
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    /* Modal de Contacto para Reserva */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.8);
+      backdrop-filter: blur(8px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      padding: 1.5rem;
+    }
+    
+    .modal-box {
+      background-color: #ffffff;
+      border: 1px solid var(--slate-200);
+      border-radius: 16px;
+      width: 100%;
+      max-width: 500px;
+      padding: 2.5rem;
+      position: relative;
+      animation: modalFadeIn 0.3s ease;
+      color: var(--slate-800);
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+    
+    @keyframes modalFadeIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: none;
+      border: none;
+      color: var(--slate-400);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .modal-close:hover {
+      color: var(--slate-900);
+    }
+    
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--slate-900);
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      color: var(--slate-700);
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-input {
+      width: 100%;
+      background-color: #F8FAFC;
+      border: 1px solid var(--slate-300);
+      color: var(--slate-900);
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    
+    .form-input:focus {
+      border-color: var(--primary);
+    }
+    
+    .form-textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    
+    /* Offline warning inside booking box */
+    .offline-booking-warning {
+      color: #d97706;
+      font-size: 0.75rem;
+      margin-top: 0.5rem;
+      line-height: 1.4;
+    }
+
+    .glass-panel {
+      background: rgba(255, 255, 255, 0.65) !important;
+      backdrop-filter: blur(16px) !important;
+      -webkit-backdrop-filter: blur(16px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.5) !important;
+      box-shadow: 0 8px 32px 0 rgba(0, 45, 114, 0.05) !important;
+    }
+    
+    .glass-card {
+      background: rgba(255, 255, 255, 0.5) !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.6) !important;
+      box-shadow: 0 4px 16px 0 rgba(0, 45, 114, 0.03) !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Dynamic Gradient Background -->
+  <div class="fixed inset-0 -z-10 bg-gradient-to-br from-[#f7f9fb] via-[#e8eff9] to-[#d3e0f5] opacity-80 pointer-events-none"></div>
+
+  <!-- ==========================================
+       NAVBAR (Cabecera)
+       ========================================== -->
+  <header class="header" id="header">
+    <div class="container navbar">
+      <!-- Logotipo Oficial AZZUL -->
+      <a href="index.html#hero-section" class="logo" id="main-logo">
+        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 38px; width: auto; object-fit: contain;">
+      </a>
+
+      <!-- Menú de Navegación -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="index.html#hero-section" class="nav-link" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
+        <a href="nosotros.html" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
+        <a href="rentas.html" class="nav-link active" id="link-rentas" data-i18n="nav_rentas">Rentas Vacacionales</a>
+        <a href="sistema.html" class="nav-link" id="link-ciencia" data-i18n="nav_ciencia">Ciencia Constructiva</a>
+        <div class="nav-btn">
+          <a href="contacto.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="link-contacto" data-i18n="nav_contact_btn">Contáctanos</a>
+        </div>
+        <!-- Selector de Idioma -->
+        <div class="lang-selector">
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en">EN</button>
+        </div>
+      </nav>
+
+      <!-- Botón de Hamburguesa para Móvil -->
+      <div class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       SECCIÓN DE DETALLES
+       ========================================== -->
+  <section class="py-12 md:py-16">
+    <div class="container max-w-container-max mx-auto">
+      <a href="rentas.html" class="inline-flex items-center gap-2 text-primary hover:text-secondary transition-colors font-label-md text-label-md bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm border border-white/40 shadow-sm text-decoration-none mb-6">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span>Volver a Rentas Vacacionales</span>
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter relative">
+        
+        <!-- Lado Izquierdo: Galería y Detalles de la Casa -->
+        <div class="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
+          
+          <!-- Galería de imágenes -->
+          <div>
+            <div class="relative w-full h-[300px] md:h-[500px] rounded-3xl overflow-hidden mb-4 group cursor-pointer shadow-lg border border-white/50">
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10 pointer-events-none"></div>
+              <img id="primary-gallery-img" src="" alt="Imagen Principal" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+            </div>
+            <div class="grid grid-cols-3 gap-4" id="thumbnails-container">
+              <!-- Creados dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Cabecera de Título, Badges y Descripción -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h1 class="font-headline-xl text-headline-xl text-primary font-bold mb-6" id="prop-title-element">Cargando casa...</h1>
+            <div class="flex flex-wrap gap-3">
+              <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/50 border border-white/60 rounded-full text-on-surface font-label-md text-label-md shadow-sm" id="level-badge-element">
+                <span class="material-symbols-outlined text-primary text-sm">home</span>
+                <span>Nivel</span>
+              </span>
+              <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/50 border border-white/60 rounded-full text-on-surface font-label-md text-label-md shadow-sm">
+                <span class="material-symbols-outlined text-primary text-sm">group</span>
+                <span id="capacity-badge-element">Capacidad</span>
+              </span>
+              <span class="inline-flex items-center gap-2 px-5 py-2.5 bg-white/50 border border-white/60 rounded-full text-on-surface font-label-md text-label-md shadow-sm" style="color: #0891b2; border-color: #0891b2;">
+                <span class="material-symbols-outlined text-primary text-sm">architecture</span>
+                <span>Construcción AZZUL ICF</span>
+              </span>
+            </div>
+            <p class="font-body-lg text-body-lg text-on-surface-variant mt-6 leading-relaxed" id="prop-desc-element">Cargando...</p>
+          </div>
+
+          <!-- Destacado Tecnología ICF -->
+          <div class="bg-gradient-to-r from-tertiary-fixed/80 to-primary-fixed/40 backdrop-blur-md border border-white/60 p-8 rounded-3xl shadow-sm relative overflow-hidden">
+            <div class="absolute left-0 top-0 bottom-0 w-2 bg-secondary-container"></div>
+            <p class="font-body-md text-body-md text-on-tertiary-fixed-variant leading-relaxed pl-4">
+              <strong class="font-semibold text-tertiary-container text-lg block mb-2">Vive la experiencia de la construcción del futuro.</strong> 
+              AZZUL es pionero en El Salvador implementando la tecnología ICF (Insulated Concrete Forms). Estas casas son las primeras en su tipo en el país, ofreciendo un aislamiento térmico superior para mantener un clima fresco frente a la playa, eficiencia energética inigualable y un confort acústico absoluto durante tu descanso.
+            </p>
+          </div>
+
+          <!-- Amenidades -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h2 class="font-headline-md text-headline-md text-primary mb-6 pb-4 border-b border-outline-variant/20" data-i18n="rentals_amenities">Amenidades</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4" id="amenities-container">
+              <!-- Iconos de amenidades cargados dinámicamente -->
+            </div>
+          </div>
+
+          <!-- Recorrido Virtual 3D -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h2 class="font-headline-md text-headline-md text-primary mb-6 pb-4 border-b border-outline-variant/20" data-i18n="rentals_3d_tour">Recorrido Virtual 3D</h2>
+            <div class="w-full h-[500px] rounded-2xl overflow-hidden border border-white/60 shadow-inner">
+              <iframe 
+                src="https://my.matterport.com/show/?m=JGPnG38c7sg&play=1&qs=1" 
+                width="100%" 
+                height="100%" 
+                style="border: none;" 
+                allowfullscreen 
+                allow="xr-spatial-tracking"
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Mapa Interactivo -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h2 class="font-headline-md text-headline-md text-primary mb-6 pb-4 border-b border-outline-variant/20" data-i18n="rentals_map_title">Ubicación de la Propiedad</h2>
+            <div class="w-full h-[350px] rounded-2xl overflow-hidden border border-white/60 shadow-inner">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15515.688849646549!2d-89.37894519999999!3d13.494200899999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8f632f8b5f3a0db9%3A0x6739665b1d3ef374!2sPlaya%20San%20Blas!5e0!3m2!1ses-419!2ssv!4v1700000000000!5m2!1ses-419!2ssv" 
+                width="100%" 
+                height="100%" 
+                style="border: none;" 
+                allowfullscreen="" 
+                loading="lazy">
+              </iframe>
+            </div>
+          </div>
+
+          <!-- Reglas de la casa -->
+          <div class="glass-panel p-8 rounded-3xl">
+            <h2 class="font-headline-md text-headline-md text-primary mb-6 pb-4 border-b border-outline-variant/20" data-i18n="rentals_rules">Reglas de la Casa</h2>
+            <ul class="space-y-4" id="rules-container">
+              <!-- Líneas de reglas cargadas dinámicamente -->
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Lado Derecho: Calendario y Solicitud de Reserva (Sticky Box) -->
+        <div class="lg:col-span-5 xl:col-span-4 relative mt-8 lg:mt-0">
+          <div class="sticky top-28 glass-panel rounded-3xl p-6 lg:p-8">
+            
+            <div class="flex justify-between items-baseline mb-6">
+              <div>
+                <span class="font-price-display text-price-display text-primary block leading-none" id="price-value-element">$0</span>
+                <span class="font-body-sm text-body-sm text-on-surface-variant" data-i18n="rentals_price_night">/ noche</span>
+              </div>
+            </div>
+
+            <!-- Calendario Rango -->
+            <div class="mb-4">
+              <label class="block font-label-md text-label-md text-primary mb-1 text-xs">Seleccionar Fechas (Rango)</label>
+              <input type="text" id="date-range-picker" class="w-full px-4 py-3 bg-white/70 border border-white/80 rounded-xl font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none shadow-sm cursor-pointer" placeholder="Seleccione fechas..." readonly>
+              <div id="offline-cal-msg" class="offline-booking-warning text-xs text-amber-600 mt-2 font-medium" style="display: none;">
+                *Servidor offline: Las fechas deshabilitadas son estáticas para fines de demostración.
+              </div>
+            </div>
+
+            <!-- Código de Descuento -->
+            <div class="mb-6">
+              <label class="block font-label-md text-label-md text-primary mb-1 text-xs" data-i18n="rentals_discount_code">Código de Descuento</label>
+              <input type="text" id="discount-code-input" class="w-full px-4 py-3 bg-white/70 border border-white/80 rounded-xl font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none shadow-sm" placeholder="Ej. AZZUL10" style="text-transform: uppercase;">
+              <div id="discount-status-msg" style="font-size: 0.8rem; margin-top: 0.3rem; font-weight: 600; display: none;"></div>
+            </div>
+
+            <!-- Calculadora de desglose de precio -->
+            <div class="bg-white/60 border border-white/80 rounded-xl p-4 space-y-3 shadow-sm mb-6" id="calc-breakdown" style="display: none;">
+              <div class="flex justify-between items-center text-sm">
+                <span id="calc-nights-text" class="text-on-surface-variant font-medium">$150 x 3 noches</span>
+                <span id="calc-subtotal-val" class="font-bold text-on-surface">$450</span>
+              </div>
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-on-surface-variant font-medium">Tarifa de Limpieza & Tasa</span>
+                <span class="text-green-600 font-semibold">$0 (¡Gratis!)</span>
+              </div>
+              <div class="flex justify-between items-center border-t border-outline-variant/30 pt-3 text-base font-bold">
+                <span data-i18n="rentals_total" class="text-primary">Total estimado</span>
+                <span id="calc-total-val" class="text-secondary">$450</span>
+              </div>
+            </div>
+
+            <!-- Botón de Envío -->
+            <button id="request-booking-btn" class="w-full bg-[#00e5ff] text-[#001a48] px-6 py-4 rounded-xl font-headline-md text-[16px] font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98] disabled:bg-gray-200 disabled:text-gray-400 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none" disabled data-i18n="rentals_book_now">Solicitar Reserva</button>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       MODAL DE SOLICITUD DE RESERVA
+       ========================================== -->
+  <div class="modal-overlay" id="booking-modal">
+    <div class="modal-box glass-panel rounded-3xl p-6 lg:p-8 max-w-lg w-full relative">
+      <button class="modal-close text-primary font-bold text-2xl absolute top-4 right-4 hover:text-secondary transition-colors" id="modal-close-btn">&times;</button>
+      <h3 class="font-headline-lg text-headline-lg text-primary mb-6">Confirmar Solicitud</h3>
+      
+      <form id="reservation-form" class="space-y-6">
+        <input type="hidden" id="form-prop-id">
+        <input type="hidden" id="form-check-in">
+        <input type="hidden" id="form-check-out">
+        <input type="hidden" id="form-discount-code">
+
+        <div class="bg-surface/80 rounded-2xl p-4 border border-outline-variant/30 mb-6">
+          <p class="font-label-md text-label-md text-primary font-bold mb-1"><span id="modal-prop-title">Villa Aqua</span></p>
+          <p class="font-body-sm text-body-sm text-secondary mb-2" id="modal-dates-text">01 Sep - 05 Sep (4 noches)</p>
+          <p class="font-body-sm text-body-sm font-bold text-on-surface" id="modal-total-text">Total: $800.00</p>
+        </div>
+
+        <div>
+          <label class="block font-label-md text-label-md text-primary mb-1 text-xs" for="client-name" data-i18n="rentals_client_name">Nombre Completo</label>
+          <input type="text" id="client-name" class="w-full px-4 py-3 bg-white/70 border border-white/80 rounded-xl font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none shadow-sm" required placeholder="Juan Pérez">
+        </div>
+
+        <div>
+          <label class="block font-label-md text-label-md text-primary mb-1 text-xs" for="client-email" data-i18n="rentals_client_email">Correo Electrónico</label>
+          <input type="email" id="client-email" class="w-full px-4 py-3 bg-white/70 border border-white/80 rounded-xl font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none shadow-sm" required placeholder="juan@example.com">
+        </div>
+
+        <div>
+          <label class="block font-label-md text-label-md text-primary mb-1 text-xs" for="client-phone" data-i18n="rentals_client_phone">Número de Teléfono</label>
+          <input type="tel" id="client-phone" class="w-full px-4 py-3 bg-white/70 border border-white/80 rounded-xl font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none shadow-sm" required placeholder="+503 7777 7777">
+        </div>
+
+        <div>
+          <label class="block font-label-md text-label-md text-primary mb-2 text-xs">Servicios Extra (Opcionales)</label>
+          <div class="bg-white/60 border border-white/80 rounded-xl p-4 space-y-3 shadow-sm">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="upsell-late-checkout" value="20" class="w-4 h-4 rounded border-outline-variant text-[#00677f] focus:ring-[#00677f]">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Late Check-out - $20.00</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="checkbox" id="upsell-daily-cleaning" value="15" class="w-4 h-4 rounded border-outline-variant text-[#00677f] focus:ring-[#00677f]">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Limpieza Diaria - $15.00 / día</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-label-md text-label-md text-primary mb-2 text-xs">Método de Pago</label>
+          <div class="bg-white/60 border border-white/80 rounded-xl p-4 space-y-3 shadow-sm">
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="metodo_pago" value="Tarjeta" checked class="w-4 h-4 border-outline-variant text-primary focus:ring-primary">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Pago en línea (Tarjeta de crédito/débito)</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="metodo_pago" value="Transferencia" class="w-4 h-4 border-outline-variant text-primary focus:ring-primary">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Transferencia Bancaria</span>
+            </label>
+            <label class="flex items-center gap-3 cursor-pointer">
+              <input type="radio" name="metodo_pago" value="WhatsApp" class="w-4 h-4 border-outline-variant text-primary focus:ring-primary">
+              <span class="font-body-sm text-body-sm text-on-surface-variant">Confirmar reserva por WhatsApp</span>
+            </label>
+          </div>
+        </div>
+
+        <div>
+          <label class="block font-label-md text-label-md text-primary mb-1 text-xs" for="client-comments" data-i18n="rentals_comments">Comentarios o peticiones especiales</label>
+          <textarea id="client-comments" class="w-full px-4 py-3 bg-white/70 border border-white/80 rounded-xl font-body-sm text-body-sm text-on-surface focus:border-primary focus:ring-1 focus:ring-primary transition-colors outline-none shadow-sm resize-none h-24" placeholder="Indíquenos a qué hora planea llegar o si tiene consultas..."></textarea>
+        </div>
+
+        <button type="submit" id="modal-submit-btn" class="w-full bg-[#00e5ff] text-[#001a48] px-6 py-4 rounded-xl font-headline-md text-[16px] font-bold hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 active:scale-[0.98]">Proceder al Pago Seguro</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       FOOTER (Pie de Página Corporativo)
+       ========================================== -->
+  <footer class="footer" id="site-footer">
+    <div class="container footer-bottom" style="border: none; padding-top: 2rem;">
+      <span data-i18n="footer_rights">&copy; 2026 AZZUL. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- Flatpickr JS (Calendario) -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+
+  <!-- Lógica de Traducciones y API -->
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+  <script>
+    // Datos Hardcoded de Fallback
+    const MOCK_PROPERTIES = {
+      1: {
+        id: 1,
+        title: "Villa Aqua",
+        description: "Exclusiva casa de primer nivel (Basement) que redefine el confort. Cuenta con acceso directo a una piscina privada rodeada de un jardín tropical, amplios espacios de descanso y un diseño termoacústico avanzado que garantiza frescura y tranquilidad absoluta.",
+        capacity: 6,
+        price_per_night: 200.0,
+        level: "1st Level (Basement)",
+        amenities: ["Piscina Privada", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Equipada", "Barbacoa", "TV por Cable", "Seguridad 24/7"],
+        cover_image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la villa",
+          "No se permiten fiestas o eventos ruidosos después de las 10:00 PM",
+          "Capacidad máxima de 6 huéspedes"
+        ]
+      },
+      2: {
+        id: 2,
+        title: "Villa Coral",
+        description: "Disfruta del lujo moderno en nuestra Villa Coral de primer nivel. Perfecta para familias o grupos que buscan relajación con piscina privada, acabados de alta gama y la tecnología constructiva AZZUL ICF que mantiene una climatización interior ideal.",
+        capacity: 6,
+        price_per_night: 200.0,
+        level: "1st Level (Basement)",
+        amenities: ["Piscina Privada", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Equipada", "Comedor Exterior", "Barbacoa", "TV Smart"],
+        cover_image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1583608205776-bfd35f0d9f83?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la villa",
+          "Se permiten mascotas pequeñas bajo aviso previo",
+          "Capacidad máxima de 6 huéspedes"
+        ]
+      },
+      3: {
+        id: 3,
+        title: "Terraza Brisa",
+        description: "Elegante residencia de segundo nivel que destaca por su espectacular terraza privada. Perfecta para contemplar el atardecer, disfrutar de la brisa marina y relajarse en un ambiente amplio y con total privacidad.",
+        capacity: 4,
+        price_per_night: 150.0,
+        level: "2nd Level",
+        amenities: ["Terraza Panorámica", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Equipada", "Hamaca", "Smart TV"],
+        cover_image: "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1493809842364-78817add7ffb?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la casa",
+          "No se permiten mascotas",
+          "Capacidad máxima de 4 huéspedes"
+        ]
+      },
+      4: {
+        id: 4,
+        title: "Terraza Cielo",
+        description: "Villa de segundo nivel con una gran terraza abierta al cielo de San Blas. Combina interiores modernos con techos altos y aislamiento térmico acústico avanzado de AZZUL para asegurar un descanso ininterrumpido y fresco.",
+        capacity: 4,
+        price_per_night: 150.0,
+        level: "2nd Level",
+        amenities: ["Terraza de Lujo", "Wi-Fi de Alta Velocidad", "Aire Acondicionado", "Parqueo Privado", "Cocina Completa", "Área de Estar Exterior", "Smart TV"],
+        cover_image: "https://images.unsplash.com/photo-1502672011247-a6fd0f6e5a7a?auto=format&fit=crop&w=800&q=80",
+        gallery_images: [
+          "https://images.unsplash.com/photo-1502672011247-a6fd0f6e5a7a?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?auto=format&fit=crop&w=800&q=80",
+          "https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=800&q=80"
+        ],
+        rules: [
+          "Hora de entrada (Check-in): 3:00 PM",
+          "Hora de salida (Check-out): 11:00 AM",
+          "No se permite fumar dentro de la casa",
+          "No se permiten fiestas o eventos",
+          "Capacidad máxima de 4 huéspedes"
+        ]
+      }
+    };
+
+    // Mapeo de amenidades a iconos SVG
+    const AMENITIES_ICONS = {
+      "Piscina Privada": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.6 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.6 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.6 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>`,
+      "Wi-Fi de Alta Velocidad": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h.01"/><path d="M8.5 16.5a5 5 0 0 1 7 0"/><path d="M5 13a10 10 0 0 1 14 0"/><path d="M1.5 9.5a15 15 0 0 1 21 0"/></svg>`,
+      "Aire Acondicionado": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h20v6H2z"/><path d="M6 14v4"/><path d="M10 14v4"/><path d="M14 14v4"/><path d="M18 14v4"/><path d="M2 9c0 4 3 5 6 5h8c3 0 6-1 6-5"/></svg>`,
+      "Parqueo Privado": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>`,
+      "Cocina Equipada": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/><path d="M9 6v12"/><path d="M15 6v12"/><circle cx="12" cy="12" r="1"/></svg>`,
+      "Cocina Completa": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 18h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/><path d="M9 6v12"/><path d="M15 6v12"/><circle cx="12" cy="12" r="1"/></svg>`,
+      "Barbacoa": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="M5 12h14c0 3.87-3.13 7-7 7s-7-3.13-7-7z"/><path d="M8 12V8"/><path d="M16 12V8"/><path d="M4 22h16"/></svg>`,
+      "TV por Cable": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17,2 12,7 7,2"/></svg>`,
+      "TV Smart": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17,2 12,7 7,2"/></svg>`,
+      "Smart TV": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17,2 12,7 7,2"/></svg>`,
+      "Seguridad 24/7": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>`,
+      "Comedor Exterior": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h18v4H3z"/><path d="M5 7v14"/><path d="M19 7v14"/><path d="M9 12h6"/></svg>`,
+      "Terraza Panorámica": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 8l-6 12h12l-6-12z"/></svg>`,
+      "Terraza de Lujo": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 22h20L12 2z"/><path d="M12 8l-6 12h12l-6-12z"/></svg>`,
+      "Hamaca": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10s4 4 8 4 8-4 8-4"/><line x1="2" y1="12" x2="4" y2="10"/><line x1="20" y1="10" x2="22" y2="12"/></svg>`,
+      "Área de Estar Exterior": `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`
+    };
+
+    let activeProperty = null;
+    let isServerOffline = false;
+    let selectedCheckIn = null;
+    let selectedCheckOut = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const propId = parseInt(urlParams.get('id')) || 1;
+      
+      loadPropertyDetail(propId);
+      setupReservationForm();
+    });
+
+    async function loadPropertyDetail(id) {
+      try {
+        const response = await fetch(`http://localhost:3000/api/properties/${id}`);
+        if (!response.ok) throw new Error('Error loading property');
+        const data = await response.json();
+        activeProperty = data;
+        renderDetails(data);
+        loadCalendar(id);
+      } catch (error) {
+        console.warn("Flask API offline. Cargando detalle desde mock local.", error);
+        isServerOffline = true;
+        document.getElementById('offline-cal-msg').style.display = 'block';
+        activeProperty = MOCK_PROPERTIES[id] || MOCK_PROPERTIES[1];
+        renderDetails(activeProperty);
+        loadCalendarFallback();
+      }
+    }
+
+    function renderDetails(prop) {
+      document.getElementById('prop-title-element').innerText = prop.title;
+      document.getElementById('price-value-element').innerText = `$${prop.price_per_night}`;
+      document.getElementById('prop-desc-element').innerText = prop.description;
+      
+      // Badges
+      const levelText = prop.level.includes('Basement') ? 'Primer Nivel (con Piscina)' : 'Segundo Nivel (con Terraza)';
+      const levelTextKey = prop.level.includes('Basement') ? 'rentals_level_1' : 'rentals_level_2';
+      document.getElementById('level-badge-element').querySelector('span').innerText = levelText;
+      document.getElementById('level-badge-element').querySelector('span').setAttribute('data-i18n', levelTextKey);
+      
+      document.getElementById('capacity-badge-element').innerText = `Capacidad: ${prop.capacity} Huéspedes`;
+      
+      // Imagen Principal
+      const mainImg = document.getElementById('primary-gallery-img');
+      mainImg.src = prop.cover_image;
+      mainImg.alt = prop.title;
+      
+      // Galería Miniaturas
+      const thumbContainer = document.getElementById('thumbnails-container');
+      thumbContainer.innerHTML = '';
+      
+      prop.gallery_images.forEach((imgUrl, index) => {
+        const thumb = document.createElement('div');
+        thumb.className = `h-24 md:h-32 rounded-2xl overflow-hidden border-2 cursor-pointer shadow-sm ${index === 0 ? 'border-secondary-container' : 'border-white/60 hover:border-secondary'} thumbnail-item transition-all duration-300`;
+        thumb.innerHTML = `<img src="${imgUrl}" alt="Gallery ${index}" class="w-full h-full object-cover">`;
+        thumb.addEventListener('click', () => {
+          document.querySelectorAll('.thumbnail-item').forEach(t => {
+            t.classList.remove('border-secondary-container');
+            t.classList.add('border-white/60', 'hover:border-secondary');
+          });
+          thumb.classList.remove('border-white/60', 'hover:border-secondary');
+          thumb.classList.add('border-secondary-container');
+          mainImg.src = imgUrl;
+        });
+        thumbContainer.appendChild(thumb);
+      });
+      
+      // Amenidades
+      const amContainer = document.getElementById('amenities-container');
+      amContainer.innerHTML = '';
+      prop.amenities.forEach(am => {
+        const item = document.createElement('div');
+        item.className = 'flex items-center gap-4 p-4 glass-card rounded-2xl hover:-translate-y-1 transition-transform duration-300';
+        const iconSvg = AMENITIES_ICONS[am] || `<svg class="amenity-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>`;
+        item.innerHTML = `
+          <div class="text-primary bg-primary-fixed/50 p-2 rounded-full w-10 h-10 flex items-center justify-center flex-shrink-0">
+            ${iconSvg}
+          </div>
+          <span class="font-body-sm text-body-sm text-on-surface font-medium">${am}</span>
+        `;
+        amContainer.appendChild(item);
+      });
+      
+      // Reglas
+      const rulesContainer = document.getElementById('rules-container');
+      rulesContainer.innerHTML = '';
+      prop.rules.forEach(rule => {
+        const li = document.createElement('li');
+        li.className = 'flex items-center gap-4 bg-white/40 p-4 rounded-xl border border-white/50';
+        li.innerHTML = `
+          <div class="w-2.5 h-2.5 rounded-full bg-secondary-container shadow-sm flex-shrink-0"></div>
+          <span class="font-body-md text-body-md text-on-surface">${rule}</span>
+        `;
+        rulesContainer.appendChild(li);
+      });
+
+      // Traducir
+      if (window.translations && typeof setLanguage === 'function') {
+        setLanguage(localStorage.getItem('preferredLang') || 'es');
+      }
+    }
+
+    // Inicializar flatpickr haciendo petición a la API
+    async function loadCalendar(propId) {
+      let disabledDates = [];
+      try {
+        const response = await fetch(`http://localhost:3000/api/properties/${propId}/disabled-dates`);
+        if (response.ok) {
+          disabledDates = await response.json();
+        }
+      } catch (e) {
+        console.error("Error al obtener fechas deshabilitadas del servidor", e);
+      }
+      
+      initFlatpickr(disabledDates);
+    }
+
+    // Inicializar flatpickr con mock de fechas ocupadas (hoy + 3 días en adelante ocupado, etc.)
+    function loadCalendarFallback() {
+      const today = new Date();
+      const format = (date) => date.toISOString().split('T')[0];
+      
+      // Bloquear 3 días a partir del lunes de la próxima semana como demostración
+      const nextMon = new Date();
+      nextMon.setDate(today.getDate() + ((1 + 7 - today.getDay()) % 7 || 7));
+      
+      const d1 = format(nextMon);
+      nextMon.setDate(nextMon.getDate() + 1);
+      const d2 = format(nextMon);
+      nextMon.setDate(nextMon.getDate() + 1);
+      const d3 = format(nextMon);
+      
+      initFlatpickr([d1, d2, d3]);
+    }
+
+    function initFlatpickr(disabledDates) {
+      const lang = localStorage.getItem('preferredLang') || 'es';
+      
+      flatpickr("#date-range-picker", {
+        mode: "range",
+        minDate: "today",
+        dateFormat: "Y-m-d",
+        locale: lang === 'es' ? flatpickr.l10ns.es : 'default',
+        disable: disabledDates,
+        onChange: function(selectedDates, dateStr, instance) {
+          if (selectedDates.length === 2) {
+            selectedCheckIn = selectedDates[0];
+            selectedCheckOut = selectedDates[1];
+            calculatePrice(selectedCheckIn, selectedCheckOut);
+          } else {
+            selectedCheckIn = null;
+            selectedCheckOut = null;
+            document.getElementById('calc-breakdown').style.display = 'none';
+            document.getElementById('request-booking-btn').disabled = true;
+          }
+        }
+      });
+    }
+
+    let activeDiscount = 0; // Porcentaje de descuento activo
+
+    // Escuchar el input de código de descuento
+    document.getElementById('discount-code-input').addEventListener('input', (e) => {
+      const code = e.target.value.trim().toUpperCase();
+      const statusMsg = document.getElementById('discount-status-msg');
+      
+      if (code === '') {
+        activeDiscount = 0;
+        statusMsg.style.display = 'none';
+        if (selectedCheckIn && selectedCheckOut) {
+          calculatePrice(selectedCheckIn, selectedCheckOut);
+        }
+        return;
+      }
+      
+      if (code === 'AZZUL10') {
+        activeDiscount = 10;
+        statusMsg.style.display = 'block';
+        statusMsg.style.color = '#10b981'; // Verde
+        statusMsg.innerText = '¡Código AZZUL10 aplicado! 10% de descuento';
+      } else if (code === 'SANBLAS20') {
+        activeDiscount = 20;
+        statusMsg.style.display = 'block';
+        statusMsg.style.color = '#10b981'; // Verde
+        statusMsg.innerText = '¡Código SANBLAS20 aplicado! 20% de descuento';
+      } else {
+        activeDiscount = 0;
+        statusMsg.style.display = 'block';
+        statusMsg.style.color = '#ef4444'; // Rojo
+        statusMsg.innerText = 'Código no válido';
+      }
+      
+      if (selectedCheckIn && selectedCheckOut) {
+        calculatePrice(selectedCheckIn, selectedCheckOut);
+      }
+    });
+
+    function calculatePrice(checkIn, checkOut) {
+      const msDiff = checkOut.getTime() - checkIn.getTime();
+      const nights = Math.ceil(msDiff / (1000 * 3600 * 24));
+      
+      if (nights <= 0) return;
+      
+      const basePrice = activeProperty.price_per_night;
+      let total = basePrice * nights;
+      
+      if (activeDiscount > 0) {
+        total = total * (1 - activeDiscount / 100);
+      }
+      
+      const lang = localStorage.getItem('preferredLang') || 'es';
+      
+      document.getElementById('calc-nights-text').innerText = lang === 'es' 
+        ? `$${basePrice} x ${nights} noches` 
+        : `$${basePrice} x ${nights} nights`;
+        
+      document.getElementById('calc-subtotal-val').innerText = `$${(basePrice * nights).toFixed(2)}`;
+      document.getElementById('calc-total-val').innerText = `$${total.toFixed(2)}`;
+      
+      document.getElementById('calc-breakdown').style.display = 'block';
+      document.getElementById('request-booking-btn').disabled = false;
+    }
+
+    function setupReservationForm() {
+      const modal = document.getElementById('booking-modal');
+      const requestBtn = document.getElementById('request-booking-btn');
+      const closeBtn = document.getElementById('modal-close-btn');
+      
+      // Abrir Modal
+      requestBtn.addEventListener('click', () => {
+        if (!selectedCheckIn || !selectedCheckOut) return;
+        
+        const formatDate = (d) => d.toLocaleDateString(undefined, { day: 'numeric', month: 'short' });
+        const nights = Math.ceil((selectedCheckOut.getTime() - selectedCheckIn.getTime()) / (1000 * 3600 * 24));
+        let total = activeProperty.price_per_night * nights;
+        
+        if (activeDiscount > 0) {
+          total = total * (1 - activeDiscount / 100);
+        }
+        
+        document.getElementById('form-prop-id').value = activeProperty.id;
+        document.getElementById('form-check-in').value = selectedCheckIn.toISOString().split('T')[0];
+        document.getElementById('form-check-out').value = selectedCheckOut.toISOString().split('T')[0];
+        document.getElementById('form-discount-code').value = document.getElementById('discount-code-input').value.trim().toUpperCase();
+        
+        // Reset checkboxes and payment method in modal
+        document.getElementById('upsell-late-checkout').checked = false;
+        document.getElementById('upsell-daily-cleaning').checked = false;
+        document.querySelector('input[name="metodo_pago"][value="Tarjeta"]').checked = true;
+        document.getElementById('modal-submit-btn').innerText = 'Proceder al Pago Seguro';
+        
+        document.getElementById('modal-prop-title').innerText = activeProperty.title;
+        document.getElementById('modal-dates-text').innerText = `${formatDate(selectedCheckIn)} - ${formatDate(selectedCheckOut)} (${nights} noches)`;
+        document.getElementById('modal-total-text').innerText = `Total: $${total.toFixed(2)}`;
+        
+        modal.style.display = 'flex';
+      });
+      
+      // Cerrar Modal
+      closeBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+      });
+      
+      // Listeners para adicionales (upsells)
+      document.getElementById('upsell-late-checkout').addEventListener('change', updateModalPrice);
+      document.getElementById('upsell-daily-cleaning').addEventListener('change', updateModalPrice);
+      
+      // Listeners para cambiar botón de pago de forma dinámica
+      document.querySelectorAll('input[name="metodo_pago"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+          const btn = document.getElementById('modal-submit-btn');
+          if (e.target.value === 'Tarjeta') {
+            btn.innerText = 'Proceder al Pago Seguro';
+          } else if (e.target.value === 'Transferencia') {
+            btn.innerText = 'Reservar y ver cuentas bancarias';
+          } else {
+            btn.innerText = 'Reservar y abrir WhatsApp';
+          }
+        });
+      });
+      
+      function updateModalPrice() {
+        if (!selectedCheckIn || !selectedCheckOut) return;
+        
+        const nights = Math.ceil((selectedCheckOut.getTime() - selectedCheckIn.getTime()) / (1000 * 3600 * 24));
+        const basePrice = activeProperty.price_per_night;
+        let total = basePrice * nights;
+        
+        if (activeDiscount > 0) {
+          total = total * (1 - activeDiscount / 100);
+        }
+        
+        const isLate = document.getElementById('upsell-late-checkout').checked;
+        const isCleaning = document.getElementById('upsell-daily-cleaning').checked;
+        
+        let upsellTotal = 0;
+        if (isLate) upsellTotal += 20;
+        if (isCleaning) upsellTotal += 15 * nights;
+        
+        const grandTotal = total + upsellTotal;
+        document.getElementById('modal-total-text').innerText = `Total: $${grandTotal.toFixed(2)}`;
+      }
+      
+      // Enviar Formulario e integrar checkout unificado
+      document.getElementById('reservation-form').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const discountCode = document.getElementById('form-discount-code').value;
+        const metodoPago = document.querySelector('input[name="metodo_pago"]:checked').value;
+        const lateCheckout = document.getElementById('upsell-late-checkout').checked;
+        const dailyCleaning = document.getElementById('upsell-daily-cleaning').checked;
+        
+        const payload = {
+          property_id: parseInt(document.getElementById('form-prop-id').value),
+          client_name: document.getElementById('client-name').value,
+          client_email: document.getElementById('client-email').value,
+          client_phone: document.getElementById('client-phone').value,
+          check_in: document.getElementById('form-check-in').value,
+          check_out: document.getElementById('form-check-out').value,
+          discount_code: discountCode,
+          metodo_pago: metodoPago,
+          late_checkout: lateCheckout,
+          daily_cleaning: dailyCleaning,
+          comments: document.getElementById('client-comments').value
+        };
+        
+        const nights = Math.ceil((new Date(payload.check_out).getTime() - new Date(payload.check_in).getTime()) / (1000 * 3600 * 24));
+        let total = activeProperty.price_per_night * nights;
+        if (activeDiscount > 0) {
+          total = total * (1 - activeDiscount / 100);
+        }
+        if (lateCheckout) total += 20;
+        if (dailyCleaning) total += 15 * nights;
+        
+        // Cambiar estado del botón a cargando
+        const submitBtn = document.getElementById('modal-submit-btn');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerText = 'Procesando reservación...';
+        
+        if (isServerOffline) {
+          // Simular tiempo de espera y redirección según el método de pago
+          let delay = 2000;
+          if (metodoPago === 'Transferencia') delay = 1000;
+          if (metodoPago === 'WhatsApp') delay = 500;
+          
+          setTimeout(() => {
+            const mockId = Math.floor(Math.random() * 100000);
+            if (metodoPago === 'Tarjeta') {
+              window.location.href = `success.html?id=${mockId}&total=${total}&nights=${nights}&client=${encodeURIComponent(payload.client_name)}&prop=${encodeURIComponent(activeProperty.title)}`;
+            } else if (metodoPago === 'Transferencia') {
+              window.location.href = `transferencia.html?id=${mockId}&total=${total}&nights=${nights}&client=${encodeURIComponent(payload.client_name)}&prop=${encodeURIComponent(activeProperty.title)}`;
+            } else { // WhatsApp
+              const waMsg = `Hola AZZUL, quisiera confirmar mi reserva:\n- Casa: ${activeProperty.title}\n- Fechas: ${payload.check_in} al ${payload.check_out} (${nights} noches)\n- Nombre: ${payload.client_name}\n- Pago: WhatsApp\n- Total: $${total.toFixed(2)} USD\nID Reserva: #MOCK-${mockId}`;
+              window.location.href = `https://wa.me/50375703500?text=${encodeURIComponent(waMsg)}`;
+            }
+          }, delay);
+          return;
+        }
+        
+        try {
+          const response = await fetch('http://localhost:3000/api/checkout', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          
+          const result = await response.json();
+          if (response.ok && result.success) {
+            window.location.href = result.redirect_url;
+          } else {
+            alert(`Error de reservación: ${result.error}`);
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+          }
+        } catch (err) {
+          alert('Error al conectar con el servidor.');
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalText;
+        }
+      });
+    }
+  </script>
+</body>
+</html>
