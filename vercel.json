@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/ebook", "destination": "/ebook.html" },
+    { "source": "/rentas", "destination": "/rentas.html" },
+    { "source": "/detalle", "destination": "/detalle.html" },
+    { "source": "/success", "destination": "/success.html" },
+    { "source": "/transferencia", "destination": "/transferencia.html" }
+  ]
+}

@@ -416,7 +416,10 @@ const translations = {
     success_total: "Total Pagado",
     success_btn: "Volver al Catálogo",
     rentals_discount_code: "Código de Descuento",
-    rentals_map_title: "Ubicación de la Propiedad"
+    rentals_map_title: "Ubicación de la Propiedad",
+    ebook_tag: "eBook",
+    ebook_title: "Azzul San Blas - Catálogo y Guía Digital",
+    ebook_subtitle: "Explore el catálogo interactivo de nuestras villas vacacionales premium en formato flipbook digital."
   },
   en: {
     // Navbar Global
@@ -834,7 +837,10 @@ const translations = {
     success_total: "Total Paid",
     success_btn: "Back to Catalog",
     rentals_discount_code: "Discount Code",
-    rentals_map_title: "Property Location"
+    rentals_map_title: "Property Location",
+    ebook_tag: "eBook",
+    ebook_title: "Azzul San Blas - Catalog & Digital Guide",
+    ebook_subtitle: "Explore the interactive catalog of our premium vacation villas in digital flipbook format."
   }
 };
 

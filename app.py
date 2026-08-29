@@ -50,6 +50,10 @@ def success_page():
 def transferencia_page():
     return app.send_static_file('transferencia.html')
 
+@app.route('/ebook')
+def ebook_page():
+    return app.send_static_file('ebook.html')
+
 # ==========================================
 # RUTAS DE CLIENTE (FRONTEND API)
 # ==========================================
