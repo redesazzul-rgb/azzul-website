@@ -425,7 +425,10 @@ const translations = {
     search_dates_label: "Seleccionar Fechas (Rango)",
     search_dates_placeholder: "Seleccione fechas...",
     search_guests_label: "Huéspedes",
-    search_btn: "Buscar"
+    search_btn: "Buscar",
+    ebook_tag: "eBook",
+    ebook_title: "Azzul San Blas - Catálogo y Guía Digital",
+    ebook_subtitle: "Explore el catálogo interactivo de nuestras villas vacacionales premium en formato flipbook digital."
   },
   en: {
     // Navbar Global
@@ -852,7 +855,10 @@ const translations = {
     search_dates_label: "Select Dates (Range)",
     search_dates_placeholder: "Select dates...",
     search_guests_label: "Guests",
-    search_btn: "Search"
+    search_btn: "Search",
+    ebook_tag: "eBook",
+    ebook_title: "Azzul San Blas - Catalog & Digital Guide",
+    ebook_subtitle: "Explore the interactive catalog of our premium vacation villas in digital flipbook format."
   }
 };
 
