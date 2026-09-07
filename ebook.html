@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Home Design | AZZUL</title>
-  <meta name="description" content="Explore el catálogo interactivo de nuestras villas vacacionales premium en Azzul San Blas.">
-  
+  <meta name="description"
+    content="Explore el catálogo interactivo de nuestras villas vacacionales premium en Azzul San Blas.">
+
   <!-- Estilos Globales -->
   <link rel="stylesheet" href="styles.css">
-  
+
   <style>
     .gallery-grid {
       display: grid;
@@ -16,7 +18,7 @@
       gap: 1.5rem;
       margin-top: 1rem;
     }
-    
+
     .gallery-item {
       background: transparent;
       border: none;
@@ -28,11 +30,11 @@
       justify-content: center;
       box-shadow: none;
     }
-    
+
     .gallery-item:hover {
       transform: translateY(-8px);
     }
-    
+
     .gallery-item img {
       width: 100%;
       height: auto;
@@ -42,14 +44,14 @@
       padding: 0;
       background: transparent;
       border-radius: 12px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
       transition: box-shadow 0.3s ease;
     }
 
     .gallery-item:hover img {
       box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3);
     }
-    
+
     .gallery-item .item-title {
       display: none !important;
     }
@@ -90,8 +92,10 @@
 
     .docs-hero-bg {
       position: absolute;
-      top: -50px; right: -50px;
-      width: 350px; height: 350px;
+      top: -50px;
+      right: -50px;
+      width: 350px;
+      height: 350px;
       background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
       pointer-events: none;
     }
@@ -107,7 +111,8 @@
     }
 
     .docs-hero-icon {
-      width: 72px; height: 72px;
+      width: 72px;
+      height: 72px;
       background: rgba(56, 189, 248, 0.1);
       border-radius: 16px;
       display: flex;
@@ -206,7 +211,8 @@
       transition: all 0.3s ease;
     }
 
-    .filter-pill.active, .filter-pill:hover {
+    .filter-pill.active,
+    .filter-pill:hover {
       background: rgba(56, 189, 248, 0.15);
       border-color: rgba(56, 189, 248, 0.4);
       color: #38bdf8;
@@ -223,8 +229,8 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 0.5rem;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-    }    
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
 
 
     .lightbox-modal {
@@ -248,8 +254,13 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
     }
 
     .lightbox-content {
@@ -263,11 +274,12 @@
       align-items: center;
     }
 
-    .lightbox-content img, .lightbox-content iframe {
+    .lightbox-content img,
+    .lightbox-content iframe {
       max-width: 100%;
       max-height: 90vh;
       border-radius: 12px;
-      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
       background: #fff;
     }
 
@@ -298,33 +310,41 @@
         top: 10px;
         right: 20px;
       }
+
       .lightbox-content iframe {
         width: 100%;
         height: 80vh;
       }
+
       .gallery-grid {
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
       }
+
       .pdf-download-card {
         flex-direction: column;
         text-align: center;
         gap: 1.5rem;
       }
+
       .docs-hero-header {
         flex-direction: column;
         text-align: center;
       }
+
       .docs-hero-actions {
         flex-direction: column;
         width: 100%;
       }
-      .docs-hero-actions .btn-glass, .docs-hero-actions .btn-primary-glow {
+
+      .docs-hero-actions .btn-glass,
+      .docs-hero-actions .btn-primary-glow {
         width: 100%;
         justify-content: center;
       }
     }
   </style>
 </head>
+
 <body>
 
   <!-- ==========================================
@@ -342,51 +362,68 @@
         <a href="index.html#hero-section" class="nav-link" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
         <a href="index.html#sobre-azzul" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
         <a href="index.html#team" class="nav-link" id="link-team" data-i18n="nav_equipo">Equipo</a>
-        <a href="index.html#how-we-work" class="nav-link" id="link-how-we-work" data-i18n="nav_como_trabajamos">Cómo Trabajamos</a>
-        <a href="sistema.html#ciencia-constructiva" class="nav-link" id="link-ciencia" data-i18n="nav_ciencia">Ciencia Constructiva</a>
+        <a href="index.html#how-we-work" class="nav-link" id="link-how-we-work" data-i18n="nav_como_trabajamos">Cómo
+          Trabajamos</a>
+        <a href="sistema.html#ciencia-constructiva" class="nav-link" id="link-ciencia" data-i18n="nav_ciencia">Ciencia
+          Constructiva</a>
         <div class="nav-item-dropdown">
-            <a href="index.html#what-we-do" class="nav-link" id="link-what-we-do" data-i18n="nav_que_hacemos">Qué Hacemos</a>
-            <div class="mega-menu">
-                <div class="mega-menu-container">
-                    <div class="mega-card" id="mega-card-products">
-                        <img src="assets/logo/logo building products.png" alt="Building Products Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                        <span class="mega-badge" data-i18n="nav_products">AZZUL Building Products</span>
-                        <h4 data-i18n="nav_products_title">Venta y Distribución ICF</h4>
-                        <p data-i18n="nav_products_desc">Importación directa y stock disponible de tecnología ICF en El Salvador. Unificamos estructura y aislamiento en un solo paso.</p>
-                        <a href="sistema.html?tab=products" class="mega-link" data-i18n="nav_products_link">Explorar Productos &rarr;</a>
-                    </div>
-                    <div class="mega-card" id="mega-card-constructora">
-                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                        <span class="mega-badge badge-blue" data-i18n="nav_construction">AZZUL Construcción</span>
-                        <h4 data-i18n="nav_construction_title">Diseño y Construcción</h4>
-                        <p data-i18n="nav_construction_desc">Desarrollo, diseño arquitectónico y ejecución de obras residenciales y comerciales con la máxima eficiencia del sistema ICF.</p>
-                        <a href="proyectos.html" class="mega-link" data-i18n="nav_construction_link">Ver Proyectos &rarr;</a>
-                    </div>
-                    <div class="mega-card" id="mega-card-academy">
-                        <img src="assets/logo/logo training program.png" alt="AZZUL Certification Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                        <span class="mega-badge badge-green" data-i18n="nav_certification">AZZUL Certification</span>
-                        <h4 data-i18n="nav_certification_title">Entrenamiento y Certificación</h4>
-                        <p data-i18n="nav_certification_desc">Única entidad calificada en El Salvador para certificar profesionales del sector en el sistema constructivo moderno.</p>
-                        <a href="sistema.html?tab=training" class="mega-link" data-i18n="nav_certification_link">Ver Certificación &rarr;</a>
-                    </div>
-                    <div class="mega-card" id="mega-card-management">
-                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                        <span class="mega-badge badge-blue" data-i18n="nav_management">AZZUL Management</span>
-                        <h4 data-i18n="nav_management_title">Gestión y Mantenimiento</h4>
-                        <p data-i18n="nav_management_desc">Servicios especializados en el cuidado integral, preservación y mantenimiento de propiedades de alto rendimiento. Diseñado para optimizar la gestión operativa de residencias destinadas al mercado de rentas vacacionales y estancias de corta duración, garantizando un estado impecable sin que tengas que preocuparte por nada.</p>
-                        <a href="contacto.html?interest=management" class="mega-link" data-i18n="nav_management_link">Ver Servicios de Gestión &rarr;</a>
-                    </div>
-                </div>
+          <a href="index.html#what-we-do" class="nav-link" id="link-what-we-do" data-i18n="nav_que_hacemos">Qué
+            Hacemos</a>
+          <div class="mega-menu">
+            <div class="mega-menu-container">
+              <div class="mega-card" id="mega-card-products">
+                <img src="assets/logo/logo building products.png" alt="Building Products Logo"
+                  style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                <span class="mega-badge" data-i18n="nav_products">AZZUL Building Products</span>
+                <h4 data-i18n="nav_products_title">Venta y Distribución ICF</h4>
+                <p data-i18n="nav_products_desc">Importación directa y stock disponible de tecnología ICF en El
+                  Salvador. Unificamos estructura y aislamiento en un solo paso.</p>
+                <a href="sistema.html?tab=products" class="mega-link" data-i18n="nav_products_link">Explorar Productos
+                  &rarr;</a>
+              </div>
+              <div class="mega-card" id="mega-card-constructora">
+                <img src="assets/logo/logo.png" alt="AZZUL Logo"
+                  style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                <span class="mega-badge badge-blue" data-i18n="nav_construction">AZZUL Construcción</span>
+                <h4 data-i18n="nav_construction_title">Diseño y Construcción</h4>
+                <p data-i18n="nav_construction_desc">Desarrollo, diseño arquitectónico y ejecución de obras
+                  residenciales y comerciales con la máxima eficiencia del sistema ICF.</p>
+                <a href="proyectos.html" class="mega-link" data-i18n="nav_construction_link">Ver Proyectos &rarr;</a>
+              </div>
+              <div class="mega-card" id="mega-card-academy">
+                <img src="assets/logo/logo training program.png" alt="AZZUL Certification Logo"
+                  style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                <span class="mega-badge badge-green" data-i18n="nav_certification">AZZUL Certification</span>
+                <h4 data-i18n="nav_certification_title">Entrenamiento y Certificación</h4>
+                <p data-i18n="nav_certification_desc">Única entidad calificada en El Salvador para certificar
+                  profesionales del sector en el sistema constructivo moderno.</p>
+                <a href="sistema.html?tab=training" class="mega-link" data-i18n="nav_certification_link">Ver
+                  Certificación &rarr;</a>
+              </div>
+              <div class="mega-card" id="mega-card-management">
+                <img src="assets/logo/logo.png" alt="AZZUL Logo"
+                  style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
+                <span class="mega-badge badge-blue" data-i18n="nav_management">AZZUL Management</span>
+                <h4 data-i18n="nav_management_title">Gestión y Mantenimiento</h4>
+                <p data-i18n="nav_management_desc">Servicios especializados en el cuidado integral, preservación y
+                  mantenimiento de propiedades de alto rendimiento. Diseñado para optimizar la gestión operativa de
+                  residencias destinadas al mercado de rentas vacacionales y estancias de corta duración, garantizando
+                  un estado impecable sin que tengas que preocuparte por nada.</p>
+                <a href="contacto.html?interest=management" class="mega-link" data-i18n="nav_management_link">Ver
+                  Servicios de Gestión &rarr;</a>
+              </div>
             </div>
+          </div>
         </div>
         <div class="nav-btn">
-            <a href="index.html#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="link-contacto" data-i18n="nav_contact_btn">Contáctanos</a>
+          <a href="index.html#contact" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;"
+            id="link-contacto" data-i18n="nav_contact_btn">Contáctanos</a>
         </div>
         <!-- Selector de Idioma -->
         <div class="lang-selector">
-            <button class="lang-btn active" data-lang="es">ES</button>
-            <span class="lang-divider">/</span>
-            <button class="lang-btn" data-lang="en">EN</button>
+          <button class="lang-btn active" data-lang="es">ES</button>
+          <span class="lang-divider">/</span>
+          <button class="lang-btn" data-lang="en">EN</button>
         </div>
       </nav>
 
@@ -402,11 +439,15 @@
   <!-- ==========================================
        HERO DE LA PÁGINA
        ========================================== -->
-  <section class="hero-page" style="padding-top: 8rem; padding-bottom: 3rem; background: linear-gradient(180deg, var(--slate-950) 0%, rgba(15, 23, 42, 0.6) 100%);">
+  <section class="hero-page"
+    style="padding-top: 8rem; padding-bottom: 3rem; background: linear-gradient(180deg, var(--slate-950) 0%, rgba(15, 23, 42, 0.6) 100%);">
     <div class="container" style="text-align: center;">
       <span class="badge badge-cyan">Home Design</span>
       <h1 style="margin-top: 1rem; font-size: 3rem; line-height: 1.2;">Portafolio & Matriz Constructiva</h1>
-      <p style="max-width: 800px; margin: 1.5rem auto 0 auto; color: var(--slate-400); font-size: 1.15rem; line-height: 1.8;">Explore nuestros desarrollos costeros, planos de planta, diseños interactivos y especificaciones técnicas oficiales de las villas en Azzul San Blas.</p>
+      <p
+        style="max-width: 800px; margin: 1.5rem auto 0 auto; color: var(--slate-400); font-size: 1.15rem; line-height: 1.8;">
+        Explore nuestros desarrollos costeros, planos de planta, diseños interactivos y especificaciones técnicas
+        oficiales de las villas en Azzul San Blas.</p>
     </div>
   </section>
 
@@ -420,7 +461,8 @@
       <div class="section-title-header">
         <h3>
           <svg style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
           Home Design
         </h3>
@@ -440,27 +482,32 @@
         <div class="docs-hero-header">
           <div class="docs-hero-icon" style="background: rgba(56,189,248,0.15);">
             <svg style="width: 36px; height: 36px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
           </div>
           <div class="docs-hero-title-container">
             <h2>Catálogo AZZUL Housing</h2>
-            <p>Visualiza en formato PDF todas las propiedades, planos, fachadas y detalles arquitectónicos de nuestras residencias.</p>
+            <p>Visualiza en formato PDF todas las propiedades, planos, fachadas y detalles arquitectónicos de nuestras
+              residencias.</p>
           </div>
         </div>
-        
+
         <div class="docs-hero-actions">
           <button class="btn-primary-glow" onclick="openLightbox('assets/AZZUL-Housing/AZZUL-Housing.pdf', 'pdf')">
             <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
             </svg>
             Abrir Visor Interactivo
           </button>
-          
+
           <a href="assets/AZZUL-Housing/AZZUL-Housing.pdf" download class="btn-glass">
             <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
             Descargar PDF Completo
           </a>
@@ -547,7 +594,8 @@
         <a href="index.html#hero-section" class="logo" style="margin-bottom: 1rem;">
           <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 40px; width: auto; object-fit: contain;">
         </a>
-        <p data-i18n="footer_desc">Soluciones habitacionales e industriales basadas en innovación técnica, durabilidad indestructible y eficiencia energética extrema.</p>
+        <p data-i18n="footer_desc">Soluciones habitacionales e industriales basadas en innovación técnica, durabilidad
+          indestructible y eficiencia energética extrema.</p>
       </div>
 
       <!-- Columna Navegación -->
@@ -565,8 +613,12 @@
       <div id="footer-col-contact">
         <h4 class="footer-title" data-i18n="footer_office">Oficina Central</h4>
         <div class="footer-info-item">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          <span data-i18n="footer_address">Carretera CA-2, Lomas de San Blas, Lote 18 y Lote 19, El Salvador. Cerca de Playa San Blas / El Encuentro Surf City</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+            <circle cx="12" cy="10" r="3" />
+          </svg>
+          <span data-i18n="footer_address">Carretera CA-2, Lomas de San Blas, Lote 18 y Lote 19, El Salvador. Cerca de
+            Playa San Blas / El Encuentro Surf City</span>
         </div>
       </div>
     </div>
@@ -581,7 +633,8 @@
   <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
     <div class="lightbox-content" id="lightbox-content">
       <span class="lightbox-close" onclick="closeLightbox(event, true)">&times;</span>
-      <div id="lightbox-media-container" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></div>
+      <div id="lightbox-media-container"
+        style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></div>
     </div>
   </div>
 
@@ -592,7 +645,7 @@
     function openLightbox(src, type) {
       const modal = document.getElementById('lightbox-modal');
       const container = document.getElementById('lightbox-media-container');
-      
+
       container.innerHTML = '';
       if (type === 'image') {
         const img = document.createElement('img');
@@ -604,7 +657,7 @@
         iframe.frameBorder = '0';
         container.appendChild(iframe);
       }
-      
+
       modal.classList.add('active');
       document.body.style.overflow = 'hidden';
     }
@@ -618,4 +671,5 @@
     }
   </script>
 </body>
+
 </html>
