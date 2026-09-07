@@ -3,42 +3,324 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>eBook Digital | AZZUL</title>
+  <title>Home Design | AZZUL</title>
   <meta name="description" content="Explore el catálogo interactivo de nuestras villas vacacionales premium en Azzul San Blas.">
   
   <!-- Estilos Globales -->
   <link rel="stylesheet" href="styles.css">
   
   <style>
-    .ebook-container {
-      max-width: 1100px;
-      margin: 0 auto;
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+    
+    .gallery-item {
+      background: transparent;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: none;
+    }
+    
+    .gallery-item:hover {
+      transform: translateY(-8px);
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      margin: 0;
+      padding: 0;
+      background: transparent;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .gallery-item:hover img {
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3);
+    }
+    
+    .gallery-item .item-title {
+      display: none !important;
+    }
+
+    /* Section Headers */
+    .section-title-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+    }
+
+    .section-title-header h3 {
+      font-size: 1.5rem;
+      color: var(--slate-200);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Docs Hero Card */
+    .docs-hero-card {
+      position: relative;
       background: rgba(30, 41, 59, 0.7);
       backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
-      padding: 1.5rem;
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow: hidden;
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     }
-    
-    .ebook-iframe-wrapper {
-      position: relative;
-      width: 100%;
-      height: 650px;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+
+    .docs-hero-bg {
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
+      pointer-events: none;
     }
-    
+
+    .docs-hero-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .docs-hero-icon {
+      width: 72px; height: 72px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #38bdf8;
+      flex-shrink: 0;
+    }
+
+    .docs-hero-title-container h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .docs-hero-title-container p {
+      color: var(--slate-400);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .docs-hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--slate-200);
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #fff;
+    }
+
+    .btn-primary-glow {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .btn-primary-glow:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      color: #fff;
+    }
+
+    /* Filter Pills */
+    .filter-pills {
+      display: flex;
+      gap: 0.75rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+      scrollbar-width: none;
+    }
+
+    .filter-pills::-webkit-scrollbar {
+      display: none;
+    }
+
+    .filter-pill {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.6rem 1.25rem;
+      border-radius: 24px;
+      color: var(--slate-300);
+      font-size: 0.95rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .filter-pill.active, .filter-pill:hover {
+      background: rgba(56, 189, 248, 0.15);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+    }
+
+    /* PDF Download Card in Gallery */
+    .pdf-download-card {
+      grid-column: 1 / -1;
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    }    
+
+
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 95%;
+      max-height: 95vh;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-content img, .lightbox-content iframe {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      background: #fff;
+    }
+
+    .lightbox-content iframe {
+      width: 90%;
+      height: 90vh;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+      z-index: 100;
+    }
+
+    .lightbox-close:hover {
+      color: #38bdf8;
+    }
+
     @media (max-width: 768px) {
-      .ebook-iframe-wrapper {
-        height: 450px;
+      .lightbox-close {
+        top: 10px;
+        right: 20px;
       }
-      .ebook-container {
-        padding: 0.75rem;
-        border-radius: 16px;
+      .lightbox-content iframe {
+        width: 100%;
+        height: 80vh;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+      .pdf-download-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 1.5rem;
+      }
+      .docs-hero-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .docs-hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .docs-hero-actions .btn-glass, .docs-hero-actions .btn-primary-glow {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
@@ -122,20 +404,134 @@
        ========================================== -->
   <section class="hero-page" style="padding-top: 8rem; padding-bottom: 3rem; background: linear-gradient(180deg, var(--slate-950) 0%, rgba(15, 23, 42, 0.6) 100%);">
     <div class="container" style="text-align: center;">
-      <span class="badge badge-cyan" data-i18n="ebook_tag">eBook</span>
-      <h1 data-i18n="ebook_title" style="margin-top: 1rem; font-size: 3rem;">Catálogo Digital Azzul San Blas</h1>
-      <p data-i18n="ebook_subtitle" style="max-width: 800px; margin: 1.5rem auto 0 auto; color: var(--slate-400); font-size: 1.15rem; line-height: 1.8;">Explore el catálogo interactivo de nuestras villas vacacionales premium en Azzul San Blas en formato flipbook digital.</p>
+      <span class="badge badge-cyan">Home Design</span>
+      <h1 style="margin-top: 1rem; font-size: 3rem; line-height: 1.2;">Portafolio & Matriz Constructiva</h1>
+      <p style="max-width: 800px; margin: 1.5rem auto 0 auto; color: var(--slate-400); font-size: 1.15rem; line-height: 1.8;">Explore nuestros desarrollos costeros, planos de planta, diseños interactivos y especificaciones técnicas oficiales de las villas en Azzul San Blas.</p>
     </div>
   </section>
 
+
+
   <!-- ==========================================
-       SECCIÓN DEL EBOOK
+       SECCIÓN HOME DESIGN: GALERÍA DE PLANOS
        ========================================== -->
-  <section class="section section-bg-dark" style="padding-top: 2rem; padding-bottom: 6rem;">
+  <section class="section section-bg-dark" style="padding-top: 1rem; padding-bottom: 6rem;" id="gallery">
     <div class="container">
-      <div class="ebook-container">
-        <div class="ebook-iframe-wrapper">
-          <iframe allowfullscreen="allowfullscreen" allow="autoplay; fullscreen; clipboard-write" scrolling="no" class="fp-iframe" src="https://heyzine.com/flip-book/744f96655c.html" style="border: none; width: 100%; height: 100%;"></iframe>
+      <div class="section-title-header">
+        <h3>
+          <svg style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Home Design
+        </h3>
+      </div>
+
+      <div class="filter-pills">
+        <div class="filter-pill active">Todo (16)</div>
+        <div class="filter-pill">Presentación & Marca</div>
+        <div class="filter-pill">Bungalows (1A & 1B)</div>
+        <div class="filter-pill">Casas & Piscinas</div>
+        <div class="filter-pill">Lotes Surf City</div>
+      </div>
+
+      <!-- PDF de AZZUL Housing Integrado como Hero Card en Home Design -->
+      <div class="docs-hero-card" style="margin-bottom: 2rem;">
+        <div class="docs-hero-bg"></div>
+        <div class="docs-hero-header">
+          <div class="docs-hero-icon" style="background: rgba(56,189,248,0.15);">
+            <svg style="width: 36px; height: 36px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+          </div>
+          <div class="docs-hero-title-container">
+            <h2>Catálogo AZZUL Housing</h2>
+            <p>Visualiza en formato PDF todas las propiedades, planos, fachadas y detalles arquitectónicos de nuestras residencias.</p>
+          </div>
+        </div>
+        
+        <div class="docs-hero-actions">
+          <button class="btn-primary-glow" onclick="openLightbox('assets/AZZUL-Housing/AZZUL-Housing.pdf', 'pdf')">
+            <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            Abrir Visor Interactivo
+          </button>
+          
+          <a href="assets/AZZUL-Housing/AZZUL-Housing.pdf" download class="btn-glass">
+            <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Descargar PDF Completo
+          </a>
+        </div>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Páginas SVG -->
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/1.svg', 'image')">
+          <img src="assets/AZZUL-Housing/1.svg" alt="Página 1" loading="lazy">
+          <span class="item-title">Página 1</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/2.svg', 'image')">
+          <img src="assets/AZZUL-Housing/2.svg" alt="Página 2" loading="lazy">
+          <span class="item-title">Página 2</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/3.svg', 'image')">
+          <img src="assets/AZZUL-Housing/3.svg" alt="Página 3" loading="lazy">
+          <span class="item-title">Página 3</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/4.svg', 'image')">
+          <img src="assets/AZZUL-Housing/4.svg" alt="Página 4" loading="lazy">
+          <span class="item-title">Página 4</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/5.svg', 'image')">
+          <img src="assets/AZZUL-Housing/5.svg" alt="Página 5" loading="lazy">
+          <span class="item-title">Página 5</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/6.svg', 'image')">
+          <img src="assets/AZZUL-Housing/6.svg" alt="Página 6" loading="lazy">
+          <span class="item-title">Página 6</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/7.svg', 'image')">
+          <img src="assets/AZZUL-Housing/7.svg" alt="Página 7" loading="lazy">
+          <span class="item-title">Página 7</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/8.svg', 'image')">
+          <img src="assets/AZZUL-Housing/8.svg" alt="Página 8" loading="lazy">
+          <span class="item-title">Página 8</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/9.svg', 'image')">
+          <img src="assets/AZZUL-Housing/9.svg" alt="Página 9" loading="lazy">
+          <span class="item-title">Página 9</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/10.svg', 'image')">
+          <img src="assets/AZZUL-Housing/10.svg" alt="Página 10" loading="lazy">
+          <span class="item-title">Página 10</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/11.svg', 'image')">
+          <img src="assets/AZZUL-Housing/11.svg" alt="Página 11" loading="lazy">
+          <span class="item-title">Página 11</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/12.svg', 'image')">
+          <img src="assets/AZZUL-Housing/12.svg" alt="Página 12" loading="lazy">
+          <span class="item-title">Página 12</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/13.svg', 'image')">
+          <img src="assets/AZZUL-Housing/13.svg" alt="Página 13" loading="lazy">
+          <span class="item-title">Página 13</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/14.svg', 'image')">
+          <img src="assets/AZZUL-Housing/14.svg" alt="Página 14" loading="lazy">
+          <span class="item-title">Página 14</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/15.svg', 'image')">
+          <img src="assets/AZZUL-Housing/15.svg" alt="Página 15" loading="lazy">
+          <span class="item-title">Página 15</span>
+        </div>
+        <div class="gallery-item" onclick="openLightbox('assets/AZZUL-Housing/16.svg', 'image')">
+          <img src="assets/AZZUL-Housing/16.svg" alt="Página 16" loading="lazy">
+          <span class="item-title">Página 16</span>
         </div>
       </div>
     </div>
@@ -181,8 +577,45 @@
     </div>
   </footer>
 
+  <!-- Modal Lightbox -->
+  <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-content" id="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox(event, true)">&times;</span>
+      <div id="lightbox-media-container" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></div>
+    </div>
+  </div>
+
   <!-- Lógica de Interactividad y API -->
   <script src="translations.js"></script>
   <script src="script.js"></script>
+  <script>
+    function openLightbox(src, type) {
+      const modal = document.getElementById('lightbox-modal');
+      const container = document.getElementById('lightbox-media-container');
+      
+      container.innerHTML = '';
+      if (type === 'image') {
+        const img = document.createElement('img');
+        img.src = src;
+        container.appendChild(img);
+      } else if (type === 'pdf') {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.frameBorder = '0';
+        container.appendChild(iframe);
+      }
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event, force = false) {
+      if (force || event.target === document.getElementById('lightbox-modal') || event.target === document.getElementById('lightbox-content')) {
+        document.getElementById('lightbox-modal').classList.remove('active');
+        document.getElementById('lightbox-media-container').innerHTML = '';
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
 </body>
 </html>

@@ -8,6 +8,224 @@
   
   <!-- Estilos Globales -->
   <link rel="stylesheet" href="styles.css">
+
+  <style>
+    /* Docs Hero Card */
+    .docs-hero-card {
+      position: relative;
+      background: rgba(30, 41, 59, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 2.5rem;
+      margin-bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .docs-hero-bg {
+      position: absolute;
+      top: -50px; right: -50px;
+      width: 350px; height: 350px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .docs-hero-header {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .docs-hero-icon {
+      width: 72px; height: 72px;
+      background: rgba(56, 189, 248, 0.1);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #38bdf8;
+      flex-shrink: 0;
+    }
+
+    .docs-hero-title-container h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+
+    .docs-hero-title-container p {
+      color: var(--slate-400);
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .docs-hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 2;
+    }
+
+    .btn-glass {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--slate-200);
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .btn-glass:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: #fff;
+    }
+
+    .btn-primary-glow {
+      background: rgba(56, 189, 248, 0.15);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      padding: 0.85rem 1.5rem;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-primary-glow:hover {
+      background: rgba(56, 189, 248, 0.25);
+      border-color: rgba(56, 189, 248, 0.6);
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+      color: #fff;
+    }
+
+    .section-title-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 1rem;
+    }
+
+    .section-title-header h3 {
+      font-size: 1.5rem;
+      color: var(--slate-200);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    /* Modal Lightbox */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      z-index: 99999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(10px);
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .lightbox-modal.active {
+      display: flex;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .lightbox-content {
+      position: relative;
+      max-width: 95%;
+      max-height: 95vh;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .lightbox-content img, .lightbox-content iframe {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+      background: #fff;
+    }
+
+    .lightbox-content iframe {
+      width: 90%;
+      height: 90vh;
+    }
+
+    .lightbox-close {
+      position: fixed;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 40px;
+      line-height: 1;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.3s;
+      z-index: 100;
+    }
+
+    .lightbox-close:hover {
+      color: #38bdf8;
+    }
+
+    @media (max-width: 768px) {
+      .docs-hero-header {
+        flex-direction: column;
+        text-align: center;
+      }
+      .docs-hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .docs-hero-actions .btn-glass, .docs-hero-actions .btn-primary-glow {
+        width: 100%;
+        justify-content: center;
+      }
+      .lightbox-close {
+        top: 10px;
+        right: 20px;
+      }
+      .lightbox-content iframe {
+        width: 100%;
+        height: 80vh;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -99,6 +317,49 @@
        ========================================== -->
   <section class="section section-bg-dark" style="padding-top: 2rem; padding-bottom: 6rem;">
     <div class="container">
+      
+      <!-- HERO CARD DOCUMENTO PRINCIPAL -->
+      <div class="section-title-header">
+        <h3>
+          <svg style="width: 24px; height: 24px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+          Documento Oficial
+        </h3>
+      </div>
+
+      <div class="docs-hero-card">
+        <div class="docs-hero-bg"></div>
+        <div class="docs-hero-header">
+          <div class="docs-hero-icon">
+            <svg style="width: 36px; height: 36px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            </svg>
+          </div>
+          <div class="docs-hero-title-container">
+            <h2>AZZUL Building Products Matriz</h2>
+            <p>Dossier técnico arquitectónico completo: especificaciones constructivas, detalles del sistema ICF y volumetrías de los bungalows modulares en San Blas.</p>
+          </div>
+        </div>
+        
+        <div class="docs-hero-actions">
+          <button class="btn-primary-glow" onclick="openLightbox('assets/docs/AZZUL%20BUILDING%20PRODUCTS%20MATRIZ.pdf', 'pdf')">
+            <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            Abrir Visor Interactivo
+          </button>
+          
+          <a href="assets/docs/AZZUL BUILDING PRODUCTS MATRIZ.pdf" download class="btn-glass">
+            <svg style="width: 20px; height: 20px;" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Descargar PDF Completo
+          </a>
+        </div>
+      </div>
+
       <div class="bento-grid-docs">
         <!-- Tarjeta 1: Certificación Intertek -->
         <a href="assets/docs/Intertek_CCRR-1060.pdf?v=3" target="_blank" class="doc-card" id="doc-card-intertek">
@@ -290,9 +551,46 @@
     </div>
   </footer>
 
+  <!-- Modal Lightbox -->
+  <div class="lightbox-modal" id="lightbox-modal" onclick="closeLightbox(event)">
+    <div class="lightbox-content" id="lightbox-content">
+      <span class="lightbox-close" onclick="closeLightbox(event, true)">&times;</span>
+      <div id="lightbox-media-container" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;"></div>
+    </div>
+  </div>
+
   <!-- Lógica de Interactividad -->
   <script src="translations.js"></script>
   <script src="script.js"></script>
+  <script>
+    function openLightbox(src, type) {
+      const modal = document.getElementById('lightbox-modal');
+      const container = document.getElementById('lightbox-media-container');
+      
+      container.innerHTML = '';
+      if (type === 'image') {
+        const img = document.createElement('img');
+        img.src = src;
+        container.appendChild(img);
+      } else if (type === 'pdf') {
+        const iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.frameBorder = '0';
+        container.appendChild(iframe);
+      }
+      
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(event, force = false) {
+      if (force || event.target === document.getElementById('lightbox-modal') || event.target === document.getElementById('lightbox-content')) {
+        document.getElementById('lightbox-modal').classList.remove('active');
+        document.getElementById('lightbox-media-container').innerHTML = '';
+        document.body.style.overflow = 'auto';
+      }
+    }
+  </script>
 
 </body>
 </html>
