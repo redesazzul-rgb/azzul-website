@@ -607,4 +607,39 @@ document.addEventListener('DOMContentLoaded', () => {
             modal.addEventListener('click', close);
         }
     }
+
+    // 13. Fachada de Reproductor YouTube (Zero-Impact LCP / Lazy Load Facade)
+    const initVideoFacades = () => {
+        const facades = document.querySelectorAll('.video-facade');
+        facades.forEach(facade => {
+            const playVideo = () => {
+                if (facade.classList.contains('is-loaded')) return;
+                
+                const videoId = facade.getAttribute('data-video-id');
+                if (!videoId) return;
+
+                const iframe = document.createElement('iframe');
+                iframe.setAttribute('src', `https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`);
+                iframe.setAttribute('title', 'Video de Conferencia AZZUL ISCYC');
+                iframe.setAttribute('frameborder', '0');
+                iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                iframe.setAttribute('allowfullscreen', '1');
+                iframe.setAttribute('loading', 'lazy');
+                iframe.className = 'video-facade-iframe';
+
+                facade.innerHTML = '';
+                facade.appendChild(iframe);
+                facade.classList.add('is-loaded');
+            };
+
+            facade.addEventListener('click', playVideo);
+            facade.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    playVideo();
+                }
+            });
+        });
+    };
+    initVideoFacades();
 });
