@@ -3,818 +3,353 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="AZZUL - Sistemas constructivos avanzados de alto rendimiento en El Salvador. Líderes en tecnología ICF para máxima eficiencia, durabilidad y diseño.">
-    <title>AZZUL | Construye el Futuro Hoy | ICF El Salvador</title>
-    <!-- CSS Estilos Globales -->
+    <meta name="description" content="AZZUL — Ecosistema Constructivo, Arquitectónico e Inmobiliario en El Salvador: AZZUL ICF, Building Products, AZZUL Certification y AZZUL Management (Rentas Vacacionales San Blas).">
+    <title>AZZUL | Portal Oficial — ICF, Building Products, Certification &amp; Management</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="portal-home-body">
 
     <!-- ==========================================================================
-       CABECERA / NAVBAR
+       CABECERA / NAVBAR GLOBAL UNIFICADO
        ========================================================================== -->
-    <header class="header" id="header">
-        <div class="container navbar">
-            <!-- Logotipo Oficial AZZUL -->
-            <a href="#hero-section" class="logo" id="main-logo">
-                <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 38px; width: auto; object-fit: contain;">
+    <header class="header azzul-global-header" id="header">
+        <div class="container azzul-navbar-inner">
+            <a href="index.html" class="logo azzul-nav-logo" id="main-logo" aria-label="AZZUL - Ir al Portal Principal">
+                <img src="assets/logo/logo.png" alt="AZZUL Logo">
             </a>
-
-            <!-- Menú de Navegación -->
-            <nav class="nav-menu" id="nav-menu">
-                <a href="#hero-section" class="nav-link active" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
-                <a href="#sobre-azzul" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
-                <a href="#team" class="nav-link" id="link-team" data-i18n="nav_equipo">Equipo</a>
-                <a href="#how-we-work" class="nav-link" id="link-how-we-work" data-i18n="nav_como_trabajamos">Cómo Trabajamos</a>
-                <a href="sistema.html" class="nav-link" id="link-ciencia" data-i18n="nav_ciencia">Ciencia Constructiva</a>
-                <div class="nav-item-dropdown">
-                    <a href="#what-we-do" class="nav-link" id="link-what-we-do" data-i18n="nav_que_hacemos">Qué Hacemos</a>
-                    <div class="mega-menu">
-                        <div class="mega-menu-container">
-                            <div class="mega-card" id="mega-card-products">
-                                <img src="assets/logo/logo building products.png" alt="Building Products Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                                <span class="mega-badge" data-i18n="nav_products">AZZUL Building Products</span>
-                                <h4 data-i18n="nav_products_title">Venta y Distribución ICF</h4>
-                                <p data-i18n="nav_products_desc">Importación directa y stock disponible de tecnología ICF en El Salvador. Unificamos estructura y aislamiento en un solo paso.</p>
-                                <a href="sistema.html?tab=products" class="mega-link" data-i18n="nav_products_link">Explorar Productos &rarr;</a>
-                            </div>
-                            <div class="mega-card" id="mega-card-constructora">
-                                <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                                <span class="mega-badge badge-blue" data-i18n="nav_construction">AZZUL Construcción</span>
-                                <h4 data-i18n="nav_construction_title">Diseño y Construcción</h4>
-                                <p data-i18n="nav_construction_desc">Desarrollo, diseño arquitectónico y ejecución de obras residenciales y comerciales con la máxima eficiencia del sistema ICF.</p>
-                                <a href="proyectos.html" class="mega-link" data-i18n="nav_construction_link">Ver Proyectos &rarr;</a>
-                            </div>
-                            <div class="mega-card" id="mega-card-academy">
-                                <img src="assets/logo/logo training program.png" alt="AZZUL Certification Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                                <span class="mega-badge badge-green" data-i18n="nav_certification">AZZUL Certification</span>
-                                <h4 data-i18n="nav_certification_title">Entrenamiento y Certificación</h4>
-                                <p data-i18n="nav_certification_desc">Única entidad calificada en El Salvador para certificar profesionales del sector en el sistema constructivo moderno.</p>
-                                <a href="sistema.html?tab=training" class="mega-link" data-i18n="nav_certification_link">Ver Certificación &rarr;</a>
-                            </div>
-                            <div class="mega-card" id="mega-card-management">
-                                <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 30px; width: auto; object-fit: contain; margin-bottom: 0.75rem; align-self: flex-start;">
-                                <span class="mega-badge badge-blue" data-i18n="nav_management">AZZUL Management</span>
-                                <h4 data-i18n="nav_management_title">Gestión y Mantenimiento</h4>
-                                <p data-i18n="nav_management_desc">Servicios de cuidado integral y preservación para optimizar la gestión operativa de residencias enfocadas en rentas vacacionales.</p>
-                                <a href="contacto.html?interest=management" class="mega-link" data-i18n="nav_management_link">Ver Servicios de Gestión &rarr;</a>
-                            </div>
-                        </div>
+            <nav class="azzul-nav-menu" id="nav-menu" aria-label="Navegación Global AZZUL">
+                <a href="index.html" class="nav-link active" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
+                <a href="icf.html" class="nav-link" id="link-icf-portal" data-i18n="nav_icf">AZZUL ICF</a>
+                <div class="azzul-nav-dropdown" id="nav-bp-dropdown">
+                    <div class="azzul-nav-dropdown-head">
+                        <a href="productos.html" class="nav-link azzul-bp-trigger" id="link-bp-catalog">
+                            <span data-i18n="nav_bp_catalog">Building Products</span>
+                        </a>
                     </div>
                 </div>
-                <div class="nav-btn">
-                    <a href="contacto.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="link-contacto" data-i18n="nav_contact_btn">Contáctanos</a>
-                </div>
-                <!-- Selector de Idioma -->
-                <div class="lang-selector">
-                    <button class="lang-btn active" data-lang="es">ES</button>
-                    <span class="lang-divider">/</span>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                </div>
+                <a href="sistema.html?tab=training" class="nav-link" id="link-certificacion" data-i18n="nav_certificacion">Certificación</a>
+                <a href="rentas.html" class="nav-link" id="link-rentas" data-i18n="nav_rentas">Rentas &amp; Management</a>
+                <a href="proyectos.html" class="nav-link" id="link-proyectos" data-i18n="nav_proyectos">Proyectos</a>
+                <a href="nosotros.html" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
             </nav>
-
-            <!-- Botón de Hamburguesa para Móvil -->
-            <div class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
-                <span></span>
-                <span></span>
-                <span></span>
+            <div class="azzul-nav-actions">
+                <div class="lang-selector azzul-lang-desktop">
+                    <button type="button" class="lang-btn active" data-lang="es">ES</button>
+                    <span class="lang-divider">/</span>
+                    <button type="button" class="lang-btn" data-lang="en">EN</button>
+                </div>
+                <a href="contacto.html" class="azzul-nav-cta" id="link-contacto" data-i18n="nav_quote_cta">Solicitar Cotización</a>
+                <button type="button" class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- ==========================================================================
-       1. SECCIÓN: HERO PRINCIPAL
-       ========================================================================== -->
     <main>
-        <section class="hero" id="hero-section">
-            <div class="container hero-container">
-                <div class="grid-2">
-                    <!-- Textos del Hero -->
-                    <div class="hero-content">
-                        <div class="hero-badge" data-i18n="hero_badge">
-                            <span style="background-color: var(--primary); box-shadow: 0 0 10px var(--primary);"></span> ECO-EFICIENCIA Y MÁXIMA SEGURIDAD
-                        </div>
-                        <h1 class="hero-title text-gradient-accent" style="text-transform: uppercase;" data-i18n="hero_title">
-                            El Futuro de la Construcción Sostenible es ICF
-                        </h1>
-                        <p class="hero-description" data-i18n="hero_desc">
-                            Estructuras monolíticas de hormigón armado con doble aislamiento térmico y acústico en El Salvador. Edifique con tecnología antisísmica de nivel superior.
-                        </p>
-                        <div class="hero-actions">
-                            <a href="#contact" class="btn btn-accent" id="hero-btn-contact">
-                                <span data-i18n="hero_cta_1">Iniciar Proyecto</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-                            </a>
-                            <a href="#what-we-do" class="btn btn-secondary" id="hero-btn-portfolio" data-i18n="hero_cta_2">Ver Proyectos</a>
-                        </div>
-                    </div>
-
-                    <!-- Representación Visual Oficial de Obra Real con Flotante Tecnológico -->
-                    <div class="hero-visual">
-                        <div class="hero-video-wrapper">
-                            <video autoplay loop muted playsinline src="assets/video1.mp4" class="hero-video" controlslist="nodownload"></video>
-                        </div>
-                        <!-- Placa Flotante de Ingeniería -->
-                        <div class="hero-floating-plate">
-                            <div class="plate-status-dot"></div>
-                            <span class="plate-text" data-i18n="science_badge">SISTEMA ICF DE ALTO RENDIMIENTO</span>
-                        </div>
-                    </div>
-            </div>
-        </section>
-
         <!-- ==========================================================================
-           1.1 SECCIÓN: LOS RETOS DE LA CONSTRUCCIÓN EN EL SALVADOR
+           1. HERO PRINCIPAL (PRIMER PANTALLAZO): PANTALLA DIVIDIDA + FONDO AMBIENTAL SUTIL
            ========================================================================== -->
-        <section id="retos-construccion" class="section section-bg-dark" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5rem; padding-bottom: 5rem;">
-            <div class="container">
-                <div class="section-title-wrapper" style="text-align: center; max-width: 800px; margin: 0 auto 4rem auto;">
-                    <span class="section-tag" data-i18n="retos_tag">Análisis de Mercado</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="retos_title">Los Retos de la Construcción en El Salvador</h2>
-                    <p class="section-subtitle" data-i18n="retos_subtitle">El panorama actual exige un cambio radical en los métodos constructivos tradicionales para enfrentar los desafíos de productividad, capacitación y normativas.</p>
-                </div>
-
-                <div class="bento-grid" id="retos-grid">
-                    <!-- Tarjeta 1: Mano de Obra -->
-                    <div class="retos-card bento-col-span-2" id="reto-mano-obra">
-                        <div class="retos-icon-container">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                                <circle cx="9" cy="7" r="4" />
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                            </svg>
-                        </div>
-                        <div class="retos-card-content">
-                            <h3 data-i18n="reto_1_title">Déficit y Rotación de Mano de Obra</h3>
-                            <p data-i18n="reto_1_desc">La escasez crítica y la alta rotación de personal calificado en El Salvador comprometen los plazos de entrega y la calidad constructiva. La dependencia de procesos manuales intensivos incrementa la vulnerabilidad de los proyectos frente a la inestabilidad de la fuerza laboral en el sitio de obra.</p>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 2: Resistencia a la Innovación -->
-                    <div class="retos-card bento-col-span-2" id="reto-resistencia-innovacion">
-                        <div class="retos-icon-container">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="3" />
-                                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
-                            </svg>
-                        </div>
-                        <div class="retos-card-content">
-                            <h3 data-i18n="reto_2_title">Aversión al Cambio e Innovación</h3>
-                            <p data-i18n="reto_2_desc">El arraigo a métodos tradicionales y el temor a la adopción tecnológica limitan el crecimiento del sector. En el mercado actual, la transición hacia tecnologías industrializadas de alto rendimiento no es opcional: es la clave indispensable para garantizar la rentabilidad, reducir costos y asegurar la supervivencia comercial.</p>
-                        </div>
-                    </div>
-
-                    <!-- Tarjeta 3: Estándares Estructurales Independientes -->
-                    <div class="retos-card bento-col-span-4" id="reto-estandares-estructurales">
-                        <div class="retos-icon-container">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                            </svg>
-                        </div>
-                        <div class="retos-card-content">
-                            <h3 data-i18n="reto_3_title">Estándares Estructurales Independientes</h3>
-                            <p data-i18n="reto_3_desc">La estructura de AZZUL ICF es completamente independiente al sistema tradicional, adaptándose y superando con creces los estándares y normativas de ingeniería estructural vigentes. Su diseño de concreto armado monolítico encapsulado en aislamiento térmico continuo proporciona un comportamiento sismorresistente superior frente a cargas laterales extremas.</p>
-                        </div>
-                    </div>
-                </div>
+        <section class="split-portal-section split-portal-hero-ambient" id="portal-gateway">
+            <!-- Carrusel Ambiental Sutil (Crossfade Lento con Opacidad Tenue + Gradiente Oscuro Protector) -->
+            <div class="portal-ambient-stage" aria-hidden="true">
+                <div class="portal-ambient-slide slide-1" style="background-image: url('assets/1 (5).jpg');"></div>
+                <div class="portal-ambient-slide slide-2" style="background-image: url('assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-001.png');"></div>
+                <div class="portal-ambient-slide slide-3" style="background-image: url('assets/1 (1).jpg');"></div>
+                <div class="portal-ambient-slide slide-4" style="background-image: url('assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-001.png');"></div>
+                <div class="portal-ambient-veil"></div>
+                <div class="split-portal-ambient"></div>
             </div>
-        </section>
 
-        <!-- ==========================================================================
-           1.1.A SECCIÓN: CONFERENCIA CUMBRE DE URBANISMO / ISCYC
-           ========================================================================== -->
-        <section id="conferencia-iscyc" class="section section-bg-dark" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5rem; padding-bottom: 5rem;">
-            <div class="container">
-                <div class="section-title-wrapper" style="text-align: center; max-width: 820px; margin: 0 auto 3.5rem auto;">
-                    <span class="section-tag" style="background: rgba(0, 210, 255, 0.1); color: var(--accent);" data-i18n="conf_tag">Cumbre de Urbanismo / ISCYC</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="conf_title">Presentación de la Tecnología AZZUL ICF en ISCYC</h2>
-                    <p class="section-subtitle" data-i18n="conf_subtitle">Nuestra participación técnica en el Instituto Salvadoreño del Cemento y del Concreto (ISCYC), exponiendo la revolución de los encofrados termo-acústicos y el nuevo estándar constructivo para El Salvador.</p>
-                </div>
-
-                <div class="conference-card">
-                    <div class="conference-grid">
-                        <!-- Fachada de Video YouTube con Zero-Impact LCP -->
-                        <div class="conference-video-col">
-                            <div class="video-facade" id="video-facade-iscyc" data-video-id="cgrNqfa4yWQ" role="button" tabindex="0" aria-label="Reproducir video de la conferencia AZZUL en ISCYC">
-                                <img src="https://i.ytimg.com/vi/cgrNqfa4yWQ/maxresdefault.jpg" 
-                                     alt="Conferencia AZZUL ISCYC 2026 - Ponencia sobre Innovación en Sistemas Constructivos ICF" 
-                                     class="video-facade-thumb" 
-                                     loading="lazy" 
-                                     decoding="async"
-                                     onerror="this.src='https://i.ytimg.com/vi/cgrNqfa4yWQ/hqdefault.jpg'">
-                                <div class="video-facade-overlay"></div>
-                                <div class="video-facade-play">
-                                    <div class="play-pulse-ring"></div>
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="28" height="28" aria-hidden="true">
-                                        <path d="M8 5v14l11-7z"/>
-                                    </svg>
-                                </div>
-                                <div class="video-facade-badge-tag">
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16" aria-hidden="true">
-                                        <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/>
-                                    </svg>
-                                    <span data-i18n="conf_video_badge">Ver Ponencia Completa (HD)</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Bloque Informativo de la Conferencia -->
-                        <div class="conference-info-col">
-                            <div class="conference-header-meta">
-                                <span class="conference-pill" data-i18n="conf_pill">Ponencia Magistral</span>
-                                <span class="conference-date" data-i18n="conf_date">ISCYC &bull; San Salvador</span>
-                            </div>
-                            <h3 class="conference-info-title" data-i18n="conf_info_title">Innovación en Hormigón y Aislamiento Térmico</h3>
-                            <p class="conference-info-desc" data-i18n="conf_info_desc">
-                                En el marco de la conferencia técnica del <strong>Instituto Salvadoreño del Cemento y del Concreto (ISCYC)</strong>, AZZUL expuso ante ingenieros, arquitectos y desarrolladores inmobiliarios cómo la tecnología de encofrados aislados de concreto (ICF) redefine la velocidad, seguridad y eficiencia bioclimática en el país.
-                            </p>
-
-                            <div class="conference-highlights">
-                                <div class="conf-highlight-item">
-                                    <div class="conf-highlight-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <strong data-i18n="conf_h1_title">Mitigación del Déficit Operativo:</strong>
-                                        <span data-i18n="conf_h1_desc">Estandarización industrial que reduce la dependencia de mano de obra intensiva y optimiza el avance de obra hasta en un 50%.</span>
-                                    </div>
-                                </div>
-                                <div class="conf-highlight-item">
-                                    <div class="conf-highlight-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <strong data-i18n="conf_h2_title">Monolito Estructural Sismorresistente:</strong>
-                                        <span data-i18n="conf_h2_desc">Muro de concreto armado continuo sin juntas frías que ofrece una absorción y disipación superior frente a eventos sísmicos.</span>
-                                    </div>
-                                </div>
-                                <div class="conf-highlight-item">
-                                    <div class="conf-highlight-icon">
-                                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                            <circle cx="12" cy="12" r="5"></circle>
-                                            <line x1="12" y1="1" x2="12" y2="3"></line>
-                                            <line x1="12" y1="21" x2="12" y2="23"></line>
-                                            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                                            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                                            <line x1="1" y1="12" x2="3" y2="12"></line>
-                                            <line x1="21" y1="12" x2="23" y2="12"></line>
-                                            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                                            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-                                        </svg>
-                                    </div>
-                                    <div>
-                                        <strong data-i18n="conf_h3_title">Envolvente Térmica de Alto Rendimiento:</strong>
-                                        <span data-i18n="conf_h3_desc">Aislamiento continuo con EPS Neopor que bloquea la ganancia de calor solar y reduce hasta un 30% el consumo eléctrico de A/C.</span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="conference-cta-row">
-                                <a href="#contacto" class="btn btn-primary">
-                                    <span data-i18n="conf_cta_primary">Solicitar Asesoría para Desarrollos</span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                                        <polyline points="12 5 19 12 12 19"></polyline>
-                                    </svg>
-                                </a>
-                                <a href="https://youtu.be/cgrNqfa4yWQ" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.05);">
-                                    <span data-i18n="conf_cta_yt">Ver en YouTube</span>
-                                    <svg viewBox="0 0 24 24" fill="currentColor" width="16" height="16">
-                                        <path d="M10 6v12l10-6z"/>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+            <div class="container split-portal-container">
+                <div class="split-portal-header">
+                    <div class="split-portal-badge">
+                        <span class="split-pulse-dot"></span>
+                        <span data-i18n="split_portal_badge">ECOSISTEMA INDUSTRIAL Y ARQUITECTÓNICO AZZUL</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           1.1.B SECCIÓN: CIENCIA CONSTRUCTIVA / TECNOLOGÍA INCOMPARABLE
-           ========================================================================== -->
-        <section id="ciencia-constructiva-seccion" class="section section-bg-dark" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5rem; padding-bottom: 5rem;">
-            <div class="container">
-                <div class="section-title-wrapper" style="text-align: center; max-width: 800px; margin: 0 auto 4rem auto;">
-                    <span class="section-tag" style="background: rgba(0, 210, 255, 0.1); color: var(--accent);" data-i18n="science_tag">Ciencia Constructiva</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="science_title">Tecnología Incomparable del Sistema ICF de AZZUL</h2>
-                    <p class="section-subtitle" data-i18n="science_subtitle">
-                        El sistema de Formas de Concreto Aislado (ICF) representa la mayor revolución técnica en el mercado de la construcción en El Salvador. Nuestras formas modulares unifican aislamiento, estructura y canalizaciones en una sola fase constructiva de alta eficiencia.
+                    <h1 class="split-portal-heading" data-i18n="split_portal_title">Seleccione el Área que Necesita Explorar</h1>
+                    <p class="split-portal-lead" data-i18n="split_portal_subtitle">
+                        Dos divisiones estrella de ingeniería estructural, química constructiva y arquitectura interior, respaldadas por nuestro ecosistema integral en El Salvador.
                     </p>
                 </div>
 
-                <div class="tech-info-block">
-                    <div class="tech-info-grid">
-                        <div class="tech-text-content" style="color: #F8F9FA;">
-                            <h3 style="color: #ffffff; font-size: 1.85rem; margin-bottom: 1.5rem; font-family: var(--font-heading); font-weight: 700;" data-i18n="science_h3">Aislamiento Continuo y Monolito Estructural</h3>
-                            <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: #F8F9FA;" data-i18n="science_p1">
-                                A diferencia de los métodos tradicionales de mampostería, las formas ICF de AZZUL actúan como un molde permanente y autoportante compuesto de Poliestireno Expandido de Alta Densidad (EPS Neopor). Al verter el concreto en su interior, se crea un <strong>muro monolítico continuo de hormigón armado</strong> libre de juntas frías, columnas visibles o debilidades estructurales.
-                            </p>
-                            <p style="font-size: 1.05rem; line-height: 1.8; margin-bottom: 1.5rem; color: #F8F9FA;" data-i18n="science_p2">
-                                Esta integración técnica unifica el <strong>aislamiento térmico continuo por ambas caras</strong> y una resistencia sísmica extrema en un solo paso constructivo. El resultado es una envolvente térmica perfecta que elimina los puentes de calor en climas tropicales y reduce el tiempo de levantamiento de obra gris en un 50%.
-                            </p>
-                            <div style="display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem;">
-                                <div style="display: flex; gap: 0.75rem; align-items: center;">
-                                    <div style="width: 8px; height: 8px; background: #4EA8DE; border-radius: 50%;"></div>
-                                    <span data-i18n="science_bullet1"><strong>Eficiencia Energética Extrema:</strong> Reduce la transferencia de calor solar, disminuyendo hasta un 30% el consumo en aire acondicionado.</span>
+                <!-- Grid Dual de Alto Impacto (En Primer Plano) -->
+                <div class="split-portal-grid" id="split-portal-grid">
+                    <!-- DIVISIÓN 01: AZZUL ICF (Construcción y Desarrollo Inmobiliario) -->
+                    <article class="split-division-card split-card-icf" id="split-card-icf">
+                        <div class="split-card-backdrop">
+                            <img src="assets/1 (2).jpg" alt="AZZUL ICF Tecnología Constructiva y San Blas" loading="eager">
+                            <div class="split-card-overlay"></div>
+                        </div>
+                        <div class="split-card-inner">
+                            <div class="split-card-top">
+                                <div class="split-logo-wrap">
+                                    <img src="assets/logo/logo.png" alt="AZZUL ICF Logo" class="split-division-logo">
                                 </div>
-                                <div style="display: flex; gap: 0.75rem; align-items: center;">
-                                    <div style="width: 8px; height: 8px; background: #4EA8DE; border-radius: 50%;"></div>
-                                    <span data-i18n="science_bullet2"><strong>Seguridad Antisísmica Superior:</strong> Muro de concreto continuo reforzado con acero que disipa eficientemente las ondas sísmicas.</span>
+                                <span class="split-division-tag" id="division-tag-01" data-i18n="split_icf_division_tag">DIVISIÓN 01 · TECNOLOGÍA CONSTRUCTIVA E INMOBILIARIA</span>
+                            </div>
+
+                            <div class="split-card-main">
+                                <h2 class="split-division-title" data-i18n="split_icf_title">AZZUL ICF</h2>
+                                <h3 class="split-division-subtitle" data-i18n="split_icf_subtitle">Construcción Monolítica &amp; Desarrollo Inmobiliario</h3>
+                                <p class="split-division-desc" data-i18n="split_icf_desc">
+                                    Sistemas de encofrado de concreto aislado (ICF) con EPS Neopor de alta densidad, desarrollo residencial insignia AZZUL San Blas, ingeniería sismorresistente y certificación técnica en obra.
+                                </p>
+
+                                <ul class="split-feature-list">
+                                    <li>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span data-i18n="split_icf_feat_1">Ahorro de hasta 50% en tiempos de obra gris y 30% en consumo de A/C</span>
+                                    </li>
+                                    <li>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                        <span data-i18n="split_icf_feat_2">Estructuras monolíticas antisísmicas con aislamiento continuo R-22+</span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="split-metrics-strip">
+                                <div class="split-metric-item">
+                                    <strong data-i18n="split_icf_stat_1_val">R-22+</strong>
+                                    <span data-i18n="split_icf_stat_1_lbl">Aislamiento Térmico</span>
                                 </div>
-                                <div style="display: flex; gap: 0.75rem; align-items: center;">
-                                    <div style="width: 8px; height: 8px; background: #4EA8DE; border-radius: 50%;"></div>
-                                    <span data-i18n="science_bullet3"><strong>Insonorización de Estudio:</strong> Atenuación acústica certificada que reduce los ruidos exteriores en más de 50 dB.</span>
+                                <div class="split-metric-item">
+                                    <strong data-i18n="split_icf_stat_2_val">-50%</strong>
+                                    <span data-i18n="split_icf_stat_2_lbl">Tiempo en Obra</span>
+                                </div>
+                                <div class="split-metric-item">
+                                    <strong data-i18n="split_icf_stat_3_val">55 dB</strong>
+                                    <span data-i18n="split_icf_stat_3_lbl">Control Acústico</span>
                                 </div>
                             </div>
+
+                            <div class="split-card-actions">
+                                <a href="icf.html" class="btn btn-accent split-btn-primary" id="btn-select-icf">
+                                    <span data-i18n="split_icf_cta_primary">Explorar AZZUL ICF</span>
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                                </a>
+                                <a href="proyectos.html" class="btn btn-secondary split-btn-secondary" id="btn-select-icf-projects" data-i18n="split_icf_cta_secondary">
+                                    Ver Proyectos &amp; San Blas
+                                </a>
+                            </div>
                         </div>
-                        
-                        <div class="tech-blueprint-visual effect-blueprint-highlight" style="position: relative; width: 100%; height: 320px; background: radial-gradient(circle at center, #0f1c3f, #070d1e); border-radius: 12px; overflow: hidden; display: flex; align-items: center; justify-content: center; box-shadow: var(--shadow-lg);">
-                            <img src="assets/icf1.png" alt="Render Técnico Sistema ICF" style="width: 100%; height: 100%; object-fit: cover;">
+                    </article>
+
+                    <!-- DIVISIÓN 02: AZZUL BUILDING PRODUCTS (Siliconas, Cementicios & Arquitectura Interior) -->
+                    <article class="split-division-card split-card-bp" id="split-card-bp">
+                        <div class="split-card-backdrop">
+                            <img src="assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-001.png" alt="AZZUL Building Products — Siliconas, Cementicios y Arquitectura Interior" loading="eager">
+                            <div class="split-card-overlay split-overlay-bp"></div>
                         </div>
-                    </div>
+                        <div class="split-card-inner">
+                            <div class="split-card-top">
+                                <div class="split-logo-wrap">
+                                    <img src="assets/logo/logo building products.png" alt="AZZUL Building Products Logo" class="split-division-logo">
+                                </div>
+                                <span class="split-division-tag split-tag-bp" id="division-tag-02" data-i18n="split_bp_division_tag">DIVISIÓN 02 · SILICONAS, CEMENTICIOS &amp; ARQUITECTURA INTERIOR</span>
+                            </div>
+
+                            <div class="split-card-main split-card-main-bp-clean">
+                                <div class="split-bp-heading-block">
+                                    <h2 class="split-division-title" data-i18n="split_bp_title">AZZUL BUILDING PRODUCTS</h2>
+                                    <p class="split-bp-concise-lead" data-i18n="split_bp_concise_lead">
+                                        Química elastomérica PRO, formulaciones cementicias europeas y mobiliario arquitectónico integral (18 mm · PUR · Blum).
+                                    </p>
+                                </div>
+
+                                <!-- Composición Visual de las 3 Líneas -->
+                                <div class="split-bp-product-preview split-bp-preview-trio">
+                                    <div class="split-bp-trio-left">
+                                        <span class="split-trio-mini-lbl" data-i18n="split_bp_trio_lbl_chem">QUÍMICA &amp; CEMENTICIOS (25 FÓRMULAS)</span>
+                                        <div class="split-bp-cartridge-strip split-bp-cartridge-strip-hero">
+                                            <img src="assets/BUILDING PRODUCTS/m-s6.png" alt="GlassFIX PRO" loading="eager">
+                                            <img src="assets/BUILDING PRODUCTS/m-s1.png" alt="VersaFIX PRO" loading="eager">
+                                            <img src="assets/BUILDING PRODUCTS/m-s7.png" alt="HygienFIX PRO" loading="eager">
+                                            <img src="assets/BUILDING PRODUCTS/m-s5.png" alt="FrameFIX PRO" loading="eager">
+                                            <img src="assets/BUILDING PRODUCTS/m-s2.png" alt="HeavyFIX PRO" loading="eager">
+                                            <img src="assets/BUILDING PRODUCTS/m-s4.png" alt="FuegoFIX PRO" loading="eager">
+                                            <img src="assets/BUILDING PRODUCTS/m-s3.png" alt="StoneFIX PRO" loading="eager">
+                                        </div>
+                                    </div>
+                                    <a href="productos.html#hogar" class="split-bp-trio-right" aria-label="Arquitectura Interior & Hogar">
+                                        <img src="assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-001.png" alt="Cocinas y Mobiliario Arquitectónico AZZUL" loading="eager">
+                                        <div class="split-bp-trio-caption">
+                                            <span data-i18n="split_bp_trio_lbl_home">NUEVA LÍNEA HOGAR</span>
+                                            <strong data-i18n="split_bp_trio_val_home">Cocinas · Baños · Closets</strong>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <!-- Menú de Acceso Directo a las 3 Áreas Principales -->
+                            <div class="split-bp-direct-menu" role="navigation" aria-label="Acceso directo a las 3 divisiones de Building Products">
+                                <a href="productos.html#siliconas" class="split-bp-direct-btn" id="btn-select-bp-siliconas">
+                                    <span class="split-bp-btn-dot" style="background: #1FABE2;"></span>
+                                    <span class="split-bp-btn-label" data-i18n="split_bp_btn_siliconas">Selladores de Silicona</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="9 18 15 12 9 6"/></svg>
+                                </a>
+                                <a href="productos.html#cementicios" class="split-bp-direct-btn" id="btn-select-bp-cementicios">
+                                    <span class="split-bp-btn-dot" style="background: #14B8A6;"></span>
+                                    <span class="split-bp-btn-label" data-i18n="split_bp_btn_cementicios">Productos Cementicios</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="9 18 15 12 9 6"/></svg>
+                                </a>
+                                <a href="productos.html#hogar" class="split-bp-direct-btn is-gold" id="btn-select-bp-hogar">
+                                    <span class="split-bp-btn-dot" style="background: #D4C29F;"></span>
+                                    <span class="split-bp-btn-label" data-i18n="split_bp_btn_hogar">Arquitectura Interior &amp; Hogar</span>
+                                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="9 18 15 12 9 6"/></svg>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Indicador sutil hacia la sección inferior de los 4 Pilares -->
+                <div class="portal-ecosystem-cue-wrap">
+                    <a href="#ecosistema-4-pilares" class="portal-ecosystem-cue" id="btn-scroll-4-pilares">
+                        <span data-i18n="portal_4pillars_cue">Descubra nuestro Ecosistema Integral de 4 Pilares</span>
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
                 </div>
             </div>
         </section>
 
         <!-- ==========================================================================
-           1.2 SECCIÓN: TABLA COMPARATIVA DE EFICIENCIA TÉCNICA
+           2. ECOSISTEMA INTEGRAL AZZUL · 4 PILARES (GRILLA EJECUTIVA DE 4 COLUMNAS)
            ========================================================================== -->
-        <section id="comparativa-tecnica" class="section section-bg-dark" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5rem; padding-bottom: 5rem;">
+        <section class="portal-pillars-section" id="ecosistema-4-pilares">
             <div class="container">
-                <div class="section-title-wrapper" style="text-align: center; max-width: 800px; margin: 0 auto 4rem auto;">
-                    <span class="section-tag" data-i18n="specs_tag">Comparativa de Rendimiento</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="specs_title">Eficiencia Técnica Comparada</h2>
-                    <p class="section-subtitle" data-i18n="specs_subtitle">Análisis cuantitativo del comportamiento de la tecnología termoacústica de AZZUL frente a los métodos tradicionales de mampostería.</p>
+                <div class="portal-pillars-header">
+                    <span class="portal-pillars-eyebrow" data-i18n="pillars_sec_tag">ECOSISTEMA INTEGRAL AZZUL · 4 PILARES</span>
+                    <h2 class="portal-pillars-title" data-i18n="pillars_sec_title">Soluciones Integradas de Alto Impacto</h2>
+                    <p class="portal-pillars-subtitle" data-i18n="pillars_sec_subtitle">
+                        Articulamos suministro especializado, ingeniería constructiva ICF, certificación oficial en obra y hospitalidad de rentas vacacionales en El Salvador.
+                    </p>
                 </div>
 
-                <div class="specs-table-wrapper" id="comparison-table">
-                    <div style="overflow-x: auto; width: 100%;">
-                        <table class="specs-table" style="min-width: 600px; width: 100%;">
-                        <thead>
-                            <tr>
-                                <th data-i18n="specs_header_param">Parámetro Técnico</th>
-                                <th data-i18n="specs_header_trad">Construcción Tradicional (Ladrillo)</th>
-                                <th class="highlight-header" data-i18n="specs_header_icf">Sistema Avanzado AZZUL ICF</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td data-i18n="specs_row_time_param"><strong>Tiempo de Construcción (Obra Gris)</strong></td>
-                                <td data-i18n="specs_row_time_trad">100% tiempo estándar</td>
-                                <td class="highlight" data-i18n="specs_row_time_icf">50% del tiempo (Ahorro de la mitad)</td>
-                            </tr>
-                            <tr>
-                                <td data-i18n="specs_row_costs_param"><strong>Costos en Edificación</strong></td>
-                                <td data-i18n="specs_row_costs_trad">Gasto estándar o variable</td>
-                                <td class="highlight" data-i18n="specs_row_costs_icf">Ahorro financiero inteligente y optimización de recursos económicos</td>
-                            </tr>
-                            <tr>
-                                <td data-i18n="specs_row_thermal_param"><strong>Aislamiento Térmico (Valor R)</strong></td>
-                                <td data-i18n="specs_row_thermal_trad">R-4 (Muy deficiente)</td>
-                                <td class="highlight" data-i18n="specs_row_thermal_icf">R-22 a R-28 (Excelente)</td>
-                            </tr>
-                            <tr>
-                                <td data-i18n="specs_row_acoustic_param"><strong>Aislamiento Acústico</strong></td>
-                                <td data-i18n="specs_row_acoustic_trad">35 dB (Se escuchan ruidos de calle)</td>
-                                <td class="highlight" data-i18n="specs_row_acoustic_icf">50 - 55 dB (Insonorización de estudio)</td>
-                            </tr>
-                            <tr>
-                                <td data-i18n="specs_row_fire_param"><strong>Resistencia al Fuego</strong></td>
-                                <td data-i18n="specs_row_fire_trad">1 a 2 horas máx</td>
-                                <td class="highlight" data-i18n="specs_row_fire_icf">Más de 4 horas de clasificación ignífuga</td>
-                            </tr>
-                        </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           2. SECCIÓN: ABOUT AZZUL
-           ========================================================================== -->
-        <section class="section" id="sobre-azzul">
-            <div class="container">
-                <div class="grid-2">
-                    <!-- Textos descriptivos -->
-                    <div class="about-content">
-                        <span class="section-tag" data-i18n="about_tag">SOBRE AZZUL</span>
-                        <h2 class="section-title text-gradient" data-i18n="about_title">Pioneros de la Revolución ICF</h2>
-                        <p style="font-size: 1.15rem; line-height: 1.8; color: var(--slate-700); margin-bottom: 2rem;" id="about-body" data-i18n="about_body">
-                            Somos los pioneers de la Revolución ICF en El Salvador, uniendo la brecha entre la tecnología de vanguardia y la vida sostenible. Como un colectivo visionario de ingenieros y arquitectos, ofrecemos un ecosistema técnico integral: desde el diseño estructural experto hasta la certificación en obra y la supervisión especializada. Nuestro propósito es transformar el panorama salvadoreño al entregar proyectos de alto rendimiento que priorizan el confort térmico, la máxima seguridad sísmica y tiempos de entrega récord.
-                        </p>
-                        <a href="nosotros.html" class="btn btn-primary" id="about-cta" data-i18n="about_cta">Conoce nuestra historia y trayectoria</a>
-                    </div>
-
-                    <!-- Representación Visual de Proyecto Real con Detalle Blueprint Flotante -->
-                    <div class="about-visual" style="position: relative; width: 100%;">
-                        <div style="width: 100%; height: 390px; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md);" class="effect-float">
-                            <img src="assets/1 (2).jpg" alt="Estructuras de Concreto e Innovación AZZUL" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="portal-pillars-grid" id="portal-pillars-grid">
+                    <!-- PILAR 1: PRODUCTOS — AZZUL Building Products -->
+                    <article class="portal-pillar-card" id="pillar-card-products">
+                        <div class="portal-pillar-logo-row">
+                            <img src="assets/logo/logo building products.png" alt="AZZUL Building Products" class="portal-pillar-logo">
                         </div>
-                        <!-- Placa de Especificación Térmica -->
-                        <div style="position: absolute; top: -20px; right: -15px; width: 190px; background: rgba(15, 23, 42, 0.9); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.2); border-radius: var(--radius-md); padding: 1rem; box-shadow: var(--shadow-lg);">
-                            <div style="font-family: var(--font-heading); font-size: 0.75rem; font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; letter-spacing: 0.05em;" data-i18n="about_float_title">ENVOLVENTE DE MUROS</div>
-                            <div style="font-size: 0.7rem; color: var(--slate-400); line-height: 1.4;" data-i18n="about_float_desc">El aislamiento continuo de EPS de doble cara bloquea todos los puentes térmicos. Ideal para climas costeros y tropicales.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           3. SECCIÓN: TEAM AZZUL
-           ========================================================================== -->
-        <section class="section section-bg-dark" id="team">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <span class="section-tag" data-i18n="team_tag">EQUIPO AZZUL</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="team_title">Nuestro Ecosistema Humano Especializado</h2>
-                    <p class="section-subtitle" data-i18n="team_subtitle">Un equipo multidisciplinario alineado para garantizar la excelencia en el diseño, la logística de ejecución y la durabilidad a largo plazo.</p>
-                </div>
-
-                <div class="bento-grid" id="team-grid">
-                    <!-- Tarjeta 1: Architects (bento-col-span-2) -->
-                    <div class="card bento-col-span-2" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="team-card-1">
-                        <div style="background: rgba(0, 210, 255, 0.08); width: 60px; height: 60px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent);">
-                            <!-- Icono compas arquitecto -->
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22V14M12 14L8 6M12 14L16 6M6 4h12"/>
-                            </svg>
-                        </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff;" data-i18n="team_card_1_title">Arquitectos</h3>
-                        <p style="color: var(--slate-300); font-size: 0.95rem; line-height: 1.6; margin-top: auto;" data-i18n="team_card_1_desc">
-                            50 años de experiencia combinada; especialistas en diseño accesible y sensible al contexto. Nos enfocamos en distribuciones funcionales y estrategias adaptadas al clima.
+                        <span class="portal-pillar-badge is-blue" data-i18n="bento_p1_badge"><span></span> PILAR 1: PRODUCTOS</span>
+                        <h3 class="portal-pillar-name" data-i18n="bento_p1_title">AZZUL Building Products</h3>
+                        <p class="portal-pillar-desc" data-i18n="bento_p1_desc">
+                            Soluciones integrales para proyectos residenciales y comerciales: 7 Selladores de Silicona PRO, 18 formulaciones cementicias en 5 familias cromáticas y nuestra nueva línea de Arquitectura Interior, Mobiliario &amp; Acabados.
                         </p>
-                    </div>
-
-                    <!-- Tarjeta 2: Engineers & Builders (bento-col-span-2) -->
-                    <div class="card bento-col-span-2" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="team-card-2">
-                        <div style="background: rgba(0, 210, 255, 0.08); width: 60px; height: 60px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent);">
-                            <!-- Icono Grúa/Casco -->
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M3 22h18M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18M9 6h6M9 10h6M9 14h6M9 18h6"/>
-                            </svg>
-                        </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff;" data-i18n="team_card_2_title">Ingenieros y Constructores</h3>
-                        <p style="color: var(--slate-300); font-size: 0.95rem; line-height: 1.6; margin-top: auto;" data-i18n="team_card_2_desc">
-                            Experiencia en la entrega de grandes infraestructuras y viviendas. Optimizamos sistemas estructurales y logística de obra para acortar plazos y reducir desperdicios.
-                        </p>
-                    </div>
-
-                    <!-- Tarjeta 3: Delivery Partners (bento-col-span-2) -->
-                    <div class="card bento-col-span-2" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="team-card-3">
-                        <div style="background: rgba(0, 210, 255, 0.08); width: 60px; height: 60px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--accent);">
-                            <!-- Icono apretón de manos / red local -->
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M16 3.13a4 4 0 0 1 0 7.75M23 21v-2a4 4 0 0 0-3-3.87M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-                            </svg>
-                        </div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff;" data-i18n="team_card_3_title">Socios de Entrega</h3>
-                        <p style="color: var(--slate-300); font-size: 0.95rem; line-height: 1.6; margin-top: auto;" data-i18n="team_card_3_desc">
-                            Contratistas locales, proveedores y líderes comunitarios que aseguran que los proyectos estén arraigados en el lugar y respondan a las necesidades locales.
-                        </p>
-                    </div>
-
-                    <!-- Tarjeta 4: Visual Integrado (bento-col-span-2) -->
-                    <div class="bento-col-span-2 effect-float" style="border-radius: 16px; overflow: hidden; height: 100%; min-height: 280px; box-shadow: var(--shadow-sm); border: 1px solid rgba(255, 255, 255, 0.08); position: relative;" id="team-card-image">
-                        <img src="assets/1 (6).jpg" alt="Ecosistema Humano y Colaboración AZZUL" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; bottom: 15px; left: 15px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 210, 255, 0.3); border-radius: var(--radius-sm); padding: 0.5rem 1rem; font-size: 0.8rem; font-family: var(--font-heading); font-weight: 700; color: #ffffff; letter-spacing: 0.05em;" data-i18n="team_badge_dist">RED DE DISTRIBUCIÓN</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           4. SECCIÓN: HOW WE WORK
-           ========================================================================== -->
-        <section class="section" style="background-color: var(--slate-100);" id="how-we-work">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <span class="section-tag" style="background: rgba(0, 82, 204, 0.05);" data-i18n="how_tag">SISTEMA OPERATIVO</span>
-                    <h2 class="section-title" data-i18n="how_title">Cómo Trabajamos</h2>
-                    <p class="section-subtitle" data-i18n="how_subtitle">Integración de diseño, tecnología y coordinación en obra para agilizar la construcción residencial.</p>
-                </div>
-
-                <div class="bento-grid" id="work-grid">
-                    <!-- Bloque 1 (bento-col-span-2) -->
-                    <div class="card bento-col-span-2" style="display: flex; flex-direction: column;" id="work-card-1">
-                        <div style="background: rgba(0, 82, 204, 0.08); width: 50px; height: 50px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <!-- Icono Blueprint de replicación -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/>
-                                <path d="M12 6v6l4 2"/>
-                            </svg>
-                        </div>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--slate-900);" data-i18n="how_card_1_title">Diseño para Replicación</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-top: auto;" data-i18n="how_card_1_desc">
-                            Planos modulares y adaptables que pueden ajustarse al terreno, a las necesidades familiares y al presupuesto, manteniendo bajos los costos de producción.
-                        </p>
-                    </div>
-
-                    <!-- Bloque 2 (bento-col-span-2) -->
-                    <div class="card bento-col-span-2" style="display: flex; flex-direction: column;" id="work-card-2">
-                        <div style="background: rgba(0, 82, 204, 0.08); width: 50px; height: 50px; border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; color: var(--primary);">
-                            <!-- Icono colaboración integrada -->
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/>
-                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                            </svg>
-                        </div>
-                        <h3 style="font-size: 1.4rem; margin-bottom: 0.75rem; color: var(--slate-900);" data-i18n="how_card_2_title">Entrega Integrada</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin-top: auto;" data-i18n="how_card_2_desc">
-                            Arquitectos e ingenieros trabajan de la mano con los constructores desde el concepto hasta la entrega para eliminar fricciones.
-                        </p>
-                    </div>
-
-                    <!-- Bloque 3: Imagen Real de Proceso (bento-col-span-4) -->
-                    <div class="bento-col-span-4 effect-float" style="border-radius: 16px; overflow: hidden; height: 320px; box-shadow: var(--shadow-sm); border: 1px solid var(--border-color); position: relative;" id="work-card-image">
-                        <img src="assets/1 (3).jpg" alt="Instalaciones y Logística AZZUL ICF" style="width: 100%; height: 100%; object-fit: cover;">
-                        <div style="position: absolute; bottom: 20px; left: 20px; background: rgba(15, 23, 42, 0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0, 82, 204, 0.2); border-radius: var(--radius-sm); padding: 0.6rem 1.2rem; font-size: 0.85rem; font-family: var(--font-heading); font-weight: 700; color: #ffffff; letter-spacing: 0.05em;" data-i18n="how_badge_eff">EFICIENCIA EN OBRA Y REDUCCIÓN DE DESPERDICIOS</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           5. SECCIÓN: QUÉ HACEMOS
-           ========================================================================== -->
-        <section class="section section-bg-dark" id="what-we-do">
-            <div class="container">
-                <div class="section-title-wrapper">
-                    <span class="section-tag" data-i18n="wwd_tag">QUÉ HACEMOS</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="wwd_title">Soluciones de Alto Impacto</h2>
-                    <p class="section-subtitle" data-i18n="wwd_subtitle">Dividimos nuestro ecosistema en cuatro pilares de servicio clave de alto rendimiento en El Salvador.</p>
-                </div>
-
-                <div class="bento-grid" id="what-we-do-grid">
-                    <!-- Tarjeta 1: Building Products -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="bento-products">
-                        <img src="assets/logo/logo building products.png" alt="Building Products Logo" style="height: 40px; width: auto; object-fit: contain; margin-bottom: 1.25rem; align-self: flex-start;">
-                        <div class="hero-badge" style="margin-bottom: 1rem; align-self: flex-start;" data-i18n="bento_p1_badge"><span></span> PILAR 1: PRODUCTOS</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="bento_p1_title">AZZUL Building Products</h3>
-                        <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-i18n="bento_p1_desc">
-                            Pioneros en la distribución e importación directa con stock disponible de tecnología de Formas de Concreto Aislado (ICF) con calidad norteamericana en El Salvador. Unifica estructura y aislamiento en un solo paso.
-                        </p>
-                        <ul style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; color: #F8F9FA; font-size: 0.9rem;">
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span data-i18n="bento_p1_bullet1"><strong>Distribución y Logística de Obra:</strong> Suministro a gran escala con alta disponibilidad de inventario para un flujo continuo.</span>
+                        <ul class="portal-pillar-checks">
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1FABE2" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span data-i18n="bento_p1_bullet1"><strong>Química y Soluciones Cementicias:</strong> Selladores PRO (300/600 mL), masillas listas para usar, impermeabilizantes, morteros y adhesivos EN 12004.</span>
                             </li>
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span data-i18n="bento_p1_bullet2"><strong>Presupuestos y Complementos:</strong> Cubicación exacta de planos para optimizar presupuestos y suministro de herramientas.</span>
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1FABE2" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span data-i18n="bento_p1_bullet2"><strong>Arquitectura Interior &amp; Hogar:</strong> Cocinas integrales, vanities antihumedad, walk-in closets, puertas acústicas y herrajes Blum (18 mm · PUR).</span>
                             </li>
                         </ul>
-                        <a href="sistema.html?tab=products" class="btn btn-accent" style="margin-top: auto; align-self: flex-start; width: 100%; text-align: center;" id="btn-goto-products" data-i18n="bento_p1_btn">Ver Catálogo</a>
-                    </div>
+                        <a href="productos.html" class="portal-pillar-btn is-blue" id="pillar-btn-products" data-i18n="bento_p1_btn">Explorar Building Products</a>
+                    </article>
 
-                    <!-- Tarjeta 2: AZZUL Construcción -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="bento-constructora">
-                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 40px; width: auto; object-fit: contain; margin-bottom: 1.25rem; align-self: flex-start;">
-                        <div class="hero-badge" style="margin-bottom: 1rem; align-self: flex-start; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);" data-i18n="bento_p2_badge"><span style="background-color: #38bdf8; box-shadow: 0 0 10px #38bdf8;"></span> PILAR 2: CONSTRUCCIÓN</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="bento_p2_title">AZZUL Construcción</h3>
-                        <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-i18n="bento_p2_desc">
+                    <!-- PILAR 2: CONSTRUCCIÓN — AZZUL Construcción (ICF) -->
+                    <article class="portal-pillar-card" id="pillar-card-construction">
+                        <div class="portal-pillar-logo-row">
+                            <img src="assets/logo/logo.png" alt="AZZUL Construcción ICF" class="portal-pillar-logo">
+                        </div>
+                        <span class="portal-pillar-badge is-sky" data-i18n="bento_p2_badge"><span style="background-color: #38bdf8; box-shadow: 0 0 10px #38bdf8;"></span> PILAR 2: CONSTRUCCIÓN</span>
+                        <h3 class="portal-pillar-name" data-i18n="pillar_p2_title">AZZUL Construcción (ICF)</h3>
+                        <p class="portal-pillar-desc" data-i18n="bento_p2_desc">
                             Desarrollo, diseño arquitectónico y ejecución directa de proyectos residenciales y comerciales con sistema ICF. Unificamos estructura, aislamiento y acabados en un flujo continuo de obra.
                         </p>
-                        <ul style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; color: #F8F9FA; font-size: 0.9rem;">
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <ul class="portal-pillar-checks">
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span data-i18n="bento_p2_bullet1"><strong>Planificación e Ingeniería:</strong> Desarrollo de planos estructurales integrados y supervisión experta.</span>
                             </li>
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span data-i18n="bento_p2_bullet2"><strong>Desarrollo Llave en Mano:</strong> Obras terminadas con alta eficiencia térmica y seguridad antisísmica.</span>
                             </li>
                         </ul>
-                        <a href="proyectos.html" class="btn btn-accent" style="margin-top: auto; align-self: flex-start; background: linear-gradient(135deg, #38bdf8, #0284c7); color: #ffffff; box-shadow: 0 0 20px rgba(56, 189, 248, 0.25); width: 100%; text-align: center;" id="btn-goto-constructora" data-i18n="bento_p2_btn">Ver Portafolio</a>
-                    </div>
+                        <a href="icf.html" class="portal-pillar-btn is-sky" id="pillar-btn-construction" data-i18n="bento_p2_btn">Ver Portafolio</a>
+                    </article>
 
-                    <!-- Tarjeta 3: AZZUL Certification -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="bento-academy">
-                        <img src="assets/logo/logo training program.png" alt="AZZUL Certification Logo" style="height: 40px; width: auto; object-fit: contain; margin-bottom: 1.25rem; align-self: flex-start;">
-                        <div class="hero-badge style-green" style="margin-bottom: 1rem; align-self: flex-start;" data-i18n="bento_p3_badge"><span style="background-color: var(--eco-green); box-shadow: 0 0 10px var(--eco-green);"></span> PILAR 3: CERTIFICACIÓN</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="bento_p3_title">AZZUL Certification</h3>
-                        <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-i18n="bento_p3_desc">
+                    <!-- PILAR 3: CERTIFICACIÓN — AZZUL Certification (Training Program) -->
+                    <article class="portal-pillar-card" id="pillar-card-certification">
+                        <div class="portal-pillar-logo-row">
+                            <img src="assets/logo/logo training program.png" alt="AZZUL Certification" class="portal-pillar-logo">
+                        </div>
+                        <span class="portal-pillar-badge is-green" data-i18n="bento_p3_badge"><span style="background-color: var(--eco-green); box-shadow: 0 0 10px var(--eco-green);"></span> PILAR 3: CERTIFICACIÓN</span>
+                        <h3 class="portal-pillar-name" data-i18n="bento_p3_title">AZZUL Certification</h3>
+                        <p class="portal-pillar-desc" data-i18n="bento_p3_desc">
                             Única entidad calificada en El Salvador para certificar a los profesionales del sector (ingenieros, arquitectos, constructoras y mano de obra en sitio).
                         </p>
-                        <ul style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; color: #F8F9FA; font-size: 0.9rem;">
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--eco-green)" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                        <ul class="portal-pillar-checks">
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span data-i18n="bento_p3_bullet1"><strong>Capacitación en Sitio:</strong> Instalación especializada y certificación oficial del personal en la misma obra.</span>
                             </li>
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--eco-green)" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                                 <span data-i18n="bento_p3_bullet2"><strong>Estándar Internacional:</strong> Garantizamos una ejecución rápida, segura y bajo normativas modernas.</span>
                             </li>
                         </ul>
-                        <a href="sistema.html?tab=training" class="btn btn-secondary" style="margin-top: auto; align-self: flex-start; color: #ffffff; border-color: var(--slate-600); width: 100%; text-align: center;" id="btn-goto-academy" data-i18n="bento_p3_btn">Ver Programas</a>
-                    </div>
+                        <a href="sistema.html?tab=training" class="portal-pillar-btn is-green" id="pillar-btn-certification" data-i18n="bento_p3_btn">Ver Programas</a>
+                    </article>
 
-                    <!-- Tarjeta 4: AZZUL Management -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column;" id="bento-management">
-                        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 40px; width: auto; object-fit: contain; margin-bottom: 1.25rem; align-self: flex-start;">
-                        <div class="hero-badge style-blue" style="margin-bottom: 1rem; align-self: flex-start; color: #38bdf8; border-color: rgba(56, 189, 248, 0.3);" data-i18n="bento_p4_badge"><span style="background-color: #38bdf8; box-shadow: 0 0 10px #38bdf8;"></span> PILAR 4: GESTIÓN</div>
-                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="bento_p4_title">AZZUL Management</h3>
-                        <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-i18n="bento_p4_desc">Servicios especializados en la preservación y cuidado integral de propiedades de alto rendimiento. Optimizamos la gestión operativa de residencias enfocadas en el mercado de rentas vacacionales y estancias de corta duración, asegurando un mantenimiento premium continuo.</p>
-                        <ul style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2rem; color: #F8F9FA; font-size: 0.9rem;">
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span data-i18n="bento_p4_bullet1"><strong>Mantenimiento Preventivo:</strong> Cuidado técnico periódico de la envolvente y sistemas para proteger su inversión.</span>
+                    <!-- PILAR 4: GESTIÓN & RENTAS — AZZUL Management (Rentas Vacacionales San Blas) -->
+                    <article class="portal-pillar-card" id="pillar-card-management">
+                        <div class="portal-pillar-logo-row">
+                            <img src="assets/logo/logo.png" alt="AZZUL Management & Rentas" class="portal-pillar-logo">
+                        </div>
+                        <span class="portal-pillar-badge is-gold" data-i18n="pillar_p4_badge"><span style="background-color: #D4C29F; box-shadow: 0 0 10px #D4C29F;"></span> PILAR 4: GESTIÓN &amp; RENTAS</span>
+                        <h3 class="portal-pillar-name" data-i18n="bento_p4_title">AZZUL Management</h3>
+                        <p class="portal-pillar-desc" data-i18n="pillar_p4_desc">
+                            Operación hotelera, rentas vacacionales exclusivas en Azzul San Blas y preservación integral de residencias costeras construidas con tecnología ICF de alto confort térmico.
+                        </p>
+                        <ul class="portal-pillar-checks">
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D4C29F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span data-i18n="pillar_p4_bullet1"><strong>Rentas Vacacionales San Blas:</strong> Villas privadas con piscina, terrazas panorámicas y reserva directa en línea.</span>
                             </li>
-                            <li style="display: flex; gap: 0.5rem; align-items: flex-start;">
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" stroke-width="2" style="flex-shrink: 0;"><polyline points="20 6 9 17 4 12"/></svg>
-                                <span data-i18n="bento_p4_bullet2"><strong>Operación Vacacional:</strong> Coordinación de servicios logísticos y preservación de acabados en estancias.</span>
+                            <li>
+                                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#D4C29F" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                <span data-i18n="pillar_p4_bullet2"><strong>Cuidado Integral de Propiedades:</strong> Mantenimiento preventivo, hospitalidad premium y rentabilidad continua.</span>
                             </li>
                         </ul>
-                        <a href="contacto.html?interest=management" class="btn btn-secondary" style="margin-top: auto; align-self: flex-start; color: #ffffff; border-color: var(--slate-600); width: 100%; text-align: center;" id="btn-goto-management" data-i18n="bento_p4_btn">Ver Servicios</a>
-                    </div>
+                        <a href="rentas.html" class="portal-pillar-btn is-gold" id="pillar-btn-management" data-i18n="pillar_p4_btn">Explorar Rentas &amp; Gestión</a>
+                    </article>
                 </div>
             </div>
         </section>
-
-        <!-- ==========================================================================
-           5.2 SECCIÓN: MÉTRICAS DE RENDIMIENTO
-           ========================================================================== -->
-        <section class="section section-bg-dark" id="rendimiento-metricas" style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 5rem; padding-bottom: 5rem;">
-            <div class="container">
-                <div class="section-title-wrapper" style="margin-bottom: 4rem;">
-                    <span class="section-tag" data-i18n="metrics_tag">Rendimiento Comprobado</span>
-                    <h2 class="section-title text-gradient-accent" data-i18n="metrics_title">Eficiencia en Cifras</h2>
-                    <p class="section-subtitle" data-i18n="metrics_subtitle">Nuestra tecnología ICF ofrece ahorros y optimización de tiempos certificados en proyectos reales en El Salvador.</p>
-                </div>
-
-                <div class="grid-3" id="metricas-grid">
-                    <!-- Tarjeta Métrica 1: Costos -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 16px; min-height: 280px;" id="metric-cost">
-                        <div>
-                            <div style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem;" data-i18n="metric_cost_val">-10% COSTOS</div>
-                            <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="metric_cost_title">Eficiencia de Construcción</h4>
-                            <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6;" data-i18n="metric_cost_desc">Reducción de hasta un 10% en costos de construcción comprobado en obras nacionales.</p>
-                        </div>
-                        <a href="#contact" class="btn btn-secondary" style="margin-top: 1.5rem; font-size: 0.85rem; align-self: flex-start; width: 100%; color: #ffffff; border-color: var(--slate-600);" id="btn-schedule-visit" data-i18n="metric_cost_btn">Agenda una visita a la obra en San Blas</a>
-                    </div>
-
-                    <!-- Tarjeta Métrica 2: Energía -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 16px; min-height: 280px;" id="metric-energy">
-                        <div>
-                            <div style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: var(--eco-green); margin-bottom: 0.5rem;" data-i18n="metric_energy_val">-30% ENERGÍA</div>
-                            <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="metric_energy_title">Ahorro Térmico y Operativo</h4>
-                            <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6;" data-i18n="metric_energy_desc">Reduce hasta un 30% en costos energéticos.</p>
-                        </div>
-                        <a href="tel:+50375703500" class="btn btn-accent" style="margin-top: 1.5rem; font-size: 0.85rem; align-self: flex-start; width: 100%; color: var(--slate-950);" id="btn-call-azzul">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right: 0.25rem; display: inline-block; vertical-align: middle;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            <span data-i18n="metric_energy_btn">Llama al +503 7570 3500</span></a>
-                    </div>
-
-                    <!-- Tarjeta Métrica 3: Velocidad -->
-                    <div class="card" style="background-color: var(--slate-800); border-color: rgba(255, 255, 255, 0.08); color: #ffffff; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem; border-radius: 16px; min-height: 280px;" id="metric-speed">
-                        <div>
-                            <div style="font-family: var(--font-heading); font-size: 3rem; font-weight: 800; color: #ffffff; margin-bottom: 0.5rem;" data-i18n="metric_speed_val">50x RÁPIDO</div>
-                            <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: #ffffff; font-family: var(--font-heading); font-weight: 700;" data-i18n="metric_speed_title">Velocidad con Eficiencia Máxima</h4>
-                            <p style="color: #F8F9FA; font-size: 0.95rem; line-height: 1.6;" data-i18n="metric_speed_desc">El armado modular de las formas ICF permite levantar muros y encofrar losas en una fracción del tiempo de la mampostería tradicional, acelerando los retornos de inversión.</p>
-                        </div>
-                        <a href="sistema.html" class="btn btn-secondary" style="margin-top: 1.5rem; font-size: 0.85rem; align-self: flex-start; width: 100%; color: #ffffff; border-color: var(--slate-600);" id="btn-goto-sistema" data-i18n="metric_speed_btn">Explorar Tecnología</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==========================================================================
-           6. SECCIÓN: CONTACT (FORMULARIO PREMIUM)
-           ========================================================================== -->
-        <section class="section" style="background-color: var(--slate-950); color: #ffffff;" id="contact">
-            <div class="container">
-                <div class="grid-2">
-                    <!-- Información de Contacto Izquierda e Integración de Imagen -->
-                    <div class="contact-info-wrapper" style="display: flex; flex-direction: column;">
-                        <span class="section-tag" style="color: var(--accent); background: rgba(0, 210, 255, 0.1);" data-i18n="contact_quick_tag">CONTACTO</span>
-                        <h2 class="section-title text-gradient-accent" style="color: #ffffff; font-size: 2.75rem; margin-bottom: 1.5rem;" data-i18n="contact_quick_title">¿Listo para dar el siguiente paso?</h2>
-                        <p style="color: var(--slate-400); font-size: 1.15rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="contact_quick_subtitle">Escríbenos y conversemos sobre un piloto, alianza o revisión de diseño.</p>
-
-                        <!-- Bloques informativos de contacto -->
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem; margin-bottom: 2.5rem;">
-                            <!-- Bloque 1 -->
-                            <div style="display: flex; align-items: center; gap: 1.25rem;">
-                                <div style="width: 46px; height: 46px; border-radius: 50%; background: rgba(0, 210, 255, 0.08); display: flex; align-items: center; justify-content: center; color: var(--accent);">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                </div>
-                                <div>
-                                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--slate-500); font-weight: 700; letter-spacing: 0.05em;" data-i18n="contact_label_general">Consultas Generales</div>
-                                    <a href="mailto:azzulsv@gmail.com" style="font-size: 1rem; color: #ffffff; font-weight: 600; transition: var(--transition-fast);" class="hover-accent">azzulsv@gmail.com</a>
-                                </div>
-                            </div>
-
-                            <!-- Bloque 2 -->
-                            <div style="display: flex; align-items: center; gap: 1.25rem;">
-                                <div style="width: 46px; height: 46px; border-radius: 50%; background: rgba(0, 210, 255, 0.08); display: flex; align-items: center; justify-content: center; color: var(--accent);">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                </div>
-                                <div>
-                                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--slate-500); font-weight: 700; letter-spacing: 0.05em;" data-i18n="contact_label_alliances">Alianzas y Asociaciones</div>
-                                    <a href="tel:+50375703500" style="font-size: 1rem; color: #ffffff; font-weight: 600;" class="hover-accent">+503 7570 3500</a>
-                                </div>
-                            </div>
-
-                            <!-- Bloque 3 -->
-                            <div style="display: flex; align-items: center; gap: 1.25rem;">
-                                <div style="width: 46px; height: 46px; border-radius: 50%; background: rgba(0, 210, 255, 0.08); display: flex; align-items: center; justify-content: center; color: var(--accent);">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                </div>
-                                <div>
-                                    <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--slate-500); font-weight: 700; letter-spacing: 0.05em;" data-i18n="contact_label_office">Oficina Principal</div>
-                                    <div style="font-size: 1rem; color: #ffffff; font-weight: 600;" data-i18n="contact_office_val">San Salvador, El Salvador</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Imagen Adicional de Arquitectura Acabada de AZZUL -->
-                        <div style="width: 100%; height: 140px; border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(255,255,255,0.05); margin-top: auto;" class="effect-float">
-                            <img src="assets/1 (5).jpg" alt="Villas de Diseño ICF Terminadas AZZUL" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.85;">
-                        </div>
-                    </div>
-
-                    <!-- Formulario de Contacto Premium Derecha -->
-                    <div class="card" style="background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-color: rgba(255, 255, 255, 0.05); padding: 3rem;" id="contact-form-card">
-                        <form id="contact-form" method="POST" action="https://formspree.io/f/xnjybedl">
-                            <!-- Campo Nombre -->
-                            <div class="form-group">
-                                <label for="name" style="font-size: 0.85rem; color: var(--slate-300); font-weight: 500;" data-i18n="contact_quick_name">Nombre</label>
-                                <input type="text" id="name" name="nombre" class="form-input" placeholder="Nombre" data-i18n="contact_quick_placeholder_name" required>
-                            </div>
-                            
-                            <!-- Campo Correo -->
-                            <div class="form-group">
-                                <label for="email" style="font-size: 0.85rem; color: var(--slate-300); font-weight: 500;" data-i18n="contact_quick_email">Correo electrónico</label>
-                                <input type="email" id="email" name="email" class="form-input" placeholder="Correo electrónico" data-i18n="contact_quick_placeholder_email" required>
-                            </div>
-                            
-                            <!-- Campo Mensaje -->
-                            <div class="form-group">
-                                <label for="message" style="font-size: 0.85rem; color: var(--slate-300); font-weight: 500;" data-i18n="contact_quick_message">Mensaje</label>
-                                <textarea id="message" name="mensaje" class="form-input" placeholder="¿En qué podemos ayudarte?" data-i18n="contact_quick_placeholder_msg" required></textarea>
-                            </div>
-                            
-                            <!-- Botón de Envío -->
-                            <button type="submit" class="btn btn-accent" style="width: 100%; margin-top: 1rem;" id="btn-submit">
-                                <span data-i18n="contact_quick_btn">Enviar Mensaje</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    <!-- ==========================================
-       RENTING CTA BANNER (AZZUL VACATION RENTALS)
-       ========================================== -->
-    <section class="renting-cta-banner">
-      <div class="container renting-cta-container">
-        <div class="renting-cta-text-wrapper">
-          <h3 data-i18n="renting_cta_text">Descubre Azzul San Blas - Hospedaje Premium</h3>
-          <p style="color: var(--slate-400); font-size: 0.95rem; margin-top: 0.25rem;" data-i18n="renting_cta_sub">Reserve su estancia en nuestras exclusivas villas climatizadas e indestructibles.</p>
-        </div>
-        <a href="rentas.html" class="btn-cyan-accent" data-i18n="renting_cta_btn">Ver Propiedades</a>
-      </div>
-    </section>
+    </main>
 
     <!-- ==========================================================================
-       FOOTER / PIE DE PÁGINA CORPORATIVO
+       FOOTER / PIE DE PÁGINA CORPORATIVO UNIFICADO
        ========================================================================== -->
     <footer class="footer">
         <div class="container footer-top">
             <div class="grid-3" style="grid-template-columns: 1.5fr 1fr 1.5fr; gap: 4rem;">
-                <!-- Columna 1: Marca y Logo Oficial -->
                 <div class="footer-brand">
-                    <a href="#hero-section" class="logo">
+                    <a href="index.html" class="logo">
                         <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 40px; width: auto; object-fit: contain;">
                     </a>
                     <p class="footer-description" data-i18n="footer_desc">
-                        Innovando el estándar de la construcción sostenible e inteligente mediante sistemas avanzados de encofrado termo-acústico ICF en El Salvador.
+                        Innovando el estándar de la construcción sostenible e inteligente mediante sistemas avanzados de encofrado termo-acústico ICF, química constructiva y arquitectura interior en El Salvador.
                     </p>
                 </div>
 
-                <!-- Columna 2: Enlaces Rápidos -->
                 <div>
-                    <h3 class="footer-title" data-i18n="footer_nav">Navegación</h3>
+                    <h3 class="footer-title" data-i18n="footer_nav">Ecosistema AZZUL</h3>
                     <div class="footer-links">
-                        <a href="#hero-section" class="footer-link" data-i18n="nav_inicio">Inicio</a>
-                        <a href="#sobre-azzul" class="footer-link" data-i18n="nav_nosotros">Nosotros</a>
-                        <a href="#team" class="footer-link" data-i18n="nav_equipo">Equipo</a>
-                        <a href="#how-we-work" class="footer-link" data-i18n="nav_como_trabajamos">Cómo Trabajamos</a>
-                        <a href="#what-we-do" class="footer-link" data-i18n="nav_que_hacemos">Qué Hacemos</a>
-                        <a href="#contact" class="footer-link" data-i18n="nav_contacto">Contacto</a>
+                        <a href="icf.html" class="footer-link" data-i18n="nav_icf">AZZUL ICF</a>
+                        <a href="productos.html" class="footer-link" data-i18n="nav_bp_catalog">Building Products</a>
+                        <a href="sistema.html?tab=training" class="footer-link" data-i18n="nav_certificacion">AZZUL Certification</a>
+                        <a href="rentas.html" class="footer-link" data-i18n="nav_rentas">Rentas &amp; Management</a>
+                        <a href="proyectos.html" class="footer-link" data-i18n="nav_proyectos">Proyectos</a>
+                        <a href="contacto.html" class="footer-link" data-i18n="nav_contacto">Contacto</a>
                     </div>
                 </div>
 
-                <!-- Columna 3: Información y Soporte -->
                 <div>
                     <h3 class="footer-title" data-i18n="footer_office">Oficina Central</h3>
                     <div class="footer-info">
@@ -844,25 +379,21 @@
         <div class="container footer-bottom">
             <p data-i18n="footer_rights">&copy; 2026 AZZUL. Todos los derechos reservados. Innovación Constructiva Sostenible.</p>
             <div class="footer-socials">
-                <!-- Facebook -->
-                <a href="https://www.facebook.com/people/AZZUL/61574367400517/" class="social-icon" aria-label="Facebook AZZUL" target="_blank">
+                <a href="https://www.facebook.com/people/AZZUL/61574367400517/" class="social-icon" aria-label="Facebook AZZUL" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
                     </svg>
                 </a>
-                <!-- Instagram -->
-                <a href="https://www.instagram.com/azzul.sv" class="social-icon" aria-label="Instagram AZZUL" target="_blank">
+                <a href="https://www.instagram.com/azzul.sv" class="social-icon" aria-label="Instagram AZZUL" target="_blank" rel="noopener noreferrer">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.058-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2c-3.259 0 3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.058-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                     </svg>
                 </a>
             </div>
         </div>
     </footer>
 
-    <!-- ==========================================================================
-       SCRIPTS DE INTERACTIVIDAD (GLOBAL)
-       ========================================================================== -->
+    <script src="navbar.js"></script>
     <script src="translations.js"></script>
     <script src="script.js"></script>
 </body>

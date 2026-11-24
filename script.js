@@ -5,9 +5,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Efecto Scroll en la Cabecera (Navbar)
     const header = document.getElementById('header');
+    const isManagedGlobalNav = header && header.dataset.azzulNavbarManaged === 'true';
     
     const handleScroll = () => {
-        if (window.scrollY > 50) {
+        if (!header) return;
+        if (window.scrollY > 24) {
             header.classList.add('header-scrolled');
         } else {
             header.classList.remove('header-scrolled');
@@ -18,16 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     handleScroll();
     window.addEventListener('scroll', handleScroll);
 
-    // 2. Menú Hamburguesa Móvil
+    // 2. Menú Hamburguesa Móvil (solo fallback si no está gestionado por navbar.js)
     const burgerMenu = document.getElementById('burger-menu');
     const navMenu = document.getElementById('nav-menu');
     
-    if (burgerMenu && navMenu) {
+    if (!isManagedGlobalNav && burgerMenu && navMenu) {
         burgerMenu.addEventListener('click', () => {
             burgerMenu.classList.toggle('active');
             navMenu.classList.toggle('active');
             
-            // Prevenir scroll en el fondo cuando el menú esté abierto en móviles
             if (navMenu.classList.contains('active')) {
                 document.body.style.overflow = 'hidden';
             } else {
@@ -35,7 +36,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Cerrar menú al hacer clic en enlaces en móvil
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -46,11 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Soporte para Smooth Scroll en anclas internas
+    // 3. Soporte para Smooth Scroll en anclas internas (excluyendo hashes de pestañas #siliconas/#cementicios/#hogar)
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             const href = this.getAttribute('href');
-            if (href === '#') return;
+            if (!href || href === '#' || ['#siliconas', '#cementicios', '#hogar'].includes(href)) return;
             
             const targetElement = document.querySelector(href);
             if (targetElement) {
@@ -63,38 +63,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Resaltar enlace activo en Navbar al hacer Scroll (Single Page Highlight)
-    const sections = document.querySelectorAll('section[id]');
-    
-    window.addEventListener('scroll', () => {
-        let scrollY = window.pageYOffset;
-        
-        sections.forEach(current => {
-            const sectionHeight = current.offsetHeight;
-            const sectionTop = current.offsetTop - 150;
-            const sectionId = current.getAttribute('id');
-            
-            // Mapear IDs a sus correspondientes links
-            const linkMap = {
-                'hero-section': 'link-inicio',
-                'sobre-azzul': 'link-about',
-                'team': 'link-team',
-                'how-we-work': 'link-how-we-work',
-                'what-we-do': 'link-what-we-do'
-            };
-            
-            const linkId = linkMap[sectionId];
-            if (linkId) {
-                const linkElement = document.getElementById(linkId);
-                if (linkElement) {
-                    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+    // 4. Resaltar enlace activo en Navbar al hacer Scroll (solo si no es el Navbar Global por ruta)
+    if (!isManagedGlobalNav) {
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let scrollY = window.pageYOffset;
+            sections.forEach(current => {
+                const sectionHeight = current.offsetHeight;
+                const sectionTop = current.offsetTop - 150;
+                const sectionId = current.getAttribute('id');
+                const linkMap = {
+                    'portal-gateway': 'link-inicio',
+                    'hero-section': 'link-inicio',
+                    'sobre-azzul': 'link-about',
+                    'team': 'link-team',
+                    'how-we-work': 'link-how-we-work',
+                    'what-we-do': 'link-what-we-do'
+                };
+                const linkId = linkMap[sectionId];
+                if (linkId) {
+                    const linkElement = document.getElementById(linkId);
+                    if (linkElement && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
                         document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
                         linkElement.classList.add('active');
                     }
                 }
-            }
+            });
         });
-    });
+    }
 
     // 5. Acordeón Interactivo (Sección WHAT WE DO)
     const accordionHeaders = document.querySelectorAll('.accordion-header');
@@ -332,25 +328,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Selector de Pestañas de Negocio (sistema.html)
+    // 8. Selector de Pestañas de Negocio (sistema.html — soporta ?tab=training)
     const tabTriggers = document.querySelectorAll('.tab-trigger');
     const tabPanes = document.querySelectorAll('.tab-pane');
     
     if (tabTriggers.length > 0 && tabPanes.length > 0) {
+        const activateSystemTab = (targetTab, shouldScroll) => {
+            const activePane = document.getElementById(targetTab);
+            if (!activePane) return;
+            tabTriggers.forEach(t => t.classList.toggle('active', t.getAttribute('data-tab') === targetTab));
+            tabPanes.forEach(p => p.classList.toggle('active', p.id === targetTab));
+            if (shouldScroll) {
+                const sec = document.getElementById('sub-business-sections') || activePane;
+                setTimeout(() => sec.scrollIntoView({ behavior: 'smooth', block: 'start' }), 120);
+            }
+        };
+
         tabTriggers.forEach(trigger => {
             trigger.addEventListener('click', () => {
                 const targetTab = trigger.getAttribute('data-tab');
-                
-                // Desactivar triggers y panes
-                tabTriggers.forEach(t => t.classList.remove('active'));
-                tabPanes.forEach(p => p.classList.remove('active'));
-                
-                // Activar seleccionados
-                trigger.classList.add('active');
-                const activePane = document.getElementById(targetTab);
-                if (activePane) activePane.classList.add('active');
+                activateSystemTab(targetTab, false);
             });
         });
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const requestedTab = urlParams.get('tab') || (window.location.hash === '#training' ? 'training' : null);
+        if (requestedTab) {
+            activateSystemTab(requestedTab, true);
+        }
     }
 
     // 9. Filtros de Portafolio Dinámicos con Animación (proyectos.html)

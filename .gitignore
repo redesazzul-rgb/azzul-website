@@ -6,14 +6,54 @@ node_modules/
 .vercel
 .env*
 
-# Python/Flask environment
+# Python/Flask environment & local helper scripts
 __pycache__/
 *.pyc
 instance/
 venv/
 .env
+extract_images.py
 
 # SQLite local database
 *.db
 *.db-journal
 *.sqlite
+
+# AZZUL_INDESIGN_READY: track ONLY the 25 curated web PNGs + Master Web PDF (ignore 266 raw InDesign exports, CSVs & duplicates)
+assets/AZZUL_INDESIGN_READY/*
+!assets/AZZUL_INDESIGN_READY/CATALOGO_MAESTRO_AZZUL_WEB.pdf
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/
+assets/AZZUL_INDESIGN_READY/01_Cocinas/*
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-001.png
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-002.png
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-003.png
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-004.png
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-005.png
+!assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-012.png
+!assets/AZZUL_INDESIGN_READY/02_Banos/
+assets/AZZUL_INDESIGN_READY/02_Banos/*
+!assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-003.png
+!assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-004.png
+!assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-005.png
+!assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-007.png
+!assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-009.png
+!assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/
+assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/*
+!assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-001.png
+!assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-002.png
+!assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-003.png
+!assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-006.png
+!assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-007.png
+!assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/
+assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/*
+!assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-001.png
+!assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-004.png
+!assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-005.png
+!assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-006.png
+!assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-008.png
+!assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/
+assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/*
+!assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-046.png
+!assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-047.png
+!assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-058.png
+!assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-059.png

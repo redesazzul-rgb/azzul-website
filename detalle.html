@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;900&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
   <script id="tailwind-config">
-    tailwind.config = {
+    if (typeof tailwind !== 'undefined') tailwind.config = {
         darkMode: "class",
         theme: {
             extend: {
@@ -114,31 +114,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css">
 
   <style>
-    /* Corrección de Contrastes: Navbar e Inversión de Logotipo */
-    .header {
-      background-color: rgba(240, 244, 248, 0.95) !important;
-      border-bottom: 1px solid var(--slate-200) !important;
-      backdrop-filter: blur(10px) !important;
-    }
-    
-    .logo img, #main-logo img {
-      filter: brightness(0) saturate(100%) invert(11%) sepia(30%) saturate(6441%) hue-rotate(218deg) brightness(97%) contrast(97%) !important;
-    }
-    
-    .nav-link {
-      color: var(--slate-800) !important;
-    }
-    
-    .nav-link:hover, .nav-link.active {
-      color: #0891b2 !important; /* Cyan acentuado */
-    }
-    
-    .burger span {
-      background-color: var(--slate-800) !important;
-    }
-
     .details-section {
-      padding: 7rem 0 5rem 0; /* Padding superior extra por el header flotante claro */
+      padding: 3.5rem 0 5rem 0;
       background-color: #F0F4F8; /* Gris tenue con subtonos fríos */
       color: var(--slate-800);
     }
@@ -572,35 +549,36 @@
   <!-- ==========================================
        NAVBAR (Cabecera)
        ========================================== -->
-  <header class="header" id="header">
-    <div class="container navbar">
-      <!-- Logotipo Oficial AZZUL -->
-      <a href="index.html#hero-section" class="logo" id="main-logo">
-        <img src="assets/logo/logo.png" alt="AZZUL Logo" style="height: 38px; width: auto; object-fit: contain;">
+      <header class="header azzul-global-header" id="header">
+    <div class="container azzul-navbar-inner">
+      <a href="index.html" class="logo azzul-nav-logo" id="main-logo" aria-label="AZZUL - Ir al Portal Principal">
+        <img src="assets/logo/logo.png" alt="AZZUL Logo">
       </a>
-
-      <!-- Menú de Navegación -->
-      <nav class="nav-menu" id="nav-menu">
-        <a href="index.html#hero-section" class="nav-link" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
-        <a href="nosotros.html" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
-        <a href="rentas.html" class="nav-link active" id="link-rentas" data-i18n="nav_rentas">Rentas Vacacionales</a>
+      <nav class="azzul-nav-menu" id="nav-menu" aria-label="Navegación Global AZZUL">
+        <a href="index.html" class="nav-link" id="link-inicio" data-i18n="nav_inicio">Inicio</a>
+        <a href="icf.html" class="nav-link" id="link-icf-portal" data-i18n="nav_icf">AZZUL ICF</a>
+        <div class="azzul-nav-dropdown" id="nav-bp-dropdown">
+          <div class="azzul-nav-dropdown-head">
+            <a href="productos.html" class="nav-link azzul-bp-trigger" id="link-bp-catalog">
+              <span data-i18n="nav_bp_catalog">Building Products</span>
+            </a>
+          </div>
+        </div>
         <a href="sistema.html" class="nav-link" id="link-ciencia" data-i18n="nav_ciencia">Ciencia Constructiva</a>
-        <div class="nav-btn">
-          <a href="contacto.html" class="btn btn-primary" style="padding: 0.6rem 1.5rem; font-size: 0.9rem;" id="link-contacto" data-i18n="nav_contact_btn">Contáctanos</a>
-        </div>
-        <!-- Selector de Idioma -->
-        <div class="lang-selector">
-          <button class="lang-btn active" data-lang="es">ES</button>
-          <span class="lang-divider">/</span>
-          <button class="lang-btn" data-lang="en">EN</button>
-        </div>
+        <a href="proyectos.html" class="nav-link" id="link-proyectos" data-i18n="nav_proyectos">Proyectos</a>
+        <a href="nosotros.html" class="nav-link" id="link-about" data-i18n="nav_nosotros">Nosotros</a>
+        <a href="contacto.html" class="nav-link" id="link-contacto-nav" data-i18n="nav_contacto">Contacto</a>
       </nav>
-
-      <!-- Botón de Hamburguesa para Móvil -->
-      <div class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="azzul-nav-actions">
+        <div class="lang-selector azzul-lang-desktop">
+          <button type="button" class="lang-btn active" data-lang="es">ES</button>
+          <span class="lang-divider">/</span>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </div>
+        <a href="contacto.html" class="azzul-nav-cta" id="link-contacto" data-i18n="nav_quote_cta">Solicitar Cotización</a>
+        <button type="button" class="burger" id="burger-menu" aria-label="Abrir menú de navegación">
+          <span></span><span></span><span></span>
+        </button>
       </div>
     </div>
   </header>
@@ -853,6 +831,7 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
 
   <!-- Lógica de Traducciones y API -->
+  <script src="navbar.js"></script>
   <script src="translations.js"></script>
   <script src="script.js"></script>
   <script>
