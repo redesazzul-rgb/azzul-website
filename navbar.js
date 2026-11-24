@@ -4,7 +4,7 @@
    ========================================================================== */
 
 (function initAzzulGlobalNavbar() {
-  const PDF_CATALOG_URL = 'assets/AZZUL_INDESIGN_READY/CATALOGO_MAESTRO_AZZUL_WEB.pdf';
+  const PDF_CATALOG_URL = 'assets/hogar/CATALOGO_MAESTRO_AZZUL_WEB.pdf';
 
   function getCurrentPageKey() {
     const rawPath = (window.location.pathname || '').toLowerCase();
@@ -295,9 +295,98 @@
     }
   }
 
+  function mountFooterLegalAndCookies() {
+    const CONSENT_KEY = 'azzul_cookie_consent';
+
+    // 1. Asegurar enlaces legales en todos los footers del sitio
+    document.querySelectorAll('a[data-i18n="footer_privacy"]').forEach((a) => {
+      a.setAttribute('href', 'privacidad.html');
+    });
+    document.querySelectorAll('a[data-i18n="footer_terms"]').forEach((a) => {
+      a.setAttribute('href', 'terminos.html');
+    });
+
+    const footerBottom = document.querySelector('.footer-bottom');
+    if (footerBottom && !footerBottom.querySelector('a[href="privacidad.html"]')) {
+      const legalNav = document.createElement('div');
+      legalNav.className = 'azzul-footer-legal-links';
+      legalNav.innerHTML = `
+        <a href="privacidad.html" data-i18n="footer_privacy_full">Política de Privacidad y Uso de Cookies</a>
+        <a href="terminos.html" data-i18n="footer_terms_full">Términos y Condiciones de Uso</a>
+      `;
+      footerBottom.appendChild(legalNav);
+    }
+
+    // 2. Montar Banner de Consentimiento de Cookies (Paleta Editorial AZZUL)
+    let banner = document.getElementById('azzul-cookie-banner');
+    if (!banner) {
+      banner = document.createElement('aside');
+      banner.id = 'azzul-cookie-banner';
+      banner.className = 'azzul-cookie-banner';
+      banner.setAttribute('role', 'region');
+      banner.setAttribute('aria-label', 'Consentimiento de Cookies');
+      banner.innerHTML = `
+        <div class="azzul-cookie-copy">
+          <span class="azzul-cookie-eyebrow" data-i18n="cookie_eyebrow">PRIVACIDAD Y COOKIES · AZZUL</span>
+          <p data-i18n="cookie_body_html">
+            Utilizamos cookies técnicas esenciales y analíticas propias para optimizar la velocidad, recordar su idioma y mejorar su experiencia de navegación en <strong>azzulsv.com</strong>. Consulte nuestra <a href="privacidad.html">Política de Privacidad y Cookies</a>.
+          </p>
+        </div>
+        <div class="azzul-cookie-actions">
+          <button type="button" class="azzul-cookie-btn-essential" id="cookie-btn-essential" data-i18n="cookie_btn_essential">Solo esenciales</button>
+          <button type="button" class="azzul-cookie-btn-accept" id="cookie-btn-accept-all" data-i18n="cookie_btn_accept">Aceptar todas</button>
+        </div>
+      `;
+      document.body.appendChild(banner);
+    }
+
+    const saveConsent = (level) => {
+      try {
+        localStorage.setItem(CONSENT_KEY, JSON.stringify({ level, savedAt: new Date().toISOString() }));
+      } catch {}
+      banner.setAttribute('hidden', '');
+    };
+
+    let existingConsent = null;
+    try {
+      existingConsent = localStorage.getItem(CONSENT_KEY);
+    } catch {}
+
+    if (existingConsent) {
+      banner.setAttribute('hidden', '');
+    } else {
+      banner.removeAttribute('hidden');
+    }
+
+    const btnAccept = document.getElementById('cookie-btn-accept-all');
+    const btnEssential = document.getElementById('cookie-btn-essential');
+    if (btnAccept) btnAccept.onclick = () => saveConsent('accepted_all');
+    if (btnEssential) btnEssential.onclick = () => saveConsent('essential_only');
+
+    // Botón opcional en privacidad.html para reconfigurar preferencias
+    const resetBtn = document.getElementById('reset-cookie-prefs-btn');
+    if (resetBtn) {
+      resetBtn.addEventListener('click', () => {
+        try { localStorage.removeItem(CONSENT_KEY); } catch {}
+        banner.removeAttribute('hidden');
+      });
+    }
+
+    if (typeof setLanguage === 'function') {
+      const savedLang = localStorage.getItem('preferredLang') || 'es';
+      setLanguage(savedLang);
+    }
+  }
+
   if (document.getElementById('header') || document.querySelector('header.header')) {
     mountNavbar();
   } else {
     document.addEventListener('DOMContentLoaded', mountNavbar);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', mountFooterLegalAndCookies);
+  } else {
+    mountFooterLegalAndCookies();
   }
 })();

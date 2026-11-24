@@ -580,7 +580,23 @@ const translations = {
     pillar_p4_bullet1: "<strong>Rentas Vacacionales San Blas:</strong> Villas privadas con piscina, terrazas panorámicas y reserva directa en línea.",
     pillar_p4_bullet2: "<strong>Cuidado Integral de Propiedades:</strong> Mantenimiento preventivo, hospitalidad premium y rentabilidad continua.",
     pillar_p4_btn: "Explorar Rentas & Gestión",
-    bento_p4_btn: "Explorar Rentas & Gestión"
+    bento_p4_btn: "Explorar Rentas & Gestión",
+
+    // V4: Cookies y Cumplimiento Legal
+    footer_privacy: "Política de Privacidad y Uso de Cookies",
+    footer_terms: "Términos y Condiciones de Uso",
+    footer_privacy_full: "Política de Privacidad y Uso de Cookies",
+    footer_terms_full: "Términos y Condiciones de Uso",
+    cookie_eyebrow: "PRIVACIDAD Y COOKIES · AZZUL",
+    cookie_body_html: "Utilizamos cookies técnicas esenciales y analíticas propias para optimizar la velocidad, recordar su idioma y mejorar su experiencia de navegación en <strong>azzulsv.com</strong>. Consulte nuestra <a href=\"privacidad.html\">Política de Privacidad y Cookies</a>.",
+    cookie_btn_accept: "Aceptar todas",
+    cookie_btn_essential: "Solo esenciales",
+    legal_priv_eyebrow: "CUMPLIMIENTO LEGAL Y PRIVACIDAD · EL SALVADOR",
+    legal_priv_title: "Política de Privacidad y Uso de Cookies",
+    legal_priv_lead: "En AZZUL (AZZUL ICF y AZZUL Building Products) protegemos la confidencialidad de los datos personales suministrados por nuestros clientes, arquitectos, ingenieros y aliados de proyecto a través de azzulsv.com.",
+    legal_terms_eyebrow: "MARCO CONTRACTUAL E INFORMATIVO · EL SALVADOR",
+    legal_terms_title: "Términos y Condiciones de Uso",
+    legal_terms_lead: "Condiciones generales que regulan el acceso, consulta técnica, solicitud de cotizaciones y uso de catálogos digitales en el portal oficial azzulsv.com."
   },
   en: {
     // Unified Global Navbar
@@ -1162,7 +1178,23 @@ const translations = {
     pillar_p4_bullet1: "<strong>San Blas Vacation Rentals:</strong> Private pool villas, panoramic terraces, and direct online booking.",
     pillar_p4_bullet2: "<strong>Turnkey Property Care:</strong> Preventive maintenance, premium guest hospitality, and sustained returns.",
     pillar_p4_btn: "Explore Rentals & Management",
-    bento_p4_btn: "Explore Rentals & Management"
+    bento_p4_btn: "Explore Rentals & Management",
+
+    // V4: Cookies & Legal Compliance
+    footer_privacy: "Privacy & Cookie Policy",
+    footer_terms: "Terms & Conditions of Use",
+    footer_privacy_full: "Privacy & Cookie Policy",
+    footer_terms_full: "Terms & Conditions of Use",
+    cookie_eyebrow: "PRIVACY & COOKIES · AZZUL",
+    cookie_body_html: "We use essential technical and analytical cookies to optimize speed, remember your language preference, and improve your browsing experience on <strong>azzulsv.com</strong>. Read our <a href=\"privacidad.html\">Privacy & Cookie Policy</a>.",
+    cookie_btn_accept: "Accept All",
+    cookie_btn_essential: "Essential Only",
+    legal_priv_eyebrow: "LEGAL COMPLIANCE & PRIVACY · EL SALVADOR",
+    legal_priv_title: "Privacy & Cookie Policy",
+    legal_priv_lead: "At AZZUL (AZZUL ICF & AZZUL Building Products), we safeguard the confidentiality of personal data provided by our clients, architects, engineers, and project partners through azzulsv.com.",
+    legal_terms_eyebrow: "LEGAL & TECHNICAL FRAMEWORK · EL SALVADOR",
+    legal_terms_title: "Terms & Conditions of Use",
+    legal_terms_lead: "General conditions governing access, technical consultation, quote requests, and digital catalog usage on the official azzulsv.com portal."
   }
 };
 

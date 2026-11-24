@@ -4,7 +4,7 @@
    ========================================================================== */
 
 (function initArquitecturaInterior() {
-  const PDF_URL = 'assets/AZZUL_INDESIGN_READY/CATALOGO_MAESTRO_AZZUL_WEB.pdf';
+  const PDF_URL = 'assets/hogar/CATALOGO_MAESTRO_AZZUL_WEB.pdf';
 
   const ARCH_AREAS = [
     {
@@ -50,12 +50,12 @@
         ]
       },
       images: [
-        'assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-001.png',
-        'assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-002.png',
-        'assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-003.png',
-        'assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-004.png',
-        'assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-005.png',
-        'assets/AZZUL_INDESIGN_READY/01_Cocinas/AZZ-COC-012.png'
+        'assets/hogar/01_Cocinas/AZZ-COC-001.png',
+        'assets/hogar/01_Cocinas/AZZ-COC-002.png',
+        'assets/hogar/01_Cocinas/AZZ-COC-003.png',
+        'assets/hogar/01_Cocinas/AZZ-COC-004.png',
+        'assets/hogar/01_Cocinas/AZZ-COC-005.png',
+        'assets/hogar/01_Cocinas/AZZ-COC-012.png'
       ]
     },
     {
@@ -99,11 +99,11 @@
         ]
       },
       images: [
-        'assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-003.png',
-        'assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-004.png',
-        'assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-005.png',
-        'assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-007.png',
-        'assets/AZZUL_INDESIGN_READY/02_Banos/AZZ-BAN-009.png'
+        'assets/hogar/02_Banos/AZZ-BAN-003.png',
+        'assets/hogar/02_Banos/AZZ-BAN-004.png',
+        'assets/hogar/02_Banos/AZZ-BAN-005.png',
+        'assets/hogar/02_Banos/AZZ-BAN-007.png',
+        'assets/hogar/02_Banos/AZZ-BAN-009.png'
       ]
     },
     {
@@ -147,11 +147,11 @@
         ]
       },
       images: [
-        'assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-003.png',
-        'assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-001.png',
-        'assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-002.png',
-        'assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-006.png',
-        'assets/AZZUL_INDESIGN_READY/03_Closets_Dormitorios/AZZ-CLO-007.png'
+        'assets/hogar/03_Closets_Dormitorios/AZZ-CLO-003.png',
+        'assets/hogar/03_Closets_Dormitorios/AZZ-CLO-001.png',
+        'assets/hogar/03_Closets_Dormitorios/AZZ-CLO-002.png',
+        'assets/hogar/03_Closets_Dormitorios/AZZ-CLO-006.png',
+        'assets/hogar/03_Closets_Dormitorios/AZZ-CLO-007.png'
       ]
     },
     {
@@ -195,11 +195,11 @@
         ]
       },
       images: [
-        'assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-001.png',
-        'assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-004.png',
-        'assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-005.png',
-        'assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-006.png',
-        'assets/AZZUL_INDESIGN_READY/04_Sala_Comedor_Integral/AZZ-INT-008.png'
+        'assets/hogar/04_Sala_Comedor_Integral/AZZ-INT-001.png',
+        'assets/hogar/04_Sala_Comedor_Integral/AZZ-INT-004.png',
+        'assets/hogar/04_Sala_Comedor_Integral/AZZ-INT-005.png',
+        'assets/hogar/04_Sala_Comedor_Integral/AZZ-INT-006.png',
+        'assets/hogar/04_Sala_Comedor_Integral/AZZ-INT-008.png'
       ]
     },
     {
@@ -255,10 +255,10 @@
         ]
       },
       images: [
-        'assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-046.png',
-        'assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-047.png',
-        'assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-058.png',
-        'assets/AZZUL_INDESIGN_READY/05_Materiales_Herrajes_Calidad/AZZ-TEC-059.png'
+        'assets/hogar/05_Materiales_Herrajes_Calidad/AZZ-TEC-046.png',
+        'assets/hogar/05_Materiales_Herrajes_Calidad/AZZ-TEC-047.png',
+        'assets/hogar/05_Materiales_Herrajes_Calidad/AZZ-TEC-058.png',
+        'assets/hogar/05_Materiales_Herrajes_Calidad/AZZ-TEC-059.png'
       ]
     }
   ];
